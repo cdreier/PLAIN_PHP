@@ -82,11 +82,19 @@ class Controller {
         extract(self::$renderArgs["args"]);
         include(self::$renderArgs["view"]);
     }
+    
+    protected static function always(){
+        //to implement from subclasses, called on every render() call
+    }
 	
     public static function render($args = array()){
         $trace = debug_backtrace();
         $trace = $trace[1];
         $view = "views/" . $trace["class"] ."/" . $trace["function"] . ".php";
+        
+        //invoke always call
+        call_user_func($trace["class"]."::"."always");
+        
         if(is_file( $view )){
             self::$renderArgs["args"] = $args;
             self::$renderArgs["view"] = $view;

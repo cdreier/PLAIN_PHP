@@ -47,6 +47,24 @@ public static function login(){
 <p>Ausführliches dazu gibts unter <a href="<?php echo Manual::linkTo("views"); ?>">render Views</a></p>
 
 <br/>
+<h3>always</h3>
+<p>Die always Funktion wird bei jedem render Aufruf des Controllers ausgeführt. 
+    So kann man z.B. Stylesheets oder Script in jeder render Methode eines Controllers laden oder eine Userauthentifizierung für einen 
+    kompletten Controller gültig machen.</p>
+<pre class="prettyprint">
+public static function always(){
+    
+    if($userValidationFailed){
+        self::redirectTo("index", "App");
+    }
+    
+    self::addScript("prettify.js");
+    self::addStylesheet("sunburst-theme.css");
+}
+</pre>
+
+
+<br/>
 <h3>addScript</h3>
 <p>Es gibt immer wieder Javascripts, die man nur auf einer einzigen, oder auf nur wenigen Seiten gebrauchen kann.
 Damit diese nicht bei jedem Seitenaufruf geladen werden müssen, kann man in der entsprechenden Controller Funktion die gewünschten Scripte laden</p>
