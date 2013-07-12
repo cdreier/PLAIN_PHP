@@ -14,7 +14,7 @@ if(isset($_SERVER['PATH_INFO'])){
     Controller::execute($_SERVER['PATH_INFO']);
 }else{
     //no path is set, call default 
-    App::index();
+    Manual::index();
 }
 
  ?>

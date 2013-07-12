@@ -25,8 +25,8 @@
  */ 
 class App extends Controller {
 
-    const _PATH = "http://192.168.0.36/PHP_PLAIN/";
-    const _LOCAL_PATH = "http://localhost/PHP_PLAIN/";
+    const _PATH = "http://plain-php.drailing.net/";
+    const _LOCAL_PATH = "http://localhost/PLAIN_PHP/";
     const SESSION_NAME = "PHP_PLAIN";
 
     public static function index() {
