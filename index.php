@@ -29,8 +29,8 @@ if(isset($_SERVER['PATH_INFO'])){
 		<link type="text/css" rel="stylesheet" href="<?php echo App::PATH() ?>/lib/css/style.css" />
 		<?php Controller::injectStylesheets() ?>
 		
-        <script src="<?php echo App::PATH() ?>/lib/js/jquery-2.0.3.min.js" type="text/javascript" charset="utf-8"></script>
         <?php App::_JSPATH(); ?>
+        <script src="<?php echo App::PATH() ?>/lib/js/jquery-2.0.3.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="<?php echo App::PATH() ?>/lib/js/ajaxCall.js" type="text/javascript" charset="utf-8"></script>
         <script src="<?php echo App::PATH() ?>/lib/js/main.js" type="text/javascript" charset="utf-8"></script>
         <?php Controller::injectScripts() ?>
