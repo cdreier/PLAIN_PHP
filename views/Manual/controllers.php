@@ -2,7 +2,7 @@
 
 <p>Jeder Controller der mit dem Framework benutzt werden soll (d.h. rendern, Links zu Funktionen etc) muss von der Controller.php Klasse erben:</p>
 <pre class="prettyprint">
-class MyAwsomeController extends Controller {
+class MyAwesomeController extends Controller {
     
 }
 </pre>
@@ -11,30 +11,41 @@ class MyAwsomeController extends Controller {
 <h3>linkTo</h3>
 <p>Sollte immer bei einer Verlinkung innerhalb des Frameworks benutzt werden, da durch das Routing immer absolute Links benötigt werden.</p> 
 <pre class="prettyprint">
-MyAwsomeController::linkTo("moreAwsomerFunction");
+MyAwsomeController::linkTo("moreAwesomerFunction");
 // returns http://localhost/PHP_PLAIN/index.php/MyAwsomeController/moreAwsomerFunction
+</pre>
+<p>Da es bei der Anzeige von Daten immer notwendig ist, eine ID o.ä. mit zu schicken, gibt es die Möglichkeit einen 2. Parameter zu übergeben,
+    der dann als Parameter in der entsprechenden Controllerfunktion erscheint</p>
+<pre class="prettyprint">
+MyAwsomeController::linkTo("moreAwesomerFunction", 33);
+// returns http://localhost/PHP_PLAIN/index.php/MyAwesomeController/moreAwesomerFunction/33
+
+//in the controller
+public static moreAwesomerFunction($id){
+    //$id = 33
+    $post = Doctrine_Core::getTable("Post")->find($id);
+}
 </pre>
 
 <br/>
 <h3>redirectTo</h3>
-<p>Wird normalerweise innerhalb einer Controllerfunktion verwendet und kann zB nach einem Login 2 verschiedene Wege einschlagen.</p>
-<p>Der zweite Parameter ist optional, wenn dieser nicht gesetzt ist, wird man innerhalb des Controllers weitergeleitet.</p>
+<p>Wird genauso wie die linkTo Funktion verwendet um zB nach einem Login 2 verschiedene Wege einschlagen.</p>
 <p>Nach einem Redirect wird kein weiterer Code mehr ausgeführt</p>
 <pre class="prettyprint">
 public static function login(){
     //a lot of validation
     if($success){
-        self::redirectTo("superSecretWebsite");
+        MyAwesomeController::redirectTo("superSecretWebsite", 1);
     }
     
     //error - back to frontpage
-    self::redirectTo("index", "App");
+    App::redirectTo("index");
     
     //unreachable code
     echo "yay";
-    
 }
 </pre>
+
 
 <br/>
 <h3>render</h3>
@@ -55,7 +66,7 @@ public static function login(){
 public static function always(){
     
     if($userValidationFailed){
-        self::redirectTo("index", "App");
+        App::redirectTo("index");
     }
     
     self::addScript("prettify.js");

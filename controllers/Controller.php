@@ -120,11 +120,11 @@ class Controller {
     
     public static function execute($pathInfo ){
         $controllerInfo = self::parsePathInfo($pathInfo);
-        if(is_callable($controllerInfo)){
-            call_user_func($controllerInfo);
+        if(count($controllerInfo) == 2 && is_callable($controllerInfo[0])){
+            call_user_func($controllerInfo[0], $controllerInfo[1]);
         }else{
             echo "METHOD NOT FOUND - ";
-            echo $controllerInfo;
+            var_dump($controllerInfo);
         }
     }
     
@@ -163,11 +163,16 @@ class Controller {
     }
     
 
-    public static function linkTo($functionName = "index", $args = array()){
+    public static function linkTo($functionName = "index", $param = "", $args = array()){
         $class = get_called_class();
         $params = "";
         
-        //add params
+        //add primary param
+        if($param != ""){
+            $param = "/".$param;
+        }
+        
+        //add GET params
         foreach ($args as $key => $value) {
             $params .= $key . "=" . $value;
         }
@@ -175,15 +180,17 @@ class Controller {
             $params = "?" . $params;
         }
         
-        return App::PATH()."index.php/$class/$functionName".$params;
+        return App::PATH()."index.php/$class/$functionName".$param.$params;
     }
     
-    public static function redirectTo($method, $class = ""){
-        if($class == ""){
-            $class = get_called_class();
+    public static function redirectTo($method, $param = ""){
+        $class = get_called_class();
+        
+        if($param != ""){
+            $param = "/".$param;
         }
-        extract($args);
-        header( "Location: " . App::PATH() . "index.php/" . $class . "/" . $method ) ;
+        
+        header( "Location: " . App::PATH() . "index.php/" . $class . "/" . $method . $param) ;
         exit();
     }
     
@@ -193,7 +200,11 @@ class Controller {
         if(count($parts) < 2 ){
             $parts[1] = "index";
         }
-        return ucfirst($parts[0])."::".$parts[1];
+        
+        if(count($parts) > 2){
+            return array(ucfirst($parts[0])."::".$parts[1], $parts[2]);
+        }
+        return array(ucfirst($parts[0])."::".$parts[1], "");
     }
     
     
