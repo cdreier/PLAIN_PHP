@@ -33,5 +33,6 @@ require_once 'Doctrine/Core.php';
  * @since       1.0
  * @version     $Revision: 7490 $
  */
+class Doctrine extends Doctrine_Core
 {
 }
