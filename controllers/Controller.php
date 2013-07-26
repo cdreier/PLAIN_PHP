@@ -105,8 +105,7 @@ class Controller {
             self::$renderArgs["view"] = $view;
             self::$shouldRender = true;
         }else{
-            echo "VIEW NOT FOUND - ";
-            echo $view;
+            throw new Exception("VIEW NOT FOUND - " . $view);
         }
     }
     
@@ -118,8 +117,7 @@ class Controller {
             extract($args);
             include($view);
         }else{
-            echo "VIEW NOT FOUND - ";
-            echo $view;
+            throw new Exception("VIEW NOT FOUND - " . $view);
         }
     }
     
@@ -128,8 +126,7 @@ class Controller {
         if(count($controllerInfo) == 2 && is_callable($controllerInfo[0])){
             call_user_func($controllerInfo[0], $controllerInfo[1]);
         }else{
-            echo "METHOD NOT FOUND - ";
-            var_dump($controllerInfo);
+            throw new Exception("METHOD NOT FOUND - " . $pathInfo);
         }
     }
     
