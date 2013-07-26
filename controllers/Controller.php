@@ -63,15 +63,20 @@ class Controller {
     }
     
     
-    public static function isActive(){
+    public static function isActive($view = false){
+        $checkAgainst = get_called_class();
+        if($view){
+            $checkAgainst .= "/".$view;
+        }
+        
         //first check if path info is set and matches 
         if(isset($_SERVER["PATH_INFO"])){
-            return strstr($_SERVER["PATH_INFO"], get_called_class());
+            return strstr($_SERVER["PATH_INFO"], $checkAgainst);
         }
         
         //check render view 
         if(isset(self::$renderArgs["view"])){
-            return strstr(self::$renderArgs["view"], get_called_class());
+            return strstr(self::$renderArgs["view"], $checkAgainst);
         }
         
         //perhaps i forgot something, but should return false now

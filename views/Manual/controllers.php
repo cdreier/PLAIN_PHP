@@ -96,12 +96,15 @@ public static function controllers(){
 <br/>
 <h3>isActive</h3>
 <p>Die isActive Funktion versucht anhand der URL und der renderArgs (der View) herauszufinden ob der Controller von dem der Aufruf stammt, auch grade angezeigt wird</p>
-<p>Ein aktuelles Beispiel: auf der aktuellen Seite wird das Seitenmenü nur angezeigt wenn man sich im Manual Controller befindet</p>
+<p>Als optionaler Parameter kann die View (bzw die Funktion) mitgegeben werden, so wird das "active" zusätzlich auf die View beschränkt</p>
+<p>Ein aktuelles Beispiel: auf der aktuellen Seite wird das Seitenmenü nur angezeigt wenn man sich im Manual Controller befindet, bzw. in Manual::controllers ein zusätzlicher Style ausgegeben</p>
 <pre class="prettyprint">
 if(Manual::isActive()){
     //render side menu
     Manual::sideMenu();
 }    
+//for active state in menu
+if(Manual::isActive("controllers")) echo "style='color: blue;'";
 </pre>
 
 
