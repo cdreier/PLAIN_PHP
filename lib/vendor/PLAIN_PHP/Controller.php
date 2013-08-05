@@ -23,6 +23,10 @@
  *  THE SOFTWARE.
  * 
  */ 
+
+require_once 'lib/config/routes.php';
+require_once 'Routing.php';
+ 
 class Controller {
     
     private static $scripts = array();
@@ -64,6 +68,7 @@ class Controller {
     
     
     public static function isActive($view = false){
+    	
         $checkAgainst = get_called_class();
         if($view){
             $checkAgainst .= "/".$view;
@@ -71,14 +76,19 @@ class Controller {
         
         //first check if path info is set and matches 
         if(isset($_SERVER["PATH_INFO"])){
-            return strstr($_SERVER["PATH_INFO"], $checkAgainst);
+        	if(strstr($_SERVER["PATH_INFO"], $checkAgainst))
+            	return true;
+			
+			$checkedRoute = Routing::checkFunction($checkAgainst);
+			if($checkedRoute)
+				return $_SERVER["PATH_INFO"] == $checkedRoute;
         }
         
         //check render view 
         if(isset(self::$renderArgs["view"])){
             return strstr(self::$renderArgs["view"], $checkAgainst);
         }
-        
+		
         //perhaps i forgot something, but should return false now
         return false;
     }
@@ -121,10 +131,10 @@ class Controller {
         }
     }
     
-    public static function execute($pathInfo ){
-        $controllerInfo = self::parsePathInfo($pathInfo);
+    public static function execute( $pathInfo ){
+        $controllerInfo = Routing::parsePathInfo($pathInfo);
         if(count($controllerInfo) == 2 && is_callable($controllerInfo[0])){
-            call_user_func($controllerInfo[0], $controllerInfo[1]);
+            call_user_func_array($controllerInfo[0], $controllerInfo[1]);
         }else{
             throw new Exception("METHOD NOT FOUND - " . $pathInfo);
         }
@@ -165,49 +175,35 @@ class Controller {
     }
     
 
-    public static function linkTo($functionName = "index", $param = "", $args = array()){
-        $class = get_called_class();
-        $params = "";
+    public static function linkTo($functionName = "index", $param = ""){
+    	$route = Routing::checkFunction(get_called_class()."::".$functionName);
+		if(!$route){
+	        $route = "/".get_called_class()."/$functionName";
+		}
         
         //add primary param
         if($param != ""){
             $param = "/".$param;
         }
         
-        //add GET params
-        foreach ($args as $key => $value) {
-            $params .= $key . "=" . $value;
-        }
-        if($params != ""){
-            $params = "?" . $params;
-        }
-        
-        return App::PATH()."index.php/$class/$functionName".$param.$params;
+        return App::PATH()."index.php".$route.$param;
     }
     
-    public static function redirectTo($method, $param = ""){
-        $class = get_called_class();
+    public static function redirectTo($functionName, $param = ""){
+        $route = Routing::checkFunction(get_called_class()."::". $functionName);
+		if(!$route){
+	        $route = "/".get_called_class()."/$functionName";
+		}
         
         if($param != ""){
             $param = "/".$param;
         }
         
-        header( "Location: " . App::PATH() . "index.php/" . $class . "/" . $method . $param) ;
+        header( "Location: " . App::PATH() . "index.php" . $route . $param) ;
         exit();
     }
     
-    public static function parsePathInfo($pathInfo){
-        $pathInfo = substr($pathInfo, 1);
-        $parts = explode("/", $pathInfo);
-        if(count($parts) < 2 ){
-            $parts[1] = "index";
-        }
-        
-        if(count($parts) > 2){
-            return array(ucfirst($parts[0])."::".$parts[1], $parts[2]);
-        }
-        return array(ucfirst($parts[0])."::".$parts[1], "");
-    }
+    
     
     
 }

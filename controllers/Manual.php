@@ -15,6 +15,10 @@ class Manual extends Controller {
         self::render();
     }
 	
+	public static function routes(){
+        self::render();
+    }
+	
     public static function controllers(){
         self::render();
     }

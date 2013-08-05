@@ -5,7 +5,7 @@ session_start();
 //require_once('bootstrap.php');
 
 //loading base controller
-require_once "controllers/Controller.php";
+require_once "lib/vendor/PLAIN_PHP/Controller.php";
 //loading other controllers
 spl_autoload_register(array('Controller', 'autoload'));
 
@@ -38,7 +38,7 @@ if(isset($_SERVER['PATH_INFO'])){
 	</head>
 	
 	<body>
-	    
+		
 	    <?php 
 	    if(Manual::isActive()){
             Manual::sideMenu();
