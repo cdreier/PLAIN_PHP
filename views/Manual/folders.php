@@ -18,6 +18,12 @@ Eine MVC Ordnerstruktur wurde beibehalten. Eine leere Applikation sieht folgende
             <li>
                 lib
                 <ul>
+                	<li>
+                		config
+                		<ul>
+                			<li>routes.php</li>
+                		</ul>
+                	</li>
                     <li>
                         css
                     </li>

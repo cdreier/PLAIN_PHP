@@ -1,7 +1,7 @@
 <?php 
 
 $_ROUTES = array(
-	"/ROUTING" => "Manual::routes"
+	"/CUSTOMROUTING" => "Manual::routes"
 );
 
 
