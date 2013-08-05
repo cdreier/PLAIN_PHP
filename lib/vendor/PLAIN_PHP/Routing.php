@@ -34,10 +34,6 @@ class Routing {
 		return false;
 	}
 	
-	private static function parseRoutes($pathInfo){
-		global $_ROUTES;
-		return array($_ROUTES[$pathInfo], array());
-	}
 	
 	private static function parseDefaultRoute($pathInfo){
 		$pathInfo = substr($pathInfo, 1);
@@ -52,10 +48,29 @@ class Routing {
         return array(ucfirst($parts[0])."::".$parts[1], array());
 	}
 	
-	public static function parsePathInfo($pathInfo){
+	private static function checkRoutes($pathInfos){
 		global $_ROUTES;
-		if( array_key_exists( $pathInfo, $_ROUTES ) ){
-			return self::parseRoutes($pathInfo);
+		$flipped = array_flip($_ROUTES);
+		foreach ($flipped as $key => $value) {
+			//prepare for preg with escaping /
+			$value = str_replace("/", "\\/", $value);
+			//create pattern and repalce {valueNames} with .*
+			$pattern = "/".preg_replace("/{.*}/", ".*", $value)."/";
+			if(preg_match($pattern, $pathInfos)){
+				//FIXME: fetch the IDs from the pathInfo
+				// preg_match("/{.*}/", $pathInfos, $result );
+				// var_dump($result);
+				return array($key, array());
+			}
+		}
+		return false;
+	}
+	
+	public static function parsePathInfo($pathInfo){
+		$foundRoute = self::checkRoutes($pathInfo);
+		
+		if( $foundRoute ){
+			return $foundRoute;
 		}
 		return self::parseDefaultRoute($pathInfo); 
     }
