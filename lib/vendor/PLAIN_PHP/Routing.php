@@ -53,14 +53,15 @@ class Routing {
 		$flipped = array_flip($_ROUTES);
 		foreach ($flipped as $key => $value) {
 			//prepare for preg with escaping /
-			$value = str_replace("/", "\\/", $value);
+			$tValue = str_replace("/", "\\/", $value);
 			//create pattern and repalce {valueNames} with .*
-			$pattern = "/".preg_replace("/{.*}/", ".*", $value)."/";
+			$pattern = "/".preg_replace("/{.*}/", ".*", $tValue)."/";
 			if(preg_match($pattern, $pathInfos)){
-				//FIXME: fetch the IDs from the pathInfo
-				// preg_match("/{.*}/", $pathInfos, $result );
-				// var_dump($result);
-				return array($key, array());
+				//split both routes ..
+				$pathInfoParts = explode("/", $pathInfos);
+				$checkParts = explode("/", $value);
+				//.. and diff them the get the values in the pathInfos
+				return array($key, array_diff($pathInfoParts, $checkParts));
 			}
 		}
 		return false;
