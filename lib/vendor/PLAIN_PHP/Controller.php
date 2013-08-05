@@ -174,7 +174,7 @@ class Controller {
         return $return;
     }
     
-
+	//TODO: change $param to array and parse them in the custom routes
     public static function linkTo($functionName = "index", $param = ""){
     	$route = Routing::checkFunction(get_called_class()."::".$functionName);
 		if(!$route){
@@ -189,6 +189,7 @@ class Controller {
         return App::PATH()."index.php".$route.$param;
     }
     
+	//TODO: change $param to array and parse them in the custom routes
     public static function redirectTo($functionName, $param = ""){
         $route = Routing::checkFunction(get_called_class()."::". $functionName);
 		if(!$route){

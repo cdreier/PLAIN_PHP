@@ -44,8 +44,8 @@ class App extends Controller {
 
 
 
-    public static function debug(){
-        
+    public static function debug($value){
+        echo $value;
     }
 
     public static function printJSONSuccess($attr = array()) {
