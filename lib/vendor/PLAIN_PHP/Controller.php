@@ -174,33 +174,28 @@ class Controller {
         return $return;
     }
     
-	//TODO: change $param to array and parse them in the custom routes
     public static function linkTo($functionName = "index", $param = ""){
     	$route = Routing::checkFunction(get_called_class()."::".$functionName);
 		if(!$route){
 	        $route = "/".get_called_class()."/$functionName";
+		}else{
+			//params only use with custom route
+			$route = Routing::fillParams($route, $param);
 		}
-        
-        //add primary param
-        if($param != ""){
-            $param = "/".$param;
-        }
-        
-        return App::PATH()."index.php".$route.$param;
+		
+        return App::PATH()."index.php".$route;
     }
     
-	//TODO: change $param to array and parse them in the custom routes
     public static function redirectTo($functionName, $param = ""){
         $route = Routing::checkFunction(get_called_class()."::". $functionName);
 		if(!$route){
 	        $route = "/".get_called_class()."/$functionName";
+		}else{
+			//params only use with custom route
+			$route = Routing::fillParams($route, $param);
 		}
         
-        if($param != ""){
-            $param = "/".$param;
-        }
-        
-        header( "Location: " . App::PATH() . "index.php" . $route . $param) ;
+        header( "Location: " . App::PATH() . "index.php" . $route ) ;
         exit();
     }
     

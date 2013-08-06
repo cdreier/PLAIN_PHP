@@ -7,6 +7,6 @@
         <li><a href="<?php echo Manual::linkTo("views"); ?>">render Views</a></li>
         <li><a href="<?php echo Manual::linkTo("ajax"); ?>">AJAX</a></li>
         <li><a href="<?php echo Manual::linkTo("doctrine"); ?>">Doctrine</a></li>
-        <li><a href="<?php echo App::linkTo("debug", "yay"); ?>">DEBUG</a></li>
+        <li><a href="<?php echo App::linkTo("debug", array("one", "two")); ?>">DEBUG</a></li>
     </ul>
 </div>

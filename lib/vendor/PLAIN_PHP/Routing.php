@@ -48,7 +48,38 @@ class Routing {
         return array(ucfirst($parts[0])."::".$parts[1], array());
 	}
 	
-	private static function checkRoutes($pathInfos){
+	public static function fillParams($route, $param){
+		if(is_array($param)){
+			$routeParts = explode("/", $route);
+			$paramCount = 0;
+			for ($i = 0; $i < count($routeParts); $i++) {
+				$part = $routeParts[$i];
+				if(substr($part, 0, 1) == "{"){
+					$routeParts[$i] = $param[$paramCount];
+					$paramCount++;
+				}
+			}
+			$route = implode("/", $routeParts);
+			
+		}else if($param != ""){
+			$routeParts = explode("/", $route);
+			for ($i = 0; $i < count($routeParts); $i++) {
+				$part = $routeParts[$i];
+				if(substr($part, 0, 1) == "{"){
+					$routeParts[$i] = $param;
+				}
+			}
+			$route = implode("/", $routeParts);
+		}
+		
+		return $route;
+	}
+	
+	/**
+	 * @param $pathInfos
+	 * @return array with (Controller::function, Route) or false if no route found 
+	 */
+	private static function getRawRoute($pathInfos){
 		global $_ROUTES;
 		$flipped = array_flip($_ROUTES);
 		foreach ($flipped as $key => $value) {
@@ -57,12 +88,21 @@ class Routing {
 			//create pattern and repalce {valueNames} with .*
 			$pattern = "/".preg_replace("/{.*}/", ".*", $tValue)."/";
 			if(preg_match($pattern, $pathInfos)){
-				//split both routes ..
-				$pathInfoParts = explode("/", $pathInfos);
-				$checkParts = explode("/", $value);
-				//.. and diff them the get the values in the pathInfos
-				return array($key, array_diff($pathInfoParts, $checkParts));
+				return array($key, $value);
 			}
+		}
+		return false;
+	}
+	
+	private static function checkRoutes($pathInfos){
+		$rawRoute = self::getRawRoute($pathInfos);
+		
+		if($rawRoute){
+			//split both routes ..
+			$pathInfoParts = explode("/", $pathInfos);
+			$checkParts = explode("/", $rawRoute[1]);
+			//.. and diff them the get the values in the pathInfos
+			return array($rawRoute[0], array_diff($pathInfoParts, $checkParts));
 		}
 		return false;
 	}
