@@ -9,20 +9,37 @@ class MyAwesomeController extends Controller {
 <p>Jeder Controller erbt dadurch eine ganze Reihe nützlicher Funktionen</p>
 
 <h3>linkTo</h3>
-<p>Sollte immer bei einer Verlinkung innerhalb des Frameworks benutzt werden, da durch das Routing immer absolute Links benötigt werden.</p> 
+<p>Sollte immer bei einer Verlinkung innerhalb des Frameworks benutzt werden, da durch das Routing immer absolute Links benötigt werden
+	und auch immer gegen das Custom Routing gechecked wird.</p> 
 <pre class="prettyprint">
+//without custom routes
 MyAwsomeController::linkTo("moreAwesomerFunction");
 // returns http://localhost/PHP_PLAIN/index.php/MyAwsomeController/moreAwsomerFunction
 </pre>
-<p>Da es bei der Anzeige von Daten immer notwendig ist, eine ID o.ä. mit zu schicken, gibt es die Möglichkeit einen 2. Parameter zu übergeben,
-    der dann als Parameter in der entsprechenden Controllerfunktion erscheint</p>
+<p>Da es bei der Anzeige von Daten immer notwendig ist, eine ID o.ä. mit zu schicken, gibt es die Möglichkeit einen 2. Parameter zu übergeben, 
+	dieser wird in die Custom Routes eingesetzt und wird auch in dieser Reihenfolge mit in den Controller übergeben. 
+	Es kann ein String oder Array übergeben werden</p>
 <pre class="prettyprint">
-MyAwsomeController::linkTo("moreAwesomerFunction", 33);
-// returns http://localhost/PHP_PLAIN/index.php/MyAwesomeController/moreAwesomerFunction/33
+//config/routes.php
+$_ROUTES = array(
+	"/awsome/{value}" => "MyAwsomeController::awesomeFunction",
+	"/debug/{value}/test/{yay}" => "MyAwsomeController::moreAwesomerFunction"
+);	
+	
+MyAwsomeController::linkTo("awesomeFunction", 33);
+// returns http://localhost/PHP_PLAIN/index.php/awsome/33
+
+MyAwsomeController::linkTo("moreAwesomerFunction", array("33", "AWESOME"));
+// returns http://localhost/PHP_PLAIN/index.php/debug/33/test/AWESOME
 
 //in the controller
-public static moreAwesomerFunction($id){
+public static awesomeFunction($id){
     //$id = 33
+    $post = Doctrine_Core::getTable("Post")->find($id);
+}
+
+public static moreAwesomerFunction($id, $test){
+    //$id = 33, $test = "AWESOME"
     $post = Doctrine_Core::getTable("Post")->find($id);
 }
 </pre>
