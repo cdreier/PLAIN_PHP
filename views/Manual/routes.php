@@ -24,5 +24,16 @@ $_ROUTES = array(
 	"/CUSTOMROUTING" => "Manual::routes"
 );
 </pre>
+
+<p>Es können auch komplexere Routen angegeben werden, in die Werte eingefügt werden können. Diese Werte werden in gechweiften Klammern in den Routes angegeben,
+	der Name hat dabei keine Bedeutung und soll nur beim lesen der Routen helfen.</p>
+<pre class="prettyprint ">
+$_ROUTES = array(
+	"/yay/{val}" => "App::yay",
+	"/debug/{value}/test/{yay}" => "App::debug"
+);
+</pre>
+<p>Wird nun in eine linkTo Funktion ein zweiter Parameter übergeben, wird dieser an die entsprechende Stelle in der Route gesetzt. (Siehe Controller)</p>
+
 <p>In der linkTo oder redirectTo Funktion ändert sich dadurch nichts, sobald eine Route eingertagen ist, wird der erzeugte Link sich auch
 	dementsprechend ändern.</p>
