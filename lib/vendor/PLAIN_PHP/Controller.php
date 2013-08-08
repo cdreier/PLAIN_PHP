@@ -29,7 +29,7 @@ require_once 'lib/config/routes.php';
 spl_autoload_register(array('Controller', 'autoload'));
 
 //init localisation
-L18n::$_LANGUAGE = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+L18n::init();
  
 class Controller {
     
