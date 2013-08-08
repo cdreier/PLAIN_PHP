@@ -6,8 +6,6 @@ session_start();
 
 //loading base controller
 require_once "lib/vendor/PLAIN_PHP/Controller.php";
-//loading other controllers
-spl_autoload_register(array('Controller', 'autoload'));
 
 //check if path is set and execute controller method
 if(isset($_SERVER['PATH_INFO'])){

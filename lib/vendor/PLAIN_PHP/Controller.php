@@ -25,7 +25,11 @@
  */ 
 
 require_once 'lib/config/routes.php';
-require_once 'Routing.php';
+//autoload other controllers and framework files
+spl_autoload_register(array('Controller', 'autoload'));
+
+//init localisation
+L18n::$_LANGUAGE = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
  
 class Controller {
     
@@ -63,9 +67,15 @@ class Controller {
         $file = "controllers/" . $className . ".php";
         if(file_exists($file)){
             require_once $file;
+			return;
+        }
+		
+		$file = "lib/vendor/PLAIN_PHP/" . $className . ".php";
+        if(file_exists($file)){
+            require_once $file;
         }
     }
-    
+	
     
     public static function isActive($view = false){
     	
