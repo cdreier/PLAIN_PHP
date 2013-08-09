@@ -47,7 +47,7 @@ class App extends Controller {
     public static function debug($value1, $value2){
         echo $value1.", ".$value2;
 		echo "<br/>";
-		echo L18n::$_LANGUAGE;
+		echo __("title");
     }
 
     public static function printJSONSuccess($attr = array()) {
