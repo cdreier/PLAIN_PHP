@@ -23,10 +23,10 @@
  *  THE SOFTWARE.
  * 
  */ 
-class L18n {
+class I18n {
 	
 	public static $_LANGUAGE = "";
-	private static $_SESSION_NAME = "l18n";
+	private static $_SESSION_NAME = "i18n";
 	
 	public static function init(){
 		if(isset($_SESSION[self::$_SESSION_NAME])){
@@ -67,7 +67,7 @@ class L18n {
 
 
 function __($key){
-	return L18n::getMessage($key);
+	return I18n::getMessage($key);
 }
 
 

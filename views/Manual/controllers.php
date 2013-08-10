@@ -64,7 +64,7 @@ public static function login(){
 <br/>
 <h3>render</h3>
 <p><?php echo __("controller_render1") ?></p>
-<?php //TODO: l18n with params to insert data like links ?>
+<?php //TODO: i18n with params to insert data like links ?>
 <p>Ausführliches dazu gibts unter <a href="<?php echo Manual::linkTo("views"); ?>">render Views</a></p>
 
 <br/>
