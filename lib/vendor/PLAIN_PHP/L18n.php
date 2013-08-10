@@ -58,6 +58,9 @@ class L18n {
 	public static function getMessage($key){
 		self::includeMsgFile();
 		global $_MESSAGES;
+        if(!isset($_MESSAGES[$key])){
+            return $key;
+        }
 		return $_MESSAGES[$key];
 	}
 }

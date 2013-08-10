@@ -1,24 +1,21 @@
-<h1>Controllers</h1>
+<h1><?php echo __("controllerTitle") ?></h1>
 
-<p>Jeder Controller der mit dem Framework benutzt werden soll (d.h. rendern, Links zu Funktionen etc) muss von der Controller.php Klasse erben:</p>
+<p><?php echo __("controller_p1") ?></p>
 <pre class="prettyprint">
 class MyAwesomeController extends Controller {
     
 }
 </pre>
-<p>Jeder Controller erbt dadurch eine ganze Reihe nützlicher Funktionen</p>
+<p><?php echo __("controller_p2") ?></p>
 
 <h3>linkTo</h3>
-<p>Sollte immer bei einer Verlinkung innerhalb des Frameworks benutzt werden, da durch das Routing immer absolute Links benötigt werden
-	und auch immer gegen das Custom Routing gechecked wird.</p> 
+<p><?php echo __("controller_linkTo1") ?></p> 
 <pre class="prettyprint">
 //without custom routes
 MyAwsomeController::linkTo("moreAwesomerFunction");
 // returns http://localhost/PHP_PLAIN/index.php/MyAwsomeController/moreAwsomerFunction
 </pre>
-<p>Da es bei der Anzeige von Daten immer notwendig ist, eine ID o.ä. mit zu schicken, gibt es die Möglichkeit einen 2. Parameter zu übergeben, 
-	dieser wird in die Custom Routes eingesetzt und wird auch in dieser Reihenfolge mit in den Controller übergeben. 
-	Es kann ein String oder Array übergeben werden</p>
+<p><?php echo __("controller_linkTo2") ?></p> 
 <pre class="prettyprint">
 //config/routes.php
 $_ROUTES = array(
@@ -46,8 +43,8 @@ public static moreAwesomerFunction($id, $test){
 
 <br/>
 <h3>redirectTo</h3>
-<p>Wird genauso wie die linkTo Funktion verwendet um zB nach einem Login 2 verschiedene Wege einschlagen.</p>
-<p>Nach einem Redirect wird kein weiterer Code mehr ausgeführt</p>
+<p><?php echo __("controller_redirTo1") ?></p>
+<p><?php echo __("controller_redirTo2") ?></p>
 <pre class="prettyprint">
 public static function login(){
     //a lot of validation
@@ -66,7 +63,8 @@ public static function login(){
 
 <br/>
 <h3>render</h3>
-<p>Die render Methode sucht die zugehörige View und rendert diese auf der index.php</p>
+<p><?php echo __("controller_render1") ?></p>
+<?php //TODO: l18n with params to insert data like links ?>
 <p>Ausführliches dazu gibts unter <a href="<?php echo Manual::linkTo("views"); ?>">render Views</a></p>
 
 <br/>
