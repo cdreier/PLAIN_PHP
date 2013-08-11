@@ -55,19 +55,29 @@ class I18n {
 		}
 	} 
 	
-	public static function getMessage($key){
+	public static function getMessage($key, $args){
 		self::includeMsgFile();
 		global $_MESSAGES;
         if(!isset($_MESSAGES[$key])){
             return $key;
         }
-		return $_MESSAGES[$key];
+        
+        $message = $_MESSAGES[$key];
+        for ($i = 0; $i < count($args); $i++) {
+            $replace = $args[$i];
+            //FIXME: something wont work with "%".$i+1, quickfix here
+            $tmp = $i+1;
+            $message = str_replace("%$tmp", $replace, $message);
+        }
+        
+		return $message;
 	}
 }
 
 
 function __($key){
-	return I18n::getMessage($key);
+    $args = func_get_args();
+	return I18n::getMessage($key, array_slice($args, 1));
 }
 
 

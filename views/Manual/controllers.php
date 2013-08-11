@@ -8,7 +8,7 @@ class MyAwesomeController extends Controller {
 </pre>
 <p><?php echo __("controller_p2") ?></p>
 
-<h3>linkTo</h3>
+<h3><?php echo __("controller_linkTo") ?></h3>
 <p><?php echo __("controller_linkTo1") ?></p> 
 <pre class="prettyprint">
 //without custom routes
@@ -42,7 +42,7 @@ public static moreAwesomerFunction($id, $test){
 </pre>
 
 <br/>
-<h3>redirectTo</h3>
+<h3><?php echo __("controller_redirTo") ?></h3>
 <p><?php echo __("controller_redirTo1") ?></p>
 <p><?php echo __("controller_redirTo2") ?></p>
 <pre class="prettyprint">
@@ -62,10 +62,9 @@ public static function login(){
 
 
 <br/>
-<h3>render</h3>
+<h3><?php echo __("controller_render") ?></h3>
 <p><?php echo __("controller_render1") ?></p>
-<?php //TODO: i18n with params to insert data like links ?>
-<p>Ausführliches dazu gibts unter <a href="<?php echo Manual::linkTo("views"); ?>">render Views</a></p>
+<p><?php echo __("controller_render2", Manual::linkTo("views")) ?></p>
 
 <br/>
 <h3>renderPartial</h3>
