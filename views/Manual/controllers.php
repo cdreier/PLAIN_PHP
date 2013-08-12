@@ -67,15 +67,13 @@ public static function login(){
 <p><?php echo __("controller_render2", Manual::linkTo("views")) ?></p>
 
 <br/>
-<h3>renderPartial</h3>
-<p>Die renderPartial Methode sucht die zugehörige View und rendert diese an der Stelle wo der Aufruf stattgefunden hat.</p>
-<p>Ausführliches dazu gibts unter <a href="<?php echo Manual::linkTo("views"); ?>">render Views</a></p>
+<h3><?php echo __("controller_renderPartial") ?></h3>
+<p><?php echo __("controller_renderPartial1") ?></p>
+<p><?php echo __("controller_renderPartial2", Manual::linkTo("views")) ?></p>
 
 <br/>
-<h3>always</h3>
-<p>Die always Funktion wird bei jedem render Aufruf des Controllers ausgeführt. 
-    So kann man z.B. Stylesheets oder Script in jeder render Methode eines Controllers laden oder eine Userauthentifizierung für einen 
-    kompletten Controller gültig machen.</p>
+<h3><?php echo __("controller_always") ?></h3>
+<p><?php echo __("controller_always1") ?></p>
 <pre class="prettyprint">
 public static function always(){
     
@@ -90,9 +88,8 @@ public static function always(){
 
 
 <br/>
-<h3>addScript</h3>
-<p>Es gibt immer wieder Javascripts, die man nur auf einer einzigen, oder auf nur wenigen Seiten gebrauchen kann.
-Damit diese nicht bei jedem Seitenaufruf geladen werden müssen, kann man in der entsprechenden Controller Funktion die gewünschten Scripte laden</p>
+<h3><?php echo __("controller_addScript") ?></h3>
+<p><?php echo __("controller_addScript1") ?></p>
 <pre class="prettyprint">
 public static function controllers(){
     self::addScript("prettify/prettify.js");
@@ -103,15 +100,15 @@ public static function controllers(){
 
 
 <br/>
-<h3>addStylesheet</h3>
-<p>Hat die gleiche Funktionalität wie addScript, nur für Stylesheets</p>
-<p>Ebenso im Beispiel oben vorhanden</p>
+<h3><?php echo __("controller_addStylesheet") ?></h3>
+<p><?php echo __("controller_addStylesheet1") ?></p>
+<p><?php echo __("controller_addStylesheet2") ?></p>
 
 <br/>
-<h3>isActive</h3>
-<p>Die isActive Funktion versucht anhand der URL und der renderArgs (der View) herauszufinden ob der Controller von dem der Aufruf stammt, auch grade angezeigt wird</p>
-<p>Als optionaler Parameter kann die View (bzw die Funktion) mitgegeben werden, so wird das "active" zusätzlich auf die View beschränkt</p>
-<p>Ein aktuelles Beispiel: auf der aktuellen Seite wird das Seitenmenü nur angezeigt wenn man sich im Manual Controller befindet, bzw. in Manual::controllers ein zusätzlicher Style ausgegeben</p>
+<h3><?php echo __("controller_isActive") ?></h3>
+<p><?php echo __("controller_isActive1") ?></p>
+<p><?php echo __("controller_isActive2") ?></p>
+<p><?php echo __("controller_isActive3") ?></p>
 <pre class="prettyprint">
 if(Manual::isActive()){
     //render side menu
@@ -123,9 +120,9 @@ if(Manual::isActive("controllers")) echo "style='color: blue;'";
 
 
 <br/>
-<h3>keep & get</h3>
-<p>Die keep Funktion speichert key - value Paare in eine eigene Session, allerdings nur so lange bis sie mit der get Funktion wieder herausgeholt wurden.</p>
-<p>So kann man sich ohne auf die GET Parameter zurückgreiffen zu müssen, Informationen über einen oder mehrere Requests und Controller hinweg behalten.</p>
+<h3><?php echo __("controller_keepGet") ?></h3>
+<p><?php echo __("controller_keepGet1") ?></p>
+<p><?php echo __("controller_keepGet2") ?></p>
 <pre class="prettyprint">
 public static function perhapsYouNeverUseThisFeature(){
     //store the new created object id in the temp session

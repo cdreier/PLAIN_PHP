@@ -67,7 +67,7 @@ class I18n {
             $replace = $args[$i];
             //FIXME: something wont work with "%".$i+1, quickfix here
             $tmp = $i+1;
-            $message = str_replace("%$tmp", $replace, $message);
+            $message = str_replace("$$tmp", $replace, $message);
         }
         
 		return $message;
