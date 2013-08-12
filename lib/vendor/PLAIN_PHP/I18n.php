@@ -59,6 +59,7 @@ class I18n {
 		self::includeMsgFile();
 		global $_MESSAGES;
         if(!isset($_MESSAGES[$key])){
+            //TODO check for default.php 
             return $key;
         }
         

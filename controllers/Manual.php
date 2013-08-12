@@ -14,6 +14,10 @@ class Manual extends Controller {
     public static function folders(){
         self::render();
     }
+    
+    public static function i18n(){
+        self::render();
+    }
 	
 	public static function routes(){
         self::render();

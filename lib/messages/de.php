@@ -88,7 +88,14 @@ $_MESSAGES = array(
     "views_render4" => "Um aus einem Controller heraus auch Daten an die View zu schicken, kann ein assoziatives Array übergeben werden. Die keys aus dem Array werden zu nutzbaren Variablen in der View",
     "views_renderPartial" => "renderPartial",
     "views_renderPartial1" => "Die renderPartial Funktion wird im grunde genommen genauso verwendet wie die render Funktion, mit dem Unterschied, dass die View an genau dem Punk included wird, wo die Funktion aufgeruden wurde. Zum Beispiel wieder das Seitenmenü",
-    "views_renderPartial2" => "Auch hier können wieder Daten über ein assoziatives Array übergeben werden."
+    "views_renderPartial2" => "Auch hier können wieder Daten über ein assoziatives Array übergeben werden.",
+    
+    "i18nTitle" => "Internationalisierung",
+    "i18n_p1" => "Alle Sprachen werden in lib/messages/ verwaltet, wobei die Dateinamen aus dem ersten Teil der gängigen I18n - Codes bestehen (z.B. de.php), bis auf die default-Sprache, die auch als Fallback genutzt wird.",
+    "i18n_p2" => "",
+    "i18n_p3" => "",
+    "i18n_p4" => "",
+    "i18n_p5" => ""
 
 )
 
