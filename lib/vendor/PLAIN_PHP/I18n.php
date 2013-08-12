@@ -35,6 +35,11 @@ class I18n {
 			self::$_LANGUAGE = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 		}
 	}
+    
+    public static function setLanguage($lang){
+        self::$_LANGUAGE = $lang;
+        $_SESSION[self::$_SESSION_NAME] = $lang;
+    }
 	
 	private static function includeMsgFile(){
 		global $_MESSAGES;
@@ -61,7 +66,6 @@ class I18n {
 		self::includeMsgFile();
 		global $_MESSAGES;
         if(!isset($_MESSAGES[$key])){
-            //TODO check for default.php 
             return $key;
         }
         
