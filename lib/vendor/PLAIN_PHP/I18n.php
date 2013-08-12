@@ -40,18 +40,20 @@ class I18n {
 		global $_MESSAGES;
 		if($_MESSAGES == null){
 			$path = "lib/messages/";
-			$fullPath = $path . self::$_LANGUAGE . ".php";
-			if(is_file($fullPath)){
-				include_once($fullPath);
-				return;
-			}
-			
-			//language messages not found, include default
+			//get default messages
 			$fullPath = $path . "default.php";
 			if(is_file($fullPath)){
 				include_once($fullPath);
-				return;
 			}
+            
+            //merge default with specific language file 
+			$fullPath = $path . self::$_LANGUAGE . ".php";
+            $msgBackup = $_MESSAGES;
+			if(is_file($fullPath)){
+				include_once($fullPath);
+                $_MESSAGES = array_merge($msgBackup, $_MESSAGES);
+			}
+			
 		}
 	} 
 	

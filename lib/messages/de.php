@@ -2,8 +2,6 @@
 
 $_MESSAGES = array(
 
-	"title" => "PLAIN_PHP",
-	
     "manualTitle" => "Manual",
     "manual_p1" => "das PLAIN_PHP Framework ist ein schmales und leicht zu erlernendes MVC-Framework.",
     "manual_p2" => "Es vereinfacht die Erstellung und das Strukturieren von Webseiten deutlich und hat bei Bedarf Doctrine 1.2.x zur Datenbank-Abstraktion mit dabei.",
