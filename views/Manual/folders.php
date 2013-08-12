@@ -1,7 +1,6 @@
-<h1>Ordnerstruktur</h1>
+<h1><?php echo __("foldersTitle") ?></h1>
 
-Eine MVC Ordnerstruktur wurde beibehalten. Eine leere Applikation sieht folgendermaßen aus. 
-<br />
+<p><?php echo __("folders_p1") ?></p>
 
 <ul>
     <li>
@@ -74,8 +73,8 @@ Eine MVC Ordnerstruktur wurde beibehalten. Eine leere Applikation sieht folgende
     </li>
 </ul>
 
-<p>Dabei werden alle Controller im controllers Ordner automatisch geladen, wobei hier die Namenskonvention vorrausetzung ist: Klassenname = Dateiname.</p>
-<p>Der lib Ordner beherbergt alle Javascript und CSS Dateien, sowie Bilder und auch <a href="<?php echo Manual::linkTo("doctrine") ?>">Doctrine</a></p>
+<p><?php echo __("folders_p2") ?></p>
+<p><?php echo __("folders_p3", Manual::linkTo("doctrine")) ?></p>
 
 
 

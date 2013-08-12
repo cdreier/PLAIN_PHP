@@ -1,15 +1,15 @@
-<h1>Doctrine 1.2.4</h1>
+<h1><?php echo __("doctrineTitle"); ?></h1>
 
-<p>Per Default ist Doctrine 1.2.4 als Datenbank ORM im Framework enthalten. Eine komplette Dokumentation findet man <a href="https://doctrine.readthedocs.org/en/latest/en/manual/">hier online</a></p>
-<p>Doctrine 2 kam nicht zum Einsatz, da die Handhabung und Konfiguration von Doctrine 1.2 deutlich einfacher und schneller ist.</p>
-<p>Die bootstrap.php enthält die Verbindung zum Doctrine ORM und zur Datenbank</p>
+<p><?php echo __("doctrine_p1"); ?></p>
+<p><?php echo __("doctrine_p2"); ?></p>
+<p><?php echo __("doctrine_p3"); ?></p>
 
 <pre class="prettyprint">
 $conn = Doctrine_Manager::connection('mysql://db_user:db_pw@localhost/db_name');    
 </pre>
 
-<p>Um eine Datenbank initial zu erstellen, benötigt man ein schema.yml File. Eine Ausführliche Erklärung dazu ist in der <a href="https://doctrine.readthedocs.org/en/latest/en/manual/introduction-to-models.html#schema-files">Dokumentation</a> zu finden</p>
-<p>Ein User mit Autos würde wie folgt aussehen, inkl. beidseitiger Aliase</p>
+<p><?php echo __("doctrine_p4"); ?></p>
+<p><?php echo __("doctrine_p5"); ?></p>
 
 <pre class="prettyprint">
 User:
@@ -41,8 +41,7 @@ Car:
       foreignAlias: Cars
 </pre>
 
-<p>Folgende 4 Zeilen übernehmen das komplette Erstellen der Datenbank und das Generieren der Model Klassen. 
-    ACHTUNG! Beim Ausführen wird die Datenbank gedropped und komplett neu erstellt, alle Daten gehen verloren!</p>
+<p><?php echo __("doctrine_p6"); ?></p>
 
 <pre class="prettyprint">
 Doctrine_Core::dropDatabases();
@@ -51,16 +50,16 @@ Doctrine_Core::generateModelsFromYaml('schema.yml', 'models');
 Doctrine_Core::createTablesFromModels('models');
 </pre>
 
-<p>Davon ausgehend, dass es eine User Tabelle gibt, ist das Arbeiten mit Doctrine denkbar einfach.</p>
+<p><?php echo __("doctrine_p7"); ?></p>
 
-<h3>erstellen eines neuen Eintrags</h3>
+<h3><?php echo __("doctrine_create") ?></h3>
 <pre class="prettyprint">
 $user = new User();
 $user->name = "PLAIN PHP";
 $user->save();
 </pre>
 
-<h3>finden von Einträgen</h3>
+<h3><?php echo __("doctrine_find") ?></h3>
 <pre class="prettyprint">
 //find by primary key
 $user = Doctrine_Core::getTable("User")->find($id);
@@ -77,7 +76,7 @@ $users = Doctrine_Core::getTable("User")->findOneByName("Ralf");
 $us = Doctrine_Core::getTable("User")->findByNameAndGender("Ralf", "F");
 </pre>
 
-<h3>Doctrine Queries</h3>
+<h3><?php echo __("doctrine_query") ?></h3>
 <pre class="prettyprint">
 $q = Doctrine_Query::create()
     ->select("*")
@@ -85,7 +84,8 @@ $q = Doctrine_Query::create()
     ->where("u.name = :name", array(":name" => "Ralf"));
 $result = $q->execute();    
 </pre>
-<h3>advanced Queries</h3>
+
+<h3><?php echo __("doctrine_queryAdvanced") ?></h3>
 <pre class="prettyprint">
 //find all ralfs with a Winzer as friend order by age descending
 $q = Doctrine_Query::create()
@@ -99,7 +99,7 @@ $q = Doctrine_Query::create()
 $result = $q->execute();    
 </pre>
 
-<h3>löschen von Einträgen</h3>
+<h3><?php echo __("doctrine_delete") ?></h3>
 <pre class="prettyprint">
 $user = Doctrine_Core::getTable("User")->find($id);
 $user->delete();    
