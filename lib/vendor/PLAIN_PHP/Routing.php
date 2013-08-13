@@ -33,6 +33,17 @@ class Routing {
 		}
 		return false;
 	}
+    
+    public static function isActive($pathInfo, $params){
+        $rawRoute = self::getRawRoute($pathInfo);
+        
+        if($rawRoute){
+            $filledRoute = self::fillParams($rawRoute[1], $params);
+            return $pathInfo == $filledRoute;
+        }
+        
+        return false;
+    }
 	
 	
 	private static function parseDefaultRoute($pathInfo){

@@ -77,7 +77,7 @@ class Controller {
     }
 	
     
-    public static function isActive($view = false){
+    public static function isActive($view = false, $routeParams = false){
     	
         $checkAgainst = get_called_class();
         if($view){
@@ -89,9 +89,8 @@ class Controller {
         	if(strstr($_SERVER["PATH_INFO"], $checkAgainst))
             	return true;
 			
-			$checkedRoute = Routing::checkFunction($checkAgainst);
-			if($checkedRoute)
-				return $_SERVER["PATH_INFO"] == $checkedRoute;
+            //check against custom routing
+			return Routing::isActive($_SERVER["PATH_INFO"], $routeParams);
         }
         
         //check render view 
