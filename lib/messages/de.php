@@ -89,11 +89,10 @@ $_MESSAGES = array(
     "views_renderPartial2" => "Auch hier können wieder Daten über ein assoziatives Array übergeben werden.",
     
     "i18nTitle" => "Internationalisierung",
-    "i18n_p1" => "Alle Sprachen werden in lib/messages/ verwaltet, wobei die Dateinamen aus dem ersten Teil der gängigen I18n - Codes bestehen (z.B. de.php), bis auf die default-Sprache, die auch als Fallback genutzt wird.",
-    "i18n_p2" => "",
-    "i18n_p3" => "",
-    "i18n_p4" => "",
-    "i18n_p5" => ""
+    "i18n_p1" => "Alle Sprachen werden in lib/messages/ verwaltet, wobei die Dateinamen aus dem ersten Teil der gängigen I18n - Codes bestehen (z.B. de.php, anstelle von de_DE), bis auf die default-Sprache, die auch als Fallback genutzt wird.",
+    "i18n_p2" => "Im normalfall wird die Sprache anhand des Landes aus dem der User kommt erkannt und dementsprechende Messagefiles genutzt.",
+    "i18n_p3" => "Um einen String auszugeben wurde die __() Funktion eingeführt, die auch beliebig oft Parameterisiert werden kann:",
+    "i18n_p4" => "Die Plazuhalter $1 setzten sich aus dem Dollarzeichen und dem Index zusammen, die Parameter werden also in genau der Reihenfolge in die Platzhalter eingesetzt, in der sie übergeben werden."
 
 )
 
