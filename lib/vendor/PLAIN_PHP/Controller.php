@@ -43,6 +43,10 @@ class Controller {
     public static function addScript($filename, $path = "lib/js/"){
         self::$scripts[] = App::PATH() . $path . $filename;
     }
+	
+	public static function addExternalScript($url){
+        self::$scripts[] = $url;
+    }
     
     public static function addStylesheet($filename, $path = "lib/css/"){
         self::$stylesheets[] = App::PATH() . $path . $filename;
