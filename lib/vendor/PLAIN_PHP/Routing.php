@@ -34,11 +34,10 @@ class Routing {
 		return false;
 	}
     
-    public static function isActive($pathInfo, $params){
-        $rawRoute = self::getRawRoute($pathInfo);
-        
-        if($rawRoute){
-            $filledRoute = self::fillParams($rawRoute[1], $params);
+    public static function isActive($pathInfo, $fun, $params){
+        $foundRoutes = self::checkFunction($fun);
+        if($foundRoutes){
+            $filledRoute = self::fillParams($foundRoutes, $params);
             return $pathInfo == $filledRoute;
         }
         

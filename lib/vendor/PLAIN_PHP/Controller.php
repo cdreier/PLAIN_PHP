@@ -79,9 +79,10 @@ class Controller {
     
     public static function isActive($view = false, $routeParams = false){
     	
-        $checkAgainst = get_called_class();
+        $callee = $checkAgainst = get_called_class();
         if($view){
             $checkAgainst .= "/".$view;
+            $callee .= "::".$view;
         }
         
         //first check if path info is set and matches 
@@ -90,7 +91,7 @@ class Controller {
             	return true;
 			
             //check against custom routing
-			return Routing::isActive($_SERVER["PATH_INFO"], $routeParams);
+			return Routing::isActive($_SERVER["PATH_INFO"], $callee, $routeParams);
         }
         
         //check render view 
