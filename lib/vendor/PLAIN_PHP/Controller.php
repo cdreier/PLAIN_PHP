@@ -43,8 +43,8 @@ class Controller {
     public static function addScript($filename, $path = "lib/js/"){
         self::$scripts[] = App::PATH() . $path . $filename;
     }
-	
-	public static function addExternalScript($url){
+    
+    public static function addExternalScript($url){
         self::$scripts[] = $url;
     }
     
@@ -95,11 +95,12 @@ class Controller {
             	return true;
 			
             //check against custom routing
-			return Routing::isActive($_SERVER["PATH_INFO"], $callee, $routeParams);
+			if (Routing::isActive($_SERVER["PATH_INFO"], $callee, $routeParams))
+                return true;
         }
         
-        //check render view 
-        if(isset(self::$renderArgs["view"])){
+        //check render view only if no route params are set
+        if(isset(self::$renderArgs["view"]) && !$routeParams){
             return strstr(self::$renderArgs["view"], $checkAgainst);
         }
 		
