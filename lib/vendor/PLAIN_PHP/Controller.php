@@ -144,6 +144,9 @@ class Controller {
     public static function execute( $pathInfo ){
         $controllerInfo = Routing::parsePathInfo($pathInfo);
         if(count($controllerInfo) == 2 && is_callable($controllerInfo[0])){
+        	if(!is_array($controllerInfo[1])){
+        		$controllerInfo[1] = array($controllerInfo[1]);
+        	}
             call_user_func_array($controllerInfo[0], $controllerInfo[1]);
         }else{
             throw new Exception("METHOD NOT FOUND - " . $pathInfo);

@@ -8,6 +8,7 @@ class Forms {
 	private $columns;
 	private $relations;
 	private $persisted;
+	private $link;
 	
 	private $excludes;
 	
@@ -17,16 +18,51 @@ class Forms {
 		//only for debug
 		$this->obj = new User();
 		$this->checkState();
+		$this->generateRoutes();
 		
 		$this->excludes = array("id", "created_at", "updated_at");
 		
 		$this->parseColumns();
 		$this->parseRelations();
 		
-		var_dump($this->columns);
+		// var_dump($this->obj);
 		echo "<br/>";
 		echo "<br/>";
-		var_dump($this->persisted);
+		$link = CRUD::linkTo("yay");
+		echo "<a href='$link'>test</a>";
+	}
+	
+	public function printForm(){
+		echo "<form method='post' action='$this->link'>";
+		foreach ($this->columns as $name => $type) {
+			echo "<div>";
+			echo "<label for='$name'>$name</label>";
+			echo "<input name='$name' type='".$this->inputType($type)."' />";
+			echo "</div>";
+		}
+		echo "<input value='".__("Save")."' type='submit' />";
+		echo "</form>";
+	}
+	
+	private function inputType($type){
+		switch ($type) {
+			case 'boolean':
+				return "checkbox";
+			default:
+				return "text";
+		}
+	}
+	
+	private function generateRoutes(){
+		global $_ROUTES;
+		$className = get_class($this->obj);
+		$functionName = "save".$className;
+		$param = null;
+		if($this->persisted){
+			$param = "/{id}";
+		}
+		$_ROUTES["/CRUD/".$functionName.$param] = "CRUD::".$functionName;
+		$this->link = CRUD::linkTo($functionName, $this->obj->id);
 	}
 	
 	private function checkState(){
