@@ -10,7 +10,8 @@ $manager->setAttribute(Doctrine_Core::ATTR_EXPORT, Doctrine_Core::EXPORT_ALL);
 $manager->setAttribute(Doctrine_Core::ATTR_MODEL_LOADING, Doctrine_Core::MODEL_LOADING_CONSERVATIVE);
 $manager->setAttribute(Doctrine_Core::ATTR_AUTO_ACCESSOR_OVERRIDE, true);
 
-$conn = Doctrine_Manager::connection('mysql://db_user:db_pw@localhost/db_name');
+//$conn = Doctrine_Manager::connection('mysql://db_user:db_pw@localhost/db_name');
+$conn = Doctrine_Manager::connection('mysql://debug:debug@localhost/debug');
 $conn->setAttribute(Doctrine_Core::ATTR_QUOTE_IDENTIFIER, true);
 $conn->setCollate('utf8_general_ci');
 $conn->setCharset('utf8');

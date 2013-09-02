@@ -44,10 +44,8 @@ class App extends Controller {
 
 
 
-    public static function debug($value1, $value2){
-        echo $value1.", ".$value2;
-		echo "<br/>";
-		echo __("title");
+    public static function debug(){
+        $forms = new Forms(new User());
     }
 
     public static function printJSONSuccess($attr = array()) {
