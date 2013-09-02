@@ -40,11 +40,13 @@ class Forms {
 			echo "<input name='$name' type='".$this->inputType($type)."' />";
 			echo "</div>";
 		}
+		//TODO print relations
 		echo "<input value='".__("Save")."' type='submit' />";
 		echo "</form>";
 	}
 	
 	private function inputType($type){
+		//TODO parse other types
 		switch ($type) {
 			case 'boolean':
 				return "checkbox";
