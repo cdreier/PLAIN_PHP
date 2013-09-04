@@ -4,6 +4,8 @@
  * 
  */
 class CRUD extends Controller {
+    
+    private static $specialFields = array("boolean");
 	
 	public static function __callStatic($name, $arguments){
 	    
@@ -17,10 +19,14 @@ class CRUD extends Controller {
         foreach ($obj->getTable()->getFieldNames() as $name ) {
             if(isset($_POST[$name])){
                 
-                //TODO: check for booleans etc and set on to true..
                 $meta = $obj->getTable()->getColumnDefinition(strtolower($name));
+                if(in_array($meta["type"], self::$specialFields)){
+                    //TODO: check for booleans etc and set on to true..
+                    
+                }else{
+                    $obj[$name] = $_POST[$name];
+                }
                 
-                $obj[$name] = $_POST[$name];
             }
         }
     }
