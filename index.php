@@ -4,8 +4,6 @@ session_start();
 //add database and models
 require_once('bootstrap.php');
 
-Doctrine_Core::generateModelsFromYaml('schema.yml', 'models');
-
 //loading base controller
 require_once "lib/vendor/PLAIN_PHP/Controller.php";
 

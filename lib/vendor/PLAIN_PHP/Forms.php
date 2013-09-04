@@ -74,10 +74,11 @@ class Forms {
 	
 	private function parseColumns(){
 		$this->columns = array();
-		foreach ($this->obj->getTable()->getColumns() as $name => $meta) {
+		foreach ($this->obj->getTable()->getFieldNames() as $name ) {
 			if(in_array($name, $this->excludes)){
 				continue;
 			}
+            $meta = $this->obj->getTable()->getColumnDefinition(strtolower($name));
 			$this->columns[$name] = $meta["type"];
 		}
 	}
