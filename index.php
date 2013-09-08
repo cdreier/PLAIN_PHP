@@ -15,6 +15,11 @@ if(isset($_SERVER['PATH_INFO'])){
     Manual::index();
 }
 
+// Doctrine_Core::dropDatabases();
+// Doctrine_Core::createDatabases();
+// Doctrine_Core::generateModelsFromYaml('schema.yml', 'models');
+// Doctrine_Core::createTablesFromModels('models');
+
  ?>
 
 <!DOCTYPE html>

@@ -46,8 +46,10 @@ class App extends Controller {
 
     public static function debug(){
         $crud = new CRUD(new User());
+		$crud->setSaveCallback(App::linkTo("debug"));
 		$crud->printForm();
 		
+		$crud->listAll();
     }
 
     public static function printJSONSuccess($attr = array()) {

@@ -51,6 +51,11 @@ class CRUDHelper extends Controller{
         self::fillObject($obj);
         
         $obj->save();
+		
+		if(isset($_POST["callback"])){
+			header( "Location: " . $_POST["callback"] ) ;
+			exit();
+		}
     }
     
     private static function update($className, $id){

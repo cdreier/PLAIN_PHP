@@ -9,6 +9,7 @@ class CRUD {
 	private $relations;
 	private $persisted;
 	private $link;
+	private $saveCallback;
 	
 	private $excludes;
 	
@@ -27,6 +28,36 @@ class CRUD {
 		
 	}
 	
+	public function listAll(){
+		$className = get_class($this->obj);
+		$q = Doctrine_Query::create()
+		    ->select("*")
+		    ->from("$className o")
+			->orderBy("o.id DESC");
+		$result = $q->execute();
+		
+		echo "<table>";
+		$this->printTableHead();
+		foreach ($result as $o) {
+			echo "<tr>";
+			foreach ($this->columns as $name => $type) {
+				echo "<td>";
+				echo $o[$name];
+				echo "</td>";
+			}
+			echo "</tr>";
+		}
+		echo "</table>";
+	}
+	
+	private function printTableHead(){
+		echo "<tr>";
+		foreach ($this->columns as $name => $type) {
+			echo "<th>$name</th>";
+		}
+		echo "</tr>";
+	}
+	
 	public function printForm(){
 		echo "<form method='post' action='$this->link'>";
 		foreach ($this->columns as $name => $type) {
@@ -35,9 +66,16 @@ class CRUD {
 			echo "<input name='$name' type='".$this->inputType($type)."' />";
 			echo "</div>";
 		}
+		if($this->saveCallback){
+			echo "<input type='hidden' name='callback' value='$this->saveCallback' />";
+		}
 		//TODO print relations
 		echo "<input value='".__("Save")."' type='submit' />";
 		echo "</form>";
+	}
+	
+	public function setSaveCallback($saveCallback){
+		$this->saveCallback = $saveCallback;
 	}
 	
 	
@@ -59,7 +97,7 @@ class CRUD {
 		if($this->persisted){
 			$param = "/{id}";
 		}
-		$_ROUTES["/CRUD/".$functionName.$param] = "CRUDHelper::".$functionName;
+		$_ROUTES["/CRUDHelper/".$functionName.$param] = "CRUDHelper::".$functionName;
 		$this->link = CRUDHelper::linkTo($functionName, $this->obj->id);
 	}
 	
