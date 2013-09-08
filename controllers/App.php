@@ -45,8 +45,9 @@ class App extends Controller {
 
 
     public static function debug(){
-        $forms = new Forms(new User());
-		$forms->printForm();
+        $crud = new CRUD(new User());
+		$crud->printForm();
+		
     }
 
     public static function printJSONSuccess($attr = array()) {

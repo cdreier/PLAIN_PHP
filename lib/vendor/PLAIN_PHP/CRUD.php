@@ -1,63 +1,91 @@
 <?php 
-
 /**
  * 
  */
-class CRUD extends Controller {
-    
-    private static $specialFields = array("boolean");
+class CRUD {
 	
-	public static function __callStatic($name, $arguments){
-	    
-        if(strpos($name, "save") == 0){
-            self::save(str_replace("save", "", $name), $arguments);
-        }
+	private $obj;
+	private $columns;
+	private $relations;
+	private $persisted;
+	private $link;
+	
+	private $excludes;
+	
+	function __construct($doctrineObj) {
+		$this->obj = $doctrineObj;
 		
-    }
-    
-    private static function fillObject(&$obj){
-        foreach ($obj->getTable()->getFieldNames() as $name ) {
-            if(isset($_POST[$name])){
-                
-                $meta = $obj->getTable()->getColumnDefinition(strtolower($name));
-                if(in_array($meta["type"], self::$specialFields)){
-                    //TODO: check for booleans etc and set on to true..
-                    
-                }else{
-                    $obj[$name] = $_POST[$name];
-                }
-                
-            }
-        }
-    }
-    
-    private static function create($className){
-        $obj = new $className();
-        self::fillObject($obj);
-        
-        $obj->save();
-    }
-    
-    private static function update($className, $id){
-        
-        //TODO  update object 
-        echo $className;
-        echo $_POST["name"];
-    }
-    
-    private static function save($name, $args){
-        
-        //TODO: check if $name is a valid doctrine model classname
-        
-        //update
-        if(count($args) > 0){
-            $id = $args[0];
-            self::update($name, $id);
-        }else{
-            //create
-            self::create($name);
-        }
-    }
+		//only for debug
+		$this->obj = new User();
+		$this->checkState();
+		$this->generateRoutes();
+		
+		$this->excludes = array("id", "created_at", "updated_at");
+		
+		$this->parseColumns();
+		$this->parseRelations();
+		
+	}
+	
+	public function printForm(){
+		echo "<form method='post' action='$this->link'>";
+		foreach ($this->columns as $name => $type) {
+			echo "<div>";
+			echo "<label for='$name'>$name</label>";
+			echo "<input name='$name' type='".$this->inputType($type)."' />";
+			echo "</div>";
+		}
+		//TODO print relations
+		echo "<input value='".__("Save")."' type='submit' />";
+		echo "</form>";
+	}
+	
+	
+	private function inputType($type){
+		//TODO parse other types
+		switch ($type) {
+			case 'boolean':
+				return "checkbox";
+			default:
+				return "text";
+		}
+	}
+	
+	private function generateRoutes(){
+		global $_ROUTES;
+		$className = get_class($this->obj);
+		$functionName = "save".$className;
+		$param = null;
+		if($this->persisted){
+			$param = "/{id}";
+		}
+		$_ROUTES["/CRUD/".$functionName.$param] = "CRUDHelper::".$functionName;
+		$this->link = CRUDHelper::linkTo($functionName, $this->obj->id);
+	}
+	
+	private function checkState(){
+		$this->persisted = !($this->obj->state() == Doctrine_Record::STATE_TCLEAN || 
+				$this->obj->state() == Doctrine_Record::STATE_TDIRTY);
+	}
+	
+	private function parseColumns(){
+		$this->columns = array();
+		foreach ($this->obj->getTable()->getFieldNames() as $name ) {
+			if(in_array($name, $this->excludes)){
+				continue;
+			}
+            $meta = $this->obj->getTable()->getColumnDefinition(strtolower($name));
+			$this->columns[$name] = $meta["type"];
+		}
+	}
+	
+	private function parseRelations(){
+		$this->relations = array();
+		foreach ($this->obj->getTable()->getRelations() as $name) {
+			$this->relations[] = $name["alias"];
+		}
+	}
+	
 	
 	
 }
