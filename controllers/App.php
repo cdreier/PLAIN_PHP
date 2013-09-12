@@ -62,11 +62,25 @@ class App extends Controller {
         echo json_encode($return);
     }
     
-    public static function PATH(){
+    public static function PATH() {
         $local = array('localhost', '127.0.0.1');
-        if(!in_array($_SERVER['HTTP_HOST'], $local)){
-            return self::_PATH;
-        }else{
+        if (!in_array($_SERVER['HTTP_HOST'], $local)) {
+            
+            //check for allowed url modifications, in general www in server url or not
+            $serverName = $_SERVER["SERVER_NAME"];
+            $urlData = parse_url(self::_PATH);
+            //if both are same, just return path
+            if($serverName == $urlData["host"]){
+                return self::_PATH;
+            }else{
+                //if not, server request is priority, set new host
+                $urlData["host"] = $serverName;
+                //expand protokol
+                $urlData["scheme"] = $urlData["scheme"]."://";
+                $urlData = implode("", $urlData);
+                return $urlData;
+            }
+        } else {
             return self::_LOCAL_PATH;
         }
     }
