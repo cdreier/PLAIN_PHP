@@ -30,13 +30,14 @@ class CRUDHelper extends Controller{
     
     private static function fillObject(&$obj){
         foreach ($obj->getTable()->getFieldNames() as $name ) {
+        	//TODO unchecked checkboxes not in post
             if(isset($_POST[$name])){
                 
                 $meta = $obj->getTable()->getColumnDefinition(strtolower($name));
 				
 				switch ($meta["type"]) {
 					case 'boolean':
-						$obj[$name] = ($_POST[$name] == "on");
+						$obj[$name] = (isset($_POST[$name]) && $_POST[$name] == "on");
 						break;
 					
 					default:
