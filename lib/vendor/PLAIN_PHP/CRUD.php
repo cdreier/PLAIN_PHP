@@ -61,7 +61,7 @@ class CRUD {
 		foreach ($this->columns as $name => $type) {
 			echo "<div>";
 			echo "<label for='$name'>$name</label>";
-			echo "<input name='$name' type='".$this->inputType($type)."' value='".$this->obj[$name]."' />";
+			echo "<input name='$name' type='".$this->inputType($type)."' ".$this->inputValue($name, $type)." />";
 			echo "</div>";
 		}
 		if($this->saveCallback){
@@ -70,6 +70,17 @@ class CRUD {
 		//TODO print relations
 		echo "<input value='".__("Save")."' type='submit' />";
 		echo "</form>";
+	}
+	
+	private function inputValue($name, $type){
+		if($type == "boolean"){
+			if($this->obj[$name]){
+				return "checked='checked'";
+			}
+			return "";
+		}
+		
+		return "value='".$this->obj[$name]."'";
 	}
 	
 	public function setSaveCallback($saveCallback){

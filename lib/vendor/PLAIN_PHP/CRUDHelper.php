@@ -5,8 +5,6 @@
  */
 class CRUDHelper extends Controller{
     
-    private static $specialFields = array("boolean");
-	
 	public static function __callStatic($name, $arguments){
 	    
 		//save handles create and update
@@ -35,12 +33,16 @@ class CRUDHelper extends Controller{
             if(isset($_POST[$name])){
                 
                 $meta = $obj->getTable()->getColumnDefinition(strtolower($name));
-                if(in_array($meta["type"], self::$specialFields)){
-                    //TODO: check for booleans etc and set on to true..
-                    
-                }else{
-                    $obj[$name] = $_POST[$name];
-                }
+				
+				switch ($meta["type"]) {
+					case 'boolean':
+						$obj[$name] = ($_POST[$name] == "on");
+						break;
+					
+					default:
+						$obj[$name] = $_POST[$name];
+						break;
+				}
                 
             }
         }
