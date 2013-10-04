@@ -16,8 +16,6 @@ class CRUD {
 	function __construct($doctrineObj) {
 		$this->obj = $doctrineObj;
 		
-		//only for debug
-		$this->obj = new User();
 		$this->checkState();
 		$this->generateRoutes();
 		
@@ -63,7 +61,7 @@ class CRUD {
 		foreach ($this->columns as $name => $type) {
 			echo "<div>";
 			echo "<label for='$name'>$name</label>";
-			echo "<input name='$name' type='".$this->inputType($type)."' />";
+			echo "<input name='$name' type='".$this->inputType($type)."' value='".$this->obj[$name]."' />";
 			echo "</div>";
 		}
 		if($this->saveCallback){

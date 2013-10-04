@@ -59,10 +59,16 @@ class CRUDHelper extends Controller{
     }
     
     private static function update($className, $id){
-        
-        //TODO  update object 
-        echo $className;
-        echo $_POST["name"];
+        	
+		$obj = Doctrine_Core::getTable($className)->find($id);
+		self::fillObject($obj);
+		
+		$obj->save();
+		
+		if(isset($_POST["callback"])){
+			header( "Location: " . $_POST["callback"] ) ;
+			exit();
+		}
     }
     
     private static function save($name, $args){
