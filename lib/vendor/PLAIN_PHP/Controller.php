@@ -38,10 +38,15 @@ class Controller {
     private static $renderArgs = array();
     
     public static $shouldRender = false;
+    public static $alwaysInvoked = false;
     
     
     public static function addScript($filename, $path = "lib/js/"){
         self::$scripts[] = App::PATH() . $path . $filename;
+    }
+    
+    public static function addExternalScript($url){
+        self::$scripts[] = $url;
     }
     
     public static function addStylesheet($filename, $path = "lib/css/"){
@@ -77,11 +82,12 @@ class Controller {
     }
 	
     
-    public static function isActive($view = false){
+    public static function isActive($view = false, $routeParams = false){
     	
-        $checkAgainst = get_called_class();
+        $callee = $checkAgainst = get_called_class();
         if($view){
             $checkAgainst .= "/".$view;
+            $callee .= "::".$view;
         }
         
         //first check if path info is set and matches 
@@ -89,13 +95,13 @@ class Controller {
         	if(strstr($_SERVER["PATH_INFO"], $checkAgainst))
             	return true;
 			
-			$checkedRoute = Routing::checkFunction($checkAgainst);
-			if($checkedRoute)
-				return $_SERVER["PATH_INFO"] == $checkedRoute;
+            //check against custom routing
+			if (Routing::isActive($_SERVER["PATH_INFO"], $callee, $routeParams))
+                return true;
         }
         
-        //check render view 
-        if(isset(self::$renderArgs["view"])){
+        //check render view only if no route params are set
+        if(isset(self::$renderArgs["view"]) && !$routeParams){
             return strstr(self::$renderArgs["view"], $checkAgainst);
         }
 		
@@ -117,8 +123,11 @@ class Controller {
         $trace = $trace[1];
         $view = "views/" . $trace["class"] ."/" . $trace["function"] . ".php";
         
-        //invoke always call
-        call_user_func($trace["class"]."::"."always");
+        //not invoked in execute, do it now
+        if(!self::$alwaysInvoked){
+            call_user_func($trace["class"]."::"."always");
+			self::$alwaysInvoked = true;
+        }
         
         if(is_file( $view )){
             self::$renderArgs["args"] = $args;
@@ -144,9 +153,18 @@ class Controller {
     public static function execute( $pathInfo ){
         $controllerInfo = Routing::parsePathInfo($pathInfo);
         if(count($controllerInfo) == 2 && is_callable($controllerInfo[0])){
+
         	if(!is_array($controllerInfo[1])){
         		$controllerInfo[1] = array($controllerInfo[1]);
         	}
+            
+            //just to be sure
+            if(!self::$alwaysInvoked){
+                list($class, $unused) = explode("::", $controllerInfo[0]);
+                call_user_func($class."::"."always");
+                self::$alwaysInvoked = true;
+            }
+            
             call_user_func_array($controllerInfo[0], $controllerInfo[1]);
         }else{
             throw new Exception("METHOD NOT FOUND - " . $pathInfo);
