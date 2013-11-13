@@ -38,6 +38,7 @@ class Controller {
     private static $renderArgs = array();
     
     public static $shouldRender = false;
+    public static $alwaysInvoked = false;
     
     
     public static function addScript($filename, $path = "lib/js/"){
@@ -122,8 +123,11 @@ class Controller {
         $trace = $trace[1];
         $view = "views/" . $trace["class"] ."/" . $trace["function"] . ".php";
         
-        //invoke always call
-        call_user_func($trace["class"]."::"."always");
+        //not invoked in execute, do it now
+        if(!self::$alwaysInvoked){
+            call_user_func($trace["class"]."::"."always");
+			self::$alwaysInvoked = true;
+        }
         
         if(is_file( $view )){
             self::$renderArgs["args"] = $args;
@@ -149,6 +153,14 @@ class Controller {
     public static function execute( $pathInfo ){
         $controllerInfo = Routing::parsePathInfo($pathInfo);
         if(count($controllerInfo) == 2 && is_callable($controllerInfo[0])){
+            
+            //just to be sure
+            if(!self::$alwaysInvoked){
+                list($class, $unused) = explode("::", $controllerInfo[0]);
+                call_user_func($class."::"."always");
+                self::$alwaysInvoked = true;
+            }
+            
             call_user_func_array($controllerInfo[0], $controllerInfo[1]);
         }else{
             throw new Exception("METHOD NOT FOUND - " . $pathInfo);
