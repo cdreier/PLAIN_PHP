@@ -31,8 +31,10 @@ require_once 'lib/config/db.php';
 //loading orm
 require_once 'lib/vendor/redbeanphp/rb.php';
 if($_DB["db_active"]){
-	R::setup('mysql:host='.$_DB["db_host"].';'.
-	        'dbname='.$_DB["db_name"], $_DB["db_user"], $_DB["db_password"]);
+	R::setup( 'mysql:host='.$_DB["db_host"].';'.
+	        'dbname='.$_DB["db_name"], $_DB["db_user"], $_DB["db_password"] );
+			
+	R::freeze( $_DB["db_freeze"] );
 }
 
 //autoload other controllers and framework files

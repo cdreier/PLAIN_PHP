@@ -48,6 +48,7 @@ class App extends Controller {
     	echo "asd";
 		$test = R::dispense("test");
 		$test->name = "judith";
+		$test->age = 27;
 		R::store($test);
     }
 
