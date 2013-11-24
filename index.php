@@ -2,7 +2,7 @@
 session_start();
 
 //add database and models
-require_once('bootstrap.php');
+//TODO
 
 //loading base controller
 require_once "lib/vendor/PLAIN_PHP/Controller.php";

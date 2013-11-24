@@ -26,10 +26,10 @@
 session_start();
 
 //add database and models
-//require_once('bootstrap.php');
+//TODO
 
 //loading base controller
-require_once "controllers/Controller.php";
+require_once "lib/vendor/PLAIN_PHP/Controller.php";
 //loading other controllers
 spl_autoload_register(array('Controller', 'autoload'));
 

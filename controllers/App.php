@@ -45,12 +45,7 @@ class App extends Controller {
 
 
     public static function debug(){
-    	$u = Doctrine_Core::getTable("User")->find(1);
-        $crud = new CRUD($u);
-		$crud->setSaveCallback(App::linkTo("debug"));
-		$crud->printForm();
-		
-		$crud->listAll();
+    	
     }
 
     public static function printJSONSuccess($attr = array()) {
