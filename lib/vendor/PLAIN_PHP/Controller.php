@@ -24,7 +24,17 @@
  * 
  */ 
 
+//loading configs
 require_once 'lib/config/routes.php';
+require_once 'lib/config/db.php';
+
+//loading orm
+require_once 'lib/vendor/redbeanphp/rb.php';
+if($_DB["db_active"]){
+	R::setup('mysql:host='.$_DB["db_host"].';'.
+	        'dbname='.$_DB["db_name"], $_DB["db_user"], $_DB["db_password"]);
+}
+
 //autoload other controllers and framework files
 spl_autoload_register(array('Controller', 'autoload'));
 

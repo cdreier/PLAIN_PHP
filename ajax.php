@@ -25,9 +25,6 @@
  */  
 session_start();
 
-//add database and models
-//TODO
-
 //loading base controller
 require_once "lib/vendor/PLAIN_PHP/Controller.php";
 //loading other controllers

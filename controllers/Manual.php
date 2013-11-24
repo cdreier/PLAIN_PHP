@@ -31,10 +31,6 @@ class Manual extends Controller {
         self::render();
     }
 	
-    public static function doctrine(){
-        self::render();
-    }
-    
     public static function ajax(){
         self::render();
     }
