@@ -35,20 +35,18 @@
                     <li>
                         vendor
                         <ul>
-                        	<li>doctrine</li>
+                        	<li>redbeanphp</li>
                         	<li>
                         		PLAIN_PHP
                         		<ul>
                         			<li>Controller.php</li>
-                        			<li>Routes.php</li>
+                        			<li>Routing.php</li>
+                        			<li>I18n.php</li>
                         		</ul>
                     		</li>
                         </ul>
                     </li>
                 </ul>
-            </li>
-            <li>
-                models
             </li>
             <li>
                 views

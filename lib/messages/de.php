@@ -4,7 +4,7 @@ $_MESSAGES = array(
 
     "manualTitle" => "Manual",
     "manual_p1" => "das PLAIN_PHP Framework ist ein schmales und leicht zu erlernendes MVC-Framework.",
-    "manual_p2" => "Es vereinfacht die Erstellung und das Strukturieren von Webseiten deutlich und hat bei Bedarf Doctrine 1.2.x zur Datenbank-Abstraktion mit dabei.",
+    "manual_p2" => "Es vereinfacht die Erstellung und das Strukturieren von Webseiten deutlich und hat bei Bedarf RedbeanPHP zur einfachen und schnellen Datenbank-Abstraktion dabei.",
     "manual_p3" => "Um sofort loszulegen muss nur im App.php Controller die Konstanten _PATH und _LOCAL_PATH angepasst werden und es kann losgehen, wobei _PATH die URL zum Server darstellt und _LOCAL_PATH den Pfad zum localhost.",
     
     "ajaxTitle" => "AJAX",
@@ -44,7 +44,7 @@ $_MESSAGES = array(
 	"controller_renderPartial1" => "Die renderPartial Methode sucht die zugehörige View und rendert diese an der Stelle wo der Aufruf stattgefunden hat.",
 	"controller_renderPartial2" => "Ausführliches dazu gibts unter <a href='$1'>render Views</a>",
 	"controller_always" => "always",
-	"controller_always1" => "Die always Funktion wird bei jedem render Aufruf des Controllers ausgeführt. So kann man z.B. Stylesheets oder Script in jeder render Methode eines Controllers laden oder eine Userauthentifizierung für einen kompletten Controller gültig machen.",
+	"controller_always1" => "Die always Funktion wird spätestens vor jedem render Aufruf des Controllers ausgeführt. So kann man z.B. Stylesheets oder Script in jeder render Methode eines Controllers laden oder eine Userauthentifizierung für einen kompletten Controller gültig machen.",
 	"controller_addScript" => "addScript",
 	"controller_addScript1" => "Es gibt immer wieder Javascripts, die man nur auf einer einzigen, oder auf nur wenigen Seiten gebrauchen kann. Damit diese nicht bei jedem Seitenaufruf geladen werden müssen, kann man in der entsprechenden Controller Funktion die gewünschten Scripte laden",
 	"controller_addStylesheet" => "addStylesheet",
@@ -61,7 +61,7 @@ $_MESSAGES = array(
     "foldersTitle" => "Ordnerstruktur",
     "folders_p1" => "Eine MVC Ordnerstruktur wurde beibehalten. Eine leere Applikation sieht folgendermaßen aus.",
     "folders_p2" => "Dabei werden alle Controller im controllers Ordner automatisch geladen, wobei hier die Namenskonvention vorrausetzung ist: Klassenname = Dateiname.",
-    "folders_p3" => "Der lib Ordner beherbergt alle Javascript und CSS Dateien, sowie Bilder und auch <a href='$1'>Doctrine</a>",
+    "folders_p3" => "Der lib Ordner beherbergt alle Javascript und CSS Dateien, sowie eventuelle Bilder und auch die Frameworkdaten.",
     
     "viewsTitle" => "Views rendern",
     "views_p1" => "Um nun auch endlich etwas in Browser anzuzeigen, müssen Views gerendert werden.",

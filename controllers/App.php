@@ -44,13 +44,6 @@ class App extends Controller {
 
 
 
-    public static function debug(){
-    	echo "asd";
-		$test = R::dispense("test");
-		$test->name = "judith";
-		$test->age = 27;
-		R::store($test);
-    }
 
     public static function printJSONSuccess($attr = array()) {
         $attr["error"] = 0;
