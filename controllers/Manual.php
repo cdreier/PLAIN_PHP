@@ -34,6 +34,10 @@ class Manual extends Controller {
     public static function ajax(){
         self::render();
     }
+	
+	public static function redbean(){
+		self::render();
+	}
     
     public static function sideMenu(){
         self::renderPartial();

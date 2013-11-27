@@ -20,6 +20,7 @@
                 	<li>
                 		config
                 		<ul>
+                			<li>db.php</li>
                 			<li>routes.php</li>
                 		</ul>
                 	</li>

@@ -139,4 +139,5 @@ public static function soYouUsedItThenGetItBack(){
 }
 </pre>
 
+<h3>TODO: get/setTitle and add/setRenderContent</h3>
 
