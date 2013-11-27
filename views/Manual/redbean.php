@@ -1,7 +1,9 @@
 <h1><?php echo __("rbTitle") ?></h1>
 <p><?php echo __("rb_p1") ?></p>
 <p><?php echo __("rb_p2") ?></p>
+<p><?php echo __("rb_p3") ?></p>
 <pre class="prettyprint lang-php">
+//conf/db.php
 $_DB = array(
 	"db_active" => true, // if no db is used, please set to false
 	"db_name" => "debug",

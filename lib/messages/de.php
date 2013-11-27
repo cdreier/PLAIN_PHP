@@ -81,7 +81,9 @@ $_MESSAGES = array(
     "i18n_p4" => "Die Plazuhalter $1 setzten sich aus dem Dollarzeichen und dem Index zusammen, die Parameter werden also in genau der Reihenfolge in die Platzhalter eingesetzt, in der sie übergeben werden.",
     
     "rbTitle" => "RedBeanPHP",
-    "rb_p1" => "Link zur Homepage: <a href='http://redbeanphp.com/'>Link</a>"
+    "rb_p1" => "Link zur Homepage und Dokumentation: <a href='http://redbeanphp.com/'>Link</a>",
+    "rb_p2" => "RedBeanPHP ist ein ORM der zur Laufzeit die Tabellen und Spalten generiert. Somit ist eine sehr einfache, schnelle und komplett objektorientierte Entwicklung möglich.",
+    "rb_p3" => "Nach der Entwicklung wird das Datenbankschema 'gefreezed' um in der Produktionsumgebung einen performanteren Datenbankzugriff zu gewährleisten. Alle benötigten Daten werden über die db.php konfiguriert"
 
 )
 
