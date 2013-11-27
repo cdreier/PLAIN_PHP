@@ -48,6 +48,8 @@ class Controller {
     private static $scripts = array();
     private static $stylesheets = array();
     private static $renderArgs = array();
+	
+	private static $renderContent = array();
     
     public static $shouldRender = false;
     public static $alwaysInvoked = false;
@@ -59,6 +61,22 @@ class Controller {
     
     public static function addExternalScript($url){
         self::$scripts[] = $url;
+    }
+	
+	public static function addRenderContent($key, $value){
+        self::$renderContent[$key] = $value;
+    }
+    
+    public static function getRenderContent($key){
+        return ( isset(self::$renderContent[$key]) ) ? self::$renderContent[$key] : "";
+    }
+    
+    public static function setTitle($title){
+        self::$renderContent["title"] = $title;
+    }
+    
+    public static function getTitle(){
+        return self::getRenderContent("title");
     }
     
     public static function addStylesheet($filename, $path = "lib/css/"){
