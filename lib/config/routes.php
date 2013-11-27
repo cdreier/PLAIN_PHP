@@ -2,7 +2,7 @@
 
 $_ROUTES = array(
 	"/CUSTOMROUTING" => "Manual::routes",
-	"/test" => "App::debug"
+	"/test/{1}" => "App::debug"
 );
 
 

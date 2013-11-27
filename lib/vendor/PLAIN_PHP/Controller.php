@@ -182,6 +182,7 @@ class Controller {
     
     public static function execute( $pathInfo ){
         $controllerInfo = Routing::parsePathInfo($pathInfo);
+    	
         if(count($controllerInfo) == 2 && is_callable($controllerInfo[0])){
 
         	if(!is_array($controllerInfo[1])){
@@ -235,27 +236,43 @@ class Controller {
         return $return;
     }
     
-    public static function linkTo($functionName = "index", $param = ""){
-    	$route = Routing::checkFunction(get_called_class()."::".$functionName);
-		if(!$route){
-	        $route = "/".get_called_class()."/$functionName";
-		}else{
-			//params only use with custom route
-			$route = Routing::fillParams($route, $param);
-		}
+	private static function buildRoute($functionName, $param){
 		
-        return App::PATH()."index.php".$route;
-    }
-    
-    public static function redirectTo($functionName, $param = ""){
         $route = Routing::checkFunction(get_called_class()."::". $functionName);
 		if(!$route){
 	        $route = "/".get_called_class()."/$functionName";
 		}else{
-			//params only use with custom route
-			$route = Routing::fillParams($route, $param);
+			try{
+				//params only use with custom route
+				$route = Routing::fillParams($route, $param);
+			}catch(Exception $e){
+				//error in routing, missmatch from expected and total params 
+				echo $e;
+			}
 		}
-        
+		
+		return $route;
+	}
+	
+    public static function linkTo($functionName = "index", $param = false){
+    	if($param !== false){
+			if(!is_array($param)){
+	    		$param = array_slice(func_get_args(), 1);
+	    	}
+    	}
+		
+    	$route = self::buildRoute($functionName, $param);
+        return App::PATH()."index.php".$route;
+    }
+	
+    public static function redirectTo($functionName = "index", $param = false){
+    	if($param !== false){
+			if(!is_array($param)){
+	    		$param = array_slice(func_get_args(), 1);
+	    	}
+    	}
+		
+    	$route = self::buildRoute($functionName, $param);
         header( "Location: " . App::PATH() . "index.php" . $route ) ;
         exit();
     }

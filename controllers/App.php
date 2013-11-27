@@ -33,10 +33,6 @@ class App extends Controller {
         self::render();
     }
 
-    
-    
-
-
 
 
 

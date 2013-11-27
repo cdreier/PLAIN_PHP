@@ -62,6 +62,12 @@ class Routing {
 		if(is_array($param)){
 			$routeParts = explode("/", $route);
 			$paramCount = 0;
+			
+			//check if params are matching dynamix route parts
+			if(substr_count($route, "{") != count($param)){
+				throw new Exception("ROUTE PARAMETER COUNT NOT MATCHING ARGUMENTS");
+			}
+			
 			for ($i = 0; $i < count($routeParts); $i++) {
 				$part = $routeParts[$i];
 				if(substr($part, 0, 1) == "{"){
@@ -71,17 +77,9 @@ class Routing {
 			}
 			$route = implode("/", $routeParts);
 			
-		}else if($param != ""){
-			$routeParts = explode("/", $route);
-			for ($i = 0; $i < count($routeParts); $i++) {
-				$part = $routeParts[$i];
-				if(substr($part, 0, 1) == "{"){
-					$routeParts[$i] = $param;
-				}
-			}
-			$route = implode("/", $routeParts);
+		}else{
+			throw new Exception("FATAL ROUTING ERROR");
 		}
-		
 		return $route;
 	}
 	
