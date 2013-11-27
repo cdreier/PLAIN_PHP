@@ -26,6 +26,7 @@ $_ROUTES = array(
 MyAwsomeController::linkTo("awesomeFunction", 33);
 // returns http://localhost/PHP_PLAIN/index.php/awsome/33
 
+MyAwsomeController::linkTo("moreAwesomerFunction", "33", "AWESOME"); // or
 MyAwsomeController::linkTo("moreAwesomerFunction", array("33", "AWESOME"));
 // returns http://localhost/PHP_PLAIN/index.php/debug/33/test/AWESOME
 
@@ -49,7 +50,7 @@ public static moreAwesomerFunction($id, $test){
 public static function login(){
     //a lot of validation
     if($success){
-        MyAwesomeController::redirectTo("superSecretWebsite", 1);
+        MyAwesomeController::redirectTo("superSecretWebsite", 333);
     }
     
     //error - back to frontpage

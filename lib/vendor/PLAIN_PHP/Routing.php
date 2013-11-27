@@ -77,8 +77,6 @@ class Routing {
 			}
 			$route = implode("/", $routeParts);
 			
-		}else{
-			throw new Exception("FATAL ROUTING ERROR");
 		}
 		return $route;
 	}
