@@ -5,6 +5,8 @@ class Manual extends Controller {
     public static function always(){
         self::addScript("prettify.js");
         self::addStylesheet("sunburst-theme.css");
+        
+        self::setTitle("PLAIN_PHP - Manual");
     }
 	
     public static function index(){

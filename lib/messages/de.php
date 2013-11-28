@@ -83,7 +83,12 @@ $_MESSAGES = array(
     "rbTitle" => "RedBeanPHP",
     "rb_p1" => "Link zur Homepage und Dokumentation: <a href='http://redbeanphp.com/'>Link</a>",
     "rb_p2" => "RedBeanPHP ist ein ORM der zur Laufzeit die Tabellen und Spalten generiert. Somit ist eine sehr einfache, schnelle und komplett objektorientierte Entwicklung möglich.",
-    "rb_p3" => "Nach der Entwicklung wird das Datenbankschema 'gefreezed' um in der Produktionsumgebung einen performanteren Datenbankzugriff zu gewährleisten. Alle benötigten Daten werden über die db.php konfiguriert"
+    "rb_p3" => "Nach der Entwicklung wird das Datenbankschema 'gefreezed' um in der Produktionsumgebung einen performanteren Datenbankzugriff zu gewährleisten. Alle benötigten Daten werden über die db.php konfiguriert",
+    
+    "controller_addSetRenderContent1" => "Mit addRenderContent(key, val) können noch dynamische Teile vor dem render() Aufruf gesetzt werden, um zB in einer View einen Subtitle zu setzen (oder wie mit setTitle den title-Tag in der index.php)",
+    "controller_addSetRenderContent2" => "Mit getRenderContent(key) kann in der View der entsprechende Content wieder geladen werden",
+    
+    "controller_getSetTitle" => "setTitle ist ein Shortcut für addRenderContent('title', yourTitle), um den title-Tag zu befüllen."
 
 )
 

@@ -140,5 +140,27 @@ public static function soYouUsedItThenGetItBack(){
 }
 </pre>
 
-<h3>TODO: get/setTitle and add/setRenderContent</h3>
 
+<br/>
+<h3>add & setRenderContent</h3>
+<p><?php echo __("controller_addSetRenderContent1") ?></p>
+<p><?php echo __("controller_addSetRenderContent2") ?></p>
+<pre class="prettyprint">
+    // App::index 
+    App::addRenderContent("subtitle", "PLAIN_PHP is really simple, fast and i enjoy coding with it");
+    
+    // some view
+    &lt;?php echo Controller::getRenderContent("subtitle"); ?&gt;
+</pre>
+
+
+<br/>
+<h3>get & setTitle</h3>
+<p><?php echo __("controller_getSetTitle") ?></p>
+<pre class="prettyprint">
+    //in Manual controller 
+    self::setTitle("PLAIN_PHP - Manual");
+    
+    //in the index.php file
+    &lt;title&gt;&lt;?php echo Controller::getTitle(); ?&gt;&lt;/title&gt;
+</pre>
