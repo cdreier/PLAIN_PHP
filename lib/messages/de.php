@@ -5,7 +5,7 @@ $_MESSAGES = array(
     "manualTitle" => "Manual",
     "manual_p1" => "das PLAIN_PHP Framework ist ein schmales und leicht zu erlernendes MVC-Framework.",
     "manual_p2" => "Es vereinfacht die Erstellung und das Strukturieren von Webseiten deutlich und hat bei Bedarf RedbeanPHP zur einfachen und schnellen Datenbank-Abstraktion dabei.",
-    "manual_p3" => "Um sofort loszulegen muss nur im App.php Controller die Konstanten _PATH und _LOCAL_PATH angepasst werden und es kann losgehen, wobei _PATH die URL zum Server darstellt und _LOCAL_PATH den Pfad zum localhost.",
+    "manual_p3" => "Um sofort loszulegen muss nur in der conf.php der PATH und LOCAL_PATH angepasst werden und es kann losgehen, wobei PATH die URL zum Server darstellt und LOCAL_PATH den Pfad zum localhost.",
     
     "ajaxTitle" => "AJAX",
     "ajax_p1" => "Die JQuery Ajax Schnittstalle wurde nocheinmal gewrapped, damit ohne Umwege eine Controllerfunktion aufgerufen werden kann.",

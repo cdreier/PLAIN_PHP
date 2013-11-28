@@ -6,9 +6,12 @@
 <p><?php echo __("manual_p3") ?></p> 
 
 <pre class="prettyprint lang-php">
-// controllers/App.php
-const _PATH = "http://plain-php.drailing.net/";
-const _LOCAL_PATH= "http://localhost/PLAIN_PHP/";
+// lib/config/conf.php
+$_CONFIG = array(
+    "PATH" => "http://plain-php.drailing.net/",
+    "LOCAL_PATH" => "http://localhost/PLAIN_PHP/",
+    "SESSION_NAME" => "PHP_PLAIN"
+);
 </pre>
 
 
