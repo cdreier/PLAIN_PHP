@@ -2,7 +2,7 @@
 /**
  * The MIT License (MIT)
  *
- *  Copyright (c) <2013> <Christian Dreier (dreier@weilacher.net) - weilacher.net>
+ *  Copyright (c) <2013> <Christian Dreier (dreier.christian@gmail.com) - drailing.net>
  *    
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
  *  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@
 //loading configs
 require_once 'lib/config/routes.php';
 require_once 'lib/config/db.php';
+require_once 'lib/config/conf.php';
 
 //loading orm
 require_once 'lib/vendor/redbeanphp/rb.php';
@@ -56,7 +57,7 @@ class Controller {
     
     
     public static function addScript($filename, $path = "lib/js/"){
-        self::$scripts[] = App::PATH() . $path . $filename;
+        self::$scripts[] = self::PATH() . $path . $filename;
     }
     
     public static function addExternalScript($url){
@@ -80,7 +81,7 @@ class Controller {
     }
     
     public static function addStylesheet($filename, $path = "lib/css/"){
-        self::$stylesheets[] = App::PATH() . $path . $filename;
+        self::$stylesheets[] = self::PATH() . $path . $filename;
     }
     
     public static function injectScripts(){
@@ -262,7 +263,7 @@ class Controller {
     	}
 		
     	$route = self::buildRoute($functionName, $param);
-        return App::PATH()."index.php".$route;
+        return self::PATH()."index.php".$route;
     }
 	
     public static function redirectTo($functionName = "index", $param = false){
@@ -273,16 +274,45 @@ class Controller {
     	}
 		
     	$route = self::buildRoute($functionName, $param);
-        header( "Location: " . App::PATH() . "index.php" . $route ) ;
+        header( "Location: " . self::PATH() . "index.php" . $route ) ;
         exit();
     }
     
     
+    public static function PATH() {
+        global $_CONFIG;
+        $local = array('localhost', '127.0.0.1');
+        if (!in_array($_SERVER['HTTP_HOST'], $local)) {
+            
+            //check for allowed url modifications, in general www in server url or not
+            $serverName = $_SERVER["SERVER_NAME"];
+            $urlData = parse_url($_CONFIG["PATH"]);
+            //if both are same, just return path
+            if($serverName == $urlData["host"]){
+                return $_CONFIG["PATH"];
+            }else{
+                //if not, server request is priority, set new host
+                $urlData["host"] = $serverName;
+                //expand protokol
+                $urlData["scheme"] = $urlData["scheme"]."://";
+                $urlData = implode("", $urlData);
+                return $urlData;
+            }
+        } else {
+            return $_CONFIG["LOCAL_PATH"];
+        }
+    }
     
+    public static function _JSPATH(){
+        ?>
+        <script>
+            function _getServerUrl(){
+                return "<?php echo self::PATH(); ?>";
+            }
+        </script>
+        <?php 
+    }
     
 }
-
-
-
 
  ?>

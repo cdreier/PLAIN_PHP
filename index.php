@@ -12,11 +12,6 @@ if(isset($_SERVER['PATH_INFO'])){
     Manual::index();
 }
 
-// Doctrine_Core::dropDatabases();
-// Doctrine_Core::createDatabases();
-// Doctrine_Core::generateModelsFromYaml('schema.yml', 'models');
-// Doctrine_Core::createTablesFromModels('models');
-
  ?>
 
 <!DOCTYPE html>
@@ -29,14 +24,14 @@ if(isset($_SERVER['PATH_INFO'])){
         
         <title><?php echo Controller::getTitle(); ?></title>
 
-		<link type="text/css" rel="stylesheet" href="<?php echo App::PATH() ?>/lib/css/normalize.css" />
-		<link type="text/css" rel="stylesheet" href="<?php echo App::PATH() ?>/lib/css/style.css" />
+		<link type="text/css" rel="stylesheet" href="<?php echo Controller::PATH() ?>/lib/css/normalize.css" />
+		<link type="text/css" rel="stylesheet" href="<?php echo Controller::PATH() ?>/lib/css/style.css" />
 		<?php Controller::injectStylesheets() ?>
 		
-        <?php App::_JSPATH(); ?>
-        <script src="<?php echo App::PATH() ?>/lib/js/jquery-2.0.3.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="<?php echo App::PATH() ?>/lib/js/ajaxCall.js" type="text/javascript" charset="utf-8"></script>
-        <script src="<?php echo App::PATH() ?>/lib/js/main.js" type="text/javascript" charset="utf-8"></script>
+        <?php Controller::_JSPATH(); ?>
+        <script src="<?php echo Controller::PATH() ?>/lib/js/jquery-2.0.3.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="<?php echo Controller::PATH() ?>/lib/js/ajaxCall.js" type="text/javascript" charset="utf-8"></script>
+        <script src="<?php echo Controller::PATH() ?>/lib/js/main.js" type="text/javascript" charset="utf-8"></script>
         <?php Controller::injectScripts() ?>
         
 	</head>

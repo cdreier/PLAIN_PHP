@@ -2,7 +2,7 @@
 /**
  * The MIT License (MIT)
  *
- *  Copyright (c) <2013> <Christian Dreier (dreier@weilacher.net) - weilacher.net>
+ *  Copyright (c) <2013> <Christian Dreier (dreier.christian@gmail.com) - drailing.net>
  *    
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
  *  of this software and associated documentation files (the "Software"), to deal
@@ -24,10 +24,6 @@
  * 
  */ 
 class App extends Controller {
-
-    const _PATH = "http://plain-php.drailing.net/";
-    const _LOCAL_PATH = "http://localhost/PLAIN_PHP/";
-    const SESSION_NAME = "PHP_PLAIN";
 
     public static function index() {
         self::render();
@@ -51,38 +47,5 @@ class App extends Controller {
         echo json_encode($return);
     }
     
-    public static function PATH() {
-        $local = array('localhost', '127.0.0.1');
-        if (!in_array($_SERVER['HTTP_HOST'], $local)) {
-            
-            //check for allowed url modifications, in general www in server url or not
-            $serverName = $_SERVER["SERVER_NAME"];
-            $urlData = parse_url(self::_PATH);
-            //if both are same, just return path
-            if($serverName == $urlData["host"]){
-                return self::_PATH;
-            }else{
-                //if not, server request is priority, set new host
-                $urlData["host"] = $serverName;
-                //expand protokol
-                $urlData["scheme"] = $urlData["scheme"]."://";
-                $urlData = implode("", $urlData);
-                return $urlData;
-            }
-        } else {
-            return self::_LOCAL_PATH;
-        }
-    }
-    
-    public static function _JSPATH(){
-        ?>
-        <script>
-            function _getServerUrl(){
-                return "<?php echo App::PATH(); ?>";
-            }
-        </script>
-        <?php 
-    }
-
 }
 ?>
