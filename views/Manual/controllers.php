@@ -8,7 +8,7 @@ class MyAwesomeController extends Controller {
 </pre>
 <p><?php echo __("controller_p2") ?></p>
 
-<h3><?php echo __("controller_linkTo") ?></h3>
+<h3 id="linkTo"><?php echo __("controller_linkTo") ?></h3>
 <p><?php echo __("controller_linkTo1") ?></p> 
 <pre class="prettyprint">
 //without custom routes
@@ -43,7 +43,7 @@ public static moreAwesomerFunction($id, $test){
 </pre>
 
 <br/>
-<h3><?php echo __("controller_redirTo") ?></h3>
+<h3 id="redirTo"><?php echo __("controller_redirTo") ?></h3>
 <p><?php echo __("controller_redirTo1") ?></p>
 <p><?php echo __("controller_redirTo2") ?></p>
 <pre class="prettyprint">
@@ -63,17 +63,17 @@ public static function login(){
 
 
 <br/>
-<h3><?php echo __("controller_render") ?></h3>
+<h3 id="render"><?php echo __("controller_render") ?></h3>
 <p><?php echo __("controller_render1") ?></p>
 <p><?php echo __("controller_render2", Manual::linkTo("views")) ?></p>
 
 <br/>
-<h3><?php echo __("controller_renderPartial") ?></h3>
+<h3 id="controller_renderPartial"><?php echo __("controller_renderPartial") ?></h3>
 <p><?php echo __("controller_renderPartial1") ?></p>
 <p><?php echo __("controller_renderPartial2", Manual::linkTo("views")) ?></p>
 
 <br/>
-<h3><?php echo __("controller_always") ?></h3>
+<h3 id="always"><?php echo __("controller_always") ?></h3>
 <p><?php echo __("controller_always1") ?></p>
 <pre class="prettyprint">
 public static function always(){
@@ -89,7 +89,7 @@ public static function always(){
 
 
 <br/>
-<h3><?php echo __("controller_addScript") ?></h3>
+<h3 id="addScript"><?php echo __("controller_addScript") ?></h3>
 <p><?php echo __("controller_addScript1") ?></p>
 <pre class="prettyprint">
 public static function controllers(){
@@ -101,12 +101,12 @@ public static function controllers(){
 
 
 <br/>
-<h3><?php echo __("controller_addStylesheet") ?></h3>
+<h3 id="addStylesheet"><?php echo __("controller_addStylesheet") ?></h3>
 <p><?php echo __("controller_addStylesheet1") ?></p>
 <p><?php echo __("controller_addStylesheet2") ?></p>
 
 <br/>
-<h3><?php echo __("controller_isActive") ?></h3>
+<h3 id="isActive"><?php echo __("controller_isActive") ?></h3>
 <p><?php echo __("controller_isActive1") ?></p>
 <p><?php echo __("controller_isActive2") ?></p>
 <p><?php echo __("controller_isActive3") ?></p>
@@ -121,7 +121,7 @@ if(Manual::isActive("controllers")) echo "style='color: blue;'";
 
 
 <br/>
-<h3><?php echo __("controller_keepGet") ?></h3>
+<h3 id="keepGet"><?php echo __("controller_keepGet") ?></h3>
 <p><?php echo __("controller_keepGet1") ?></p>
 <p><?php echo __("controller_keepGet2") ?></p>
 <pre class="prettyprint">
@@ -142,7 +142,7 @@ public static function soYouUsedItThenGetItBack(){
 
 
 <br/>
-<h3>add & setRenderContent</h3>
+<h3 id="renderContent"><?php echo __("controller_renderContent"); ?></h3>
 <p><?php echo __("controller_addSetRenderContent1") ?></p>
 <p><?php echo __("controller_addSetRenderContent2") ?></p>
 <pre class="prettyprint">
@@ -155,7 +155,7 @@ public static function soYouUsedItThenGetItBack(){
 
 
 <br/>
-<h3>get & setTitle</h3>
+<h3 id="setTitleTitle"><?php echo __("controller_getSetTitleTitle") ?></h3>
 <p><?php echo __("controller_getSetTitle") ?></p>
 <pre class="prettyprint">
     //in Manual controller 

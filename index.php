@@ -37,7 +37,7 @@ if(isset($_SERVER['PATH_INFO'])){
         
 	</head>
 	
-	<body data-spy="scroll" data-target="#nav">
+	<body >
 		
 		<div class="container">
 			<div class="col-md-3" >
