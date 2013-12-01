@@ -24,34 +24,42 @@ if(isset($_SERVER['PATH_INFO'])){
         
         <title><?php echo Controller::getTitle(); ?></title>
 
-		<link type="text/css" rel="stylesheet" href="<?php echo Controller::PATH() ?>/lib/css/normalize.css" />
+		<link type="text/css" rel="stylesheet" href="<?php echo Controller::PATH() ?>/lib/css/bootstrap.min.css" />
 		<link type="text/css" rel="stylesheet" href="<?php echo Controller::PATH() ?>/lib/css/style.css" />
 		<?php Controller::injectStylesheets() ?>
 		
         <?php Controller::_JSPATH(); ?>
         <script src="<?php echo Controller::PATH() ?>/lib/js/jquery-2.0.3.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="<?php echo Controller::PATH() ?>/lib/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="<?php echo Controller::PATH() ?>/lib/js/ajaxCall.js" type="text/javascript" charset="utf-8"></script>
         <script src="<?php echo Controller::PATH() ?>/lib/js/main.js" type="text/javascript" charset="utf-8"></script>
         <?php Controller::injectScripts() ?>
         
 	</head>
 	
-	<body>
+	<body data-spy="scroll" data-target="#nav">
 		
-	    <?php 
-	    if(Manual::isActive()){
-            Manual::sideMenu();
-        }
-	     ?>
-	    
-	    <div id="content">
-        <?php
-        //check if render method is called and insert view
-        if(Controller::$shouldRender){
-            Controller::yield();
-        }
-         ?>
-         </div>
+		<div class="container">
+			<div class="col-md-3" >
+		    <?php 
+		    if(Manual::isActive()){
+	            Manual::sideMenu();
+	        }
+		     ?>
+			</div>
+		    
+		    
+		    
+		    
+		    <div id="content">
+	        <?php
+	        //check if render method is called and insert view
+	        if(Controller::$shouldRender){
+	            Controller::yield();
+	        }
+	         ?>
+	         </div>
+		</div>
 
 	</body>
 
