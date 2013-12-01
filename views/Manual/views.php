@@ -1,6 +1,6 @@
 <h1><?php echo __("viewsTitle") ?></h1>
 <p><?php echo __("views_p1") ?></p>
-<h3><?php echo __("views_render") ?></h3>
+<h3 id="render"><?php echo __("views_render") ?></h3>
 <pre class="prettyprint">
 class Manual extends Controller{
     public static function views(){
@@ -38,7 +38,7 @@ Herzlich Willkommen, Frau Ralf
 
 
 <br />
-<h3><?php echo __("views_renderPartial") ?></h3>
+<h3 id="renderPartial"><?php echo __("views_renderPartial") ?></h3>
 <p><?php echo __("views_renderPartial1") ?></p>
 <pre class="prettyprint">
 //index.php
