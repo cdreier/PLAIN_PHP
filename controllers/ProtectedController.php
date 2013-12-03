@@ -14,7 +14,7 @@ class ProtectedController extends Controller {
 	}
 	
 	public static function index(){
-		echo "logged in";
+		self::renderText("logged in!");
 	}
 	
 }

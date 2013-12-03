@@ -63,15 +63,6 @@ class App extends Controller {
 
 
 
-    public static function printJSONSuccess($attr = array()) {
-        $attr["error"] = 0;
-        echo json_encode($attr);
-    }
-
-    public static function printJSONError($errorCode = true) {
-        $return = array("error" => $errorCode);
-        echo json_encode($return);
-    }
     
 }
 ?>

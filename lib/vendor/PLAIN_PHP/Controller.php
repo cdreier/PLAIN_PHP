@@ -169,6 +169,15 @@ class Controller {
         }
     }
 	
+	public static function renderText($txt){
+		header("Content-Type: text/plain");
+		exit($txt);
+	}
+	
+	public static function renderJson($data){
+		header("Content-Type: application/json");
+		exit(json_encode($data));
+	}
     
     public static function renderPartial($args = array()){
         $trace = debug_backtrace();
