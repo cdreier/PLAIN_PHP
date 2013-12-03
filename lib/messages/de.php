@@ -90,7 +90,13 @@ $_MESSAGES = array(
     "controller_addSetRenderContent2" => "Mit getRenderContent(key) kann in der View der entsprechende Content wieder geladen werden",
     
     "controller_getSetTitleTitle" => "get & setTitle",
-    "controller_getSetTitle" => "setTitle ist ein Shortcut für addRenderContent('title', yourTitle), um den title-Tag zu befüllen."
+    "controller_getSetTitle" => "setTitle ist ein Shortcut für addRenderContent('title', yourTitle), um den title-Tag zu befüllen.",
+    
+    "controller_renderTextTitle" => "renderText",
+    "controller_renderText" => "TODO",
+    
+    "controller_renderJsonTitle" => "renderJson",
+    "controller_renderJson" => "TODO"
 
 )
 

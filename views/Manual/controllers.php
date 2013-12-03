@@ -73,6 +73,16 @@ public static function login(){
 <p><?php echo __("controller_renderPartial2", Manual::linkTo("views")) ?></p>
 
 <br/>
+<h3 id="controller_renderText"><?php echo __("controller_renderTextTitle") ?></h3>
+<p><?php echo __("controller_renderText") ?></p>
+
+
+<br/>
+<h3 id="controller_renderJson"><?php echo __("controller_renderJsonTitle") ?></h3>
+<p><?php echo __("controller_renderJson") ?></p>
+
+
+<br/>
 <h3 id="always"><?php echo __("controller_always") ?></h3>
 <p><?php echo __("controller_always1") ?></p>
 <pre class="prettyprint">
