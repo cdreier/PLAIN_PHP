@@ -8,5 +8,7 @@
         <li class="<?php echo (Manual::isActive("ajax"))?"active":""; ?>" ><a href="<?php echo Manual::linkTo("ajax"); ?>"><?php echo __("ajaxTitle") ?></a></li>
         <li class="<?php echo (Manual::isActive("routes"))?"active":""; ?>" ><a href="<?php echo Manual::linkTo("routes"); ?>"><?php echo __("routesTitle") ?></a></li>
         <li class="<?php echo (Manual::isActive("i18n"))?"active":""; ?>" ><a href="<?php echo Manual::linkTo("i18n"); ?>"><?php echo __("i18nTitle") ?></a></li>
+        
+        <li ><a href="<?php echo App::linkTo("login"); ?>"><?php echo __("DEMO login") ?></a></li>
     </ul>
 </div>

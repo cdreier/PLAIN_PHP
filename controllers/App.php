@@ -24,14 +24,40 @@
  * 
  */ 
 class App extends Controller {
+	
+	const SESSION_NAME = "PLAIN_PHP";
 
     public static function index() {
         self::render();
     }
 
 
+	public static function login(){
+		self::render(array(
+			"error" => self::get("error")
+		));
+	}
+	
+	public static function logout(){
+		unset($_SESSION[self::SESSION_NAME]);
+		session_destroy();
+		self::redirectTo("login");
+	}
 
-
+	public static function auth(){
+		if($_POST["username"] == "test" && $_POST["password"] == "test"){
+			$_SESSION[self::SESSION_NAME] = "test";
+			ProtectedController::redirectTo("index");
+		}else{
+			self::keep("error", "Login failed");
+			self::redirectTo("login");
+		}
+	}
+	
+	public static function checkLogin(){
+		global $_CONFIG;
+		return isset($_SESSION[self::SESSION_NAME]);
+	}
 
 
 

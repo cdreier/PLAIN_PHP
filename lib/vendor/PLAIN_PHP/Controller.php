@@ -168,6 +168,7 @@ class Controller {
             throw new Exception("VIEW NOT FOUND - " . $view);
         }
     }
+	
     
     public static function renderPartial($args = array()){
         $trace = debug_backtrace();
