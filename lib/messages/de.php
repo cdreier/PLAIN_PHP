@@ -93,10 +93,10 @@ $_MESSAGES = array(
     "controller_getSetTitle" => "setTitle ist ein Shortcut für addRenderContent('title', yourTitle), um den title-Tag zu befüllen.",
     
     "controller_renderTextTitle" => "renderText",
-    "controller_renderText" => "TODO",
+    "controller_renderText" => "renderText rendert nicht über die yield() Funktion, sondern setzt gibt den Text mit dem korrekten Content-Type Header (text/plain) aus, und beendet die Scriptverarbeitung.",
     
     "controller_renderJsonTitle" => "renderJson",
-    "controller_renderJson" => "TODO"
+    "controller_renderJson" => "renderJson funktioniert ähnlich wie renderText, erwartet allerdings ein Array. Die Daten werden entsprechend json_encoded und der Content-Type Header wird auf application/json gesetzt. Die Scriptverarbeitung wird auch hier unterbrochen."
 
 )
 

@@ -75,11 +75,22 @@ public static function login(){
 <br/>
 <h3 id="controller_renderText"><?php echo __("controller_renderTextTitle") ?></h3>
 <p><?php echo __("controller_renderText") ?></p>
-
+<pre class="prettyprint">
+public static function debugMe(){
+    self::renderText("plain text here");
+}
+</pre>
 
 <br/>
 <h3 id="controller_renderJson"><?php echo __("controller_renderJsonTitle") ?></h3>
 <p><?php echo __("controller_renderJson") ?></p>
+<pre class="prettyprint">
+public static function someAjaxResponse(){
+    self::renderJson(array(
+    	"ok" => true
+    ));
+}
+</pre>
 
 
 <br/>
