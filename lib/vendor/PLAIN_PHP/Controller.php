@@ -100,16 +100,14 @@ class Controller {
     }
     
     public static function autoload($className){
-        $file = "controllers/" . $className . ".php";
-        if(file_exists($file)){
-            require_once $file;
-			return;
-        }
-		
-		$file = "lib/vendor/PLAIN_PHP/" . $className . ".php";
-        if(file_exists($file)){
-            require_once $file;
-        }
+    	global $_CONFIG;
+		foreach ($_CONFIG["AUTOLOAD_FOLDERS"] as $folder) {
+			$file = $folder . $className . ".php";
+			if(file_exists($file)){
+	            require_once $file;
+				return;
+	        }
+		}
     }
 	
     
