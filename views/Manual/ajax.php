@@ -39,3 +39,5 @@ this.params = {
     args : args.args || {}
 };
 </pre>
+<br/>
+<p><?php echo __("ajax_p7", Manual::linkTo("controllers")."#controller_renderText", Manual::linkTo("controllers")."#controller_renderJson" ); ?></p>

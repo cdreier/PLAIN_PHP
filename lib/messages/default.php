@@ -6,19 +6,20 @@ $_MESSAGES = array(
 	
 	"manualTitle" => "Manual",
     "manual_p1" => "PLAIN_PHP is a lightweight, easy and fast to learn MVC - framework.",
-    
-	//TODO
-    "manual_p2" => "Es vereinfacht die Erstellung und das Strukturieren von Webseiten deutlich und hat bei Bedarf RedbeanPHP zur einfachen und schnellen Datenbank-Abstraktion dabei.",
-    "manual_p3" => "Um sofort loszulegen muss nur in der conf.php der PATH und LOCAL_PATH angepasst werden und es kann losgehen, wobei PATH die URL zum Server darstellt und LOCAL_PATH den Pfad zum localhost.",
+    "manual_p2" => "The Target is to give an easy and flexible way to develop and structure your web-project, with having fun on coding.",
+    "manual_p3" => "To get started, just go to the conf.php and edit the PATH and LOCAL_PATH, with PATH is the URL to the webserver and LOCAL_PATH your path to the localhost. With the AUTOLOAD_FOLDER array, you can add additional folders to the autoloader (classname = filename)",
     
     "ajaxTitle" => "AJAX",
-    "ajax_p1" => "Die JQuery Ajax Schnittstalle wurde nocheinmal gewrapped, damit ohne Umwege eine Controllerfunktion aufgerufen werden kann.",
-    "ajax_p2" => "Die Callbacks in der execute und load Funktion sind immer optional.",
-    "ajax_p3" => "In den Callbacks wird immer versucht die Antwort in ein JSON Object zu parsen, schlägt das fehl, kommt die Antwort als String an.",
-    "ajax_p4" => "Die execute Funktion auf ein AjaxCall Object schickt den request an die Entsprechende Controllerfunktion, in der Callback-Funktion kommt die Antwort an",
-    "ajax_p5" => "Die load Funktion erwartet mindestens einen Parameter, ein JQuery Object in das die Antwort geladen wird.",
-    "ajax_p6" => "Es bietet sich auch an, in der ajaxCall.js den Default wert für die Klasse anzupassen, dann spart man sich den class Parameter",
+    "ajax_p1" => "The jQuery ajax API gets a small wrapper, where you can call controller-functions without detour.",
+    "ajax_p2" => "Callbacks in the execute and load functions are always optional.",
+    "ajax_p3" => "The callback always tries to parse the response to a JSON object, if that fails, the response is a normal string.",
+    "ajax_p4" => "With the execute function, the AjaxCall object sends the request to the controller-function, the callback function receives the response.",
+    "ajax_p5" => "The load callback needs the minimum of one parameter, a jQuery object which receives the response",
+    "ajax_p6" => "TIP: in AjaxCall.js you can define default values.",
+    "ajax_p7" => "TIP: create easy responses in your controller with <a href='$1'>renderText</a> and <a href='$2'>renderJson</a>",
     
+    
+	//TODO
     "routesTitle" => "Routing",
     "routes_urls" => "URLs und Links",
     "routes_urls1" => "Das Routing macht sich die PHP PATH_INFO zu nutze, wobei hinter der index.php der entsprechende Controller und die Funktion zu sehen sind.",

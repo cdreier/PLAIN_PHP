@@ -4,16 +4,18 @@ $_MESSAGES = array(
 
     "manualTitle" => "Manual",
     "manual_p1" => "das PLAIN_PHP Framework ist ein schmales und leicht zu erlernendes MVC-Framework.",
-    "manual_p2" => "Es vereinfacht die Erstellung und das Strukturieren von Webseiten deutlich und hat bei Bedarf RedbeanPHP zur einfachen und schnellen Datenbank-Abstraktion dabei.",
-    "manual_p3" => "Um sofort loszulegen muss nur in der conf.php der PATH und LOCAL_PATH angepasst werden und es kann losgehen, wobei PATH die URL zum Server darstellt und LOCAL_PATH den Pfad zum localhost.",
-    
+    "manual_p2" => "Ziel ist, einen einfachen und flexiblen Weg bereitzustellen, der etwas Spaß beim Erstellen und Strukturieren von Webprojekten mitbringt.",
+    "manual_p3" => "Um sofort loszulegen muss nur in der conf.php der PATH und LOCAL_PATH angepasst werden und es kann losgehen, wobei PATH die URL zum Server darstellt und LOCAL_PATH den Pfad zum localhost. Über das AUTOLOAD_FOLDER Array, können zusätzliche Ordner dem Autoloader zugefügt werden (Klassenname = Dateiname)",
+        
     "ajaxTitle" => "AJAX",
-    "ajax_p1" => "Die JQuery Ajax Schnittstalle wurde nocheinmal gewrapped, damit ohne Umwege eine Controllerfunktion aufgerufen werden kann.",
+    "ajax_p1" => "Die jQuery Ajax Schnittstelle wurde nocheinmal gewrapped, damit ohne Umwege eine Controllerfunktion aufgerufen werden kann.",
     "ajax_p2" => "Die Callbacks in der execute und load Funktion sind immer optional.",
     "ajax_p3" => "In den Callbacks wird immer versucht die Antwort in ein JSON Object zu parsen, schlägt das fehl, kommt die Antwort als String an.",
     "ajax_p4" => "Die execute Funktion auf ein AjaxCall Object schickt den request an die Entsprechende Controllerfunktion, in der Callback-Funktion kommt die Antwort an",
     "ajax_p5" => "Die load Funktion erwartet mindestens einen Parameter, ein JQuery Object in das die Antwort geladen wird.",
-    "ajax_p6" => "Es bietet sich auch an, in der ajaxCall.js den Default wert für die Klasse anzupassen, dann spart man sich den class Parameter",
+    "ajax_p6" => "TIP: Im AjaxCall.js können default Werte eingetragen werden",
+    "ajax_p7" => "TIP: Im Controller kann mit <a href='$1'>renderText</a> und <a href='$2'>renderJson</a> geantwortet werden.",
+    
     
     "routesTitle" => "Routing",
     "routes_urls" => "URLs und Links",
