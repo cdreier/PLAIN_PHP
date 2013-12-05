@@ -1,10 +1,7 @@
 <h1><?php echo __("ajaxTitle"); ?></h1>
 
-<p><?php echo __("ajax_p1"); ?></p>
-<p><?php echo __("ajax_p2"); ?></p>
-<p><?php echo __("ajax_p3"); ?></p>
-<p><?php echo __("ajax_p4"); ?></p>
-
+<h3><?php echo __("ajax_jsTitle"); ?></h3>
+<p><?php echo __("ajax_js1"); ?></p>
 <pre class="prettyprint">
 new AjaxCall({
     class : "Manual", //can set to a default class in ajaxCall.js
@@ -15,9 +12,12 @@ new AjaxCall({
     //response is parsed to a JSON object, or if not possible a string
 });
 </pre>
+<p><?php echo __("ajax_js2"); ?></p>
+<p><?php echo __("ajax_js3"); ?></p>
+
 <br/>
 
-<p><p><?php echo __("ajax_p5"); ?></p></p>
+<p><p><?php echo __("ajax_js4"); ?></p></p>
 
 <pre class="prettyprint">
 new AjaxCall({
@@ -30,7 +30,7 @@ new AjaxCall({
 </pre>
 <br />
 
-<p><?php echo __("ajax_p6"); ?></p>
+<p><?php echo __("ajax_js5"); ?></p>
 <pre class="prettyprint">
 //ajaxCall.js line 4-8
 this.params = {
@@ -40,4 +40,9 @@ this.params = {
 };
 </pre>
 <br/>
-<p><?php echo __("ajax_p7", Manual::linkTo("controllers")."#controller_renderText", Manual::linkTo("controllers")."#controller_renderJson" ); ?></p>
+<p><?php echo __("ajax_js6", Manual::linkTo("controllers")."#controller_renderText", Manual::linkTo("controllers")."#controller_renderJson" ); ?></p>
+
+
+<h3><?php echo __("ajax_phpTitle"); ?></h3>
+
+
