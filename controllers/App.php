@@ -30,6 +30,10 @@ class App extends Controller {
     public static function index() {
         self::render();
     }
+    
+    public static function test(){
+        self::renderText("yay");
+    }
 
 
 	public static function login(){

@@ -7,6 +7,9 @@ require_once "lib/vendor/PLAIN_PHP/Controller.php";
 //check if path is set and execute controller method
 if(isset($_SERVER['PATH_INFO'])){
     Controller::execute($_SERVER['PATH_INFO']);
+}else if( isset($_POST["PLAIN_PHP_AJAX"]) ){
+    //ajax request found
+    Controller::execute("/" . $_POST["class"] . "/" . $_POST["method"]);
 }else{
     //no path is set, call default 
     Manual::index();
