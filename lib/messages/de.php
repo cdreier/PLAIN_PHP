@@ -17,8 +17,8 @@ $_MESSAGES = array(
     "ajax_js6" => "TIP: Im Controller kann mit <a href='$1'>renderText</a> und <a href='$2'>renderJSON</a> geantwortet werden.",
     
     "ajax_phpTitle" => "PHP",
-    "ajax_php1" => "TODO",
-    
+    "ajax_php1" => "Anders als bei dem Aufruf einer Controllerfunktion über eine Custom-Route mit Parametern, werden bei einem AJAX Request die Parameter im \$_POST Array übertragen.",
+    "ajax_php2" => "Es besteht auch die Möglichkeit eine View über AJAX zu laden, indem die View über renderPartial mit dem zweiten Parameter auf true gesetzt wird.",
     
     "routesTitle" => "Routing",
     "routes_urls" => "URLs und Links",
@@ -78,6 +78,7 @@ $_MESSAGES = array(
     "views_renderPartial" => "renderPartial",
     "views_renderPartial1" => "Die renderPartial Funktion wird im grunde genommen genauso verwendet wie die render Funktion, mit dem Unterschied, dass die View an genau dem Punk included wird, wo die Funktion aufgeruden wurde. Zum Beispiel wieder das Seitenmenü",
     "views_renderPartial2" => "Auch hier können wieder Daten über ein assoziatives Array übergeben werden.",
+    "views_renderPartial3" => "Wenn eine partial View über AJAX geladen werden soll, kann der zweite Parameter (\$ajax) auf true gesetzt werden um die View auszugeben und die Scriptverarbeitung zu unterbrechen. (-> <a href='$1'>ajax - PHP</a>)",
     
     "i18nTitle" => "Internationalisierung",
     "i18n_p1" => "Alle Sprachen werden in lib/messages/ verwaltet, wobei die Dateinamen aus dem ersten Teil der gängigen I18n - Codes bestehen (z.B. de.php, anstelle von de_DE), bis auf die default-Sprache, die auch als Fallback genutzt wird.",

@@ -177,13 +177,14 @@ class Controller {
 		exit(json_encode($data));
 	}
     
-    public static function renderPartial($args = array()){
+    public static function renderPartial($args = array(), $ajax = false){
         $trace = debug_backtrace();
         $trace = $trace[1];
         $view = "views/" . $trace["class"] ."/" . $trace["function"] . ".php";
         if(is_file( $view )){
             extract($args);
             include($view);
+			if($ajax)exit();
         }else{
             throw new Exception("VIEW NOT FOUND - " . $view);
         }

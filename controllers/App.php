@@ -31,10 +31,6 @@ class App extends Controller {
         self::render();
     }
     
-    public static function test(){
-        self::renderText("yay");
-    }
-
 
 	public static function login(){
 		self::render(array(

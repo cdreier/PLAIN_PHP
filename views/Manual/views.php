@@ -53,3 +53,4 @@ public static function sideMenu(){
 }
 </pre>
 <p><?php echo __("views_renderPartial2") ?></p>
+<p><?php echo __("views_renderPartial3", Manual::linkTo("ajax")."#ajax_php") ?></p>
