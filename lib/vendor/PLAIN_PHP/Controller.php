@@ -172,7 +172,7 @@ class Controller {
 		exit($txt);
 	}
 	
-	public static function renderJson($data){
+	public static function renderJSON($data){
 		header("Content-Type: application/json");
 		exit(json_encode($data));
 	}

@@ -16,7 +16,7 @@ $_MESSAGES = array(
     "ajax_p4" => "With the execute function, the AjaxCall object sends the request to the controller-function, the callback function receives the response.",
     "ajax_p5" => "The load callback needs the minimum of one parameter, a jQuery object which receives the response",
     "ajax_p6" => "TIP: in AjaxCall.js you can define default values.",
-    "ajax_p7" => "TIP: create easy responses in your controller with <a href='$1'>renderText</a> and <a href='$2'>renderJson</a>",
+    "ajax_p7" => "TIP: create easy responses in your controller with <a href='$1'>renderText</a> and <a href='$2'>renderJSON</a>",
     
     
 	//TODO

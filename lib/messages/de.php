@@ -14,7 +14,7 @@ $_MESSAGES = array(
     "ajax_js3" => "In den Callbacks wird immer versucht die Antwort in ein JSON Object zu parsen, schlägt das fehl, kommt die Antwort als String an.",
     "ajax_js4" => "Die load Funktion erwartet mindestens einen Parameter, ein JQuery Object in das die Antwort geladen wird.",
     "ajax_js5" => "TIP: Im AjaxCall.js können default Werte eingetragen werden",
-    "ajax_js6" => "TIP: Im Controller kann mit <a href='$1'>renderText</a> und <a href='$2'>renderJson</a> geantwortet werden.",
+    "ajax_js6" => "TIP: Im Controller kann mit <a href='$1'>renderText</a> und <a href='$2'>renderJSON</a> geantwortet werden.",
     
     "ajax_phpTitle" => "PHP",
     "ajax_php1" => "TODO",
@@ -100,8 +100,8 @@ $_MESSAGES = array(
     "controller_renderTextTitle" => "renderText",
     "controller_renderText" => "renderText rendert nicht über die yield() Funktion, sondern setzt gibt den Text mit dem korrekten Content-Type Header (text/plain) aus, und beendet die Scriptverarbeitung.",
     
-    "controller_renderJsonTitle" => "renderJson",
-    "controller_renderJson" => "renderJson funktioniert ähnlich wie renderText, erwartet allerdings ein Array. Die Daten werden entsprechend json_encoded und der Content-Type Header wird auf application/json gesetzt. Die Scriptverarbeitung wird auch hier unterbrochen."
+    "controller_renderJsonTitle" => "renderJSON",
+    "controller_renderJson" => "renderJSON funktioniert ähnlich wie renderText, erwartet allerdings ein Array. Die Daten werden entsprechend json_encoded und der Content-Type Header wird auf application/json gesetzt. Die Scriptverarbeitung wird auch hier unterbrochen."
 
 )
 

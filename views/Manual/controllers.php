@@ -85,8 +85,8 @@ public static function debugMe(){
 <h3 id="controller_renderJson"><?php echo __("controller_renderJsonTitle") ?></h3>
 <p><?php echo __("controller_renderJson") ?></p>
 <pre class="prettyprint">
-public static function someAjaxResponse(){
-    self::renderJson(array(
+public static function someJSONResponse(){
+    self::renderJSON(array(
     	"ok" => true
     ));
 }
