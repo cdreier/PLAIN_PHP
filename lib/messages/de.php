@@ -22,7 +22,7 @@ $_MESSAGES = array(
     
     "routesTitle" => "Routing",
     "routes_urls" => "URLs und Links",
-    "routes_urls1" => "Das Routing macht sich die PHP PATH_INFO zu nutze, wobei hinter der index.php der entsprechende Controller und die Funktion zu sehen sind.",
+    "routes_urls1" => "Das Routing macht sich die PHP PATH_INFO zunutze, wobei hinter der index.php der entsprechende Controller und die Funktion zu sehen sind.",
     "routes_urls2" => "Die aktuelle Seite befände sich also im <i>Manual</i> Controller und hat die <i>routes</i> Funktion aufgerufen.",
     "routes_urls3" => "Um einen Link auf diese Seite zu erzeugen, ist eine Hilfefunktion vorgesehen. Anbei ein Auszug aus dem Seitenmenü",
     "routes_urls4" => "Näheres dazu ist bei den <a href='$1'>Controllern</a> zu finden.",
