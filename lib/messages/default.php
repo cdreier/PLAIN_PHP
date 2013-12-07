@@ -26,17 +26,16 @@ $_MESSAGES = array(
     "routes_urls" => "URLs ans links",
     "routes_urls1" => "The routing makes use of the PHP PATH_INFO, which can be seen behind the index.php of the appropriate controller and the function.",
     "routes_urls2" => "The current page should be in the <i>Manual</i> controller and calls the <i>routes</i> function.",
-    
-	//TODO
-    "routes_urls3" => "Um einen Link auf diese Seite zu erzeugen, ist eine Hilfefunktion vorgesehen. Anbei ein Auszug aus dem Seitenmenü",
-    "routes_urls4" => "Näheres dazu ist bei den <a href='$1'>Controllern</a> zu finden.",
+
+    "routes_urls3" => "To create a link to this page, a help function is provided. Below is an excerpt from the page menu:",
+    "routes_urls4" => "For details, please see the <a href='$1'>controllers</a>.",
     "routes_custom" => "Custom Routing",
-    "routes_custom1" => "Unschwer ist zu erkennen, dass die URL zur aktuellen Seite nicht mit der erwarteten Route übereinstimmt:",
-    "routes_custom2" => "Es besteht die Möglichkeit in der routes.php in lib/config/ für jede Controllerfunktion eine eigene Route anzugeben.",
-    "routes_custom3" => "Es können auch komplexere Routen angegeben werden, in die Werte eingefügt werden können. Diese Werte werden in gechweiften Klammern in den Routes angegeben, der Name hat dabei keine Bedeutung und soll nur beim lesen der Routen helfen.",
-    "routes_custom4" => "Wird nun in eine linkTo Funktion ein zweiter Parameter übergeben, wird dieser an die entsprechende Stelle in der Route gesetzt. (Siehe Controller)",
-    "routes_custom5" => "In der linkTo oder redirectTo Funktion ändert sich dadurch nichts, sobald eine Route eingertagen ist, wird der erzeugte Link sich auch dementsprechend ändern.",
+    "routes_custom1" => "It is not difficult to appreciate that the URL of the current page does not match the expected route:",
+    "routes_custom2" => "It is possible to specify your own route for each controller function in lib/config/routes.php.",
+    "routes_custom3" => "You can specify more complex routes with dynamic values. These values ​​are given in brackets, the name has no meaning and it will only help you read the routes (\"syntactic sugar\").",
+    "routes_custom4" => "You can now pass a second parameter to a linkTo function, this is set to the appropriate location in the route. (See Controller)",
 	
+	//TODO
 	"controllerTitle" => "Controllers",
 	"controller_p1" => "Jeder Controller der mit dem Framework benutzt werden soll (d.h. rendern, Links zu Funktionen etc) muss von der Controller.php Klasse erben:",
 	"controller_p2" => "Jeder Controller erbt dadurch eine ganze Reihe nützlicher Funktionen",

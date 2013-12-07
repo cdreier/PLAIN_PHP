@@ -33,5 +33,3 @@ $_ROUTES = array(
 );
 </pre>
 <p><?php echo __("routes_custom4") ?></p>
-
-<p><?php echo __("routes_custom5") ?></p>

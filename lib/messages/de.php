@@ -31,8 +31,7 @@ $_MESSAGES = array(
     "routes_custom2" => "Es besteht die Möglichkeit in der routes.php in lib/config/ für jede Controllerfunktion eine eigene Route anzugeben.",
     "routes_custom3" => "Es können auch komplexere Routen angegeben werden, in die Werte eingefügt werden können. Diese Werte werden in gechweiften Klammern in den Routes angegeben, der Name hat dabei keine Bedeutung und soll nur beim lesen der Routen helfen.",
     "routes_custom4" => "Wird nun in eine linkTo Funktion ein zweiter Parameter übergeben, wird dieser an die entsprechende Stelle in der Route gesetzt. (Siehe Controller)",
-    "routes_custom5" => "In der linkTo oder redirectTo Funktion ändert sich dadurch nichts, sobald eine Route eingertagen ist, wird der erzeugte Link sich auch dementsprechend ändern.",
-	
+    	
 	"controllerTitle" => "Controllers",
 	"controller_p1" => "Jeder Controller der mit dem Framework benutzt werden soll (d.h. rendern, Links zu Funktionen etc) muss von der Controller.php Klasse erben:",
 	"controller_p2" => "Jeder Controller erbt dadurch eine ganze Reihe nützlicher Funktionen",
