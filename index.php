@@ -43,7 +43,7 @@ if(isset($_SERVER['PATH_INFO'])){
 	<body >
 		
 		<div class="container">
-			<div class="col-md-3" >
+			<div class="col-md-3 col-sm-3" >
 		    <?php 
 		    if(Manual::isActive()){
 	            Manual::sideMenu();
@@ -54,7 +54,7 @@ if(isset($_SERVER['PATH_INFO'])){
 		    
 		    
 		    
-		    <div id="content">
+		    <div id="content" class="col-md-9 col-sm-9">
 	        <?php
 	        //check if render method is called and insert view
 	        if(Controller::$shouldRender){
