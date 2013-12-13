@@ -1,6 +1,6 @@
 PLAIN_PHP
 =========
 
-PLAIN_PHP is a really simple and fast MVC webframework
+please, not another php framework...
 
 documentation: http://plain-php.drailing.net/

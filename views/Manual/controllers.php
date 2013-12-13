@@ -78,6 +78,9 @@ public static function login(){
 <pre class="prettyprint">
 public static function debugMe(){
     self::renderText("plain text here");
+    
+    //unreachable code
+    $var = "im completely useless";
 }
 </pre>
 
@@ -107,6 +110,7 @@ public static function always(){
     self::addStylesheet("sunburst-theme.css");
 }
 </pre>
+<p><?php echo __("controller_always2") ?></p>
 
 
 <br/>
@@ -146,18 +150,19 @@ if(Manual::isActive("controllers")) echo "style='color: blue;'";
 <p><?php echo __("controller_keepGet1") ?></p>
 <p><?php echo __("controller_keepGet2") ?></p>
 <pre class="prettyprint">
-public static function perhapsYouNeverUseThisFeature(){
-    //store the new created object id in the temp session
-    self::keep("aNewPrimaryKey", 33);
+public static function auth(){
+    //authorization failed, store error in temp cookie
+    self::keep("error", "failed to login for some reason");
 }
 
 
-public static function soYouUsedItThenGetItBack(){
-    //returns 33
-    self::get("aNewPrimaryKey");
-    
-    //returns null, you already got the value back
-    self::get("aNewPrimaryKey");
+public static function login(){
+    //if nothing is set, get() returns false 
+    //so every error disappers after a reload 
+    //(see login example in the default download)
+    self::render(array(
+        "error" => self::get("error")
+    ));
 }
 </pre>
 
@@ -166,6 +171,7 @@ public static function soYouUsedItThenGetItBack(){
 <h3 id="renderContent"><?php echo __("controller_renderContent"); ?></h3>
 <p><?php echo __("controller_addSetRenderContent1") ?></p>
 <p><?php echo __("controller_addSetRenderContent2") ?></p>
+<p><?php echo __("controller_addSetRenderContent3") ?></p>
 <pre class="prettyprint">
     // App::index 
     App::addRenderContent("subtitle", "PLAIN_PHP is really simple, fast and i enjoy coding with it");
@@ -182,6 +188,6 @@ public static function soYouUsedItThenGetItBack(){
     //in Manual controller 
     self::setTitle("PLAIN_PHP - Manual");
     
-    //in the index.php file
+    //in the dafault index.php file
     &lt;title&gt;&lt;?php echo Controller::getTitle(); ?&gt;&lt;/title&gt;
 </pre>

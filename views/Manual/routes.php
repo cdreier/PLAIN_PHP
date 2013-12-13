@@ -1,6 +1,6 @@
 <h1><?php echo __("routesTitle") ?></h1>
 
-<h2></h2>
+<h3 id="routes">Routes</h3>
 <p><?php echo __("routes_urls1") ?></p>
 <pre class="prettyprint ">
 // http://localhost/PLAIN_PHP/index.php/Manual/routes
@@ -13,7 +13,7 @@
 <p><?php echo __("routes_urls4", Manual::linkTo("controllers")) ?></p>
 
 
-<h2><?php echo __("routes_custom") ?></h2>
+<h3 id="custom"><?php echo __("routes_custom") ?></h3>
 <p><?php echo __("routes_custom1") ?></p>
 <pre class="prettyprint ">
 // http://localhost/PLAIN_PHP/index.php/CUSTOMROUTING
