@@ -4,7 +4,7 @@ $_MESSAGES = array(
 	
 	"title" => "PLAIN_PHP",
 	
-	"manualTitle" => "Manual",
+	"manualTitle" => "Home",
     "manual_p1" => "PLAIN_PHP is a lightweight, easy and fast to learn MVC - framework.",
     "manual_p2" => "The Target is to give an easy and flexible way to develop and structure your web-project, with having fun on coding.",
     "manual_p3" => "To get started, just go to the conf.php and edit the PATH and LOCAL_PATH, with PATH is the URL to the webserver and LOCAL_PATH your path to the localhost. With the AUTOLOAD_FOLDER array, you can add additional folders to the autoloader (classname = filename)",

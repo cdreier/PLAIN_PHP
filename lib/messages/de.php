@@ -2,9 +2,14 @@
 
 $_MESSAGES = array(
 
-    "manualTitle" => "Manual",
-    "manual_p1" => "das PLAIN_PHP Framework ist ein schmales und leicht zu erlernendes MVC-Framework.",
-    "manual_p2" => "Ziel ist, einen einfachen und flexiblen Weg bereitzustellen, der etwas Spaß beim Erstellen und Strukturieren von Webprojekten mitbringt.",
+    "manualTitle" => "Home",
+    "manual_start" => "\"wie unnötig, noch ein MVC Framework... in PHP. \" ",
+    "manual_p1" => "Mir ist vollkommen bewusst, dass es in der großen weiten Welt schon genug PHP Web-Frameworks gibt, die auch durchaus gut benutzbar sind und es liegt mir fern irgendeine Daseinsberechtigung in Frage zu stellen oder in den direkten Vergleich zu treten und zu Urteilen.
+     Beim Start von neuen Projekten war ich immer mal wieder auf der Suche nach kleinen, transparenten und flexiblen Frameworks, allerdings hatte mich keines so zufriedengestellt.",
+    "manual_p2" => "Ziel war es also etwas zu bauen, was ohne viel Konfiguration (\"convention over configuration\") und zusätzlichen Bibliotheken auskommt, dabei aber alle Grundfunktionen bereitstellt, alles in transparentem PLAIN PHP.",
+    
+    "manual_features" => "PLAIN_PHP ist in einer Model-View-Controller Architektur aufgebaut und könnte eine Mischung aus dem wunderbaren Playframework (Java) und Rails, nur für PHP sein.",
+    
     "manual_p3" => "Um sofort loszulegen muss nur in der conf.php der PATH und LOCAL_PATH angepasst werden und es kann losgehen, wobei PATH die URL zum Server darstellt und LOCAL_PATH den Pfad zum localhost. Über das AUTOLOAD_FOLDER Array, können zusätzliche Ordner dem Autoloader zugefügt werden (Klassenname = Dateiname)",
         
     "ajaxTitle" => "AJAX",
