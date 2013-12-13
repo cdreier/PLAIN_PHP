@@ -11,4 +11,11 @@
         
         <li ><a href="<?php echo App::linkTo("login"); ?>"><?php echo __("DEMO login") ?></a></li>
     </ul>
+    
+    <ul class="nav nav-tabs nav-justified">
+        <li><a href="<?php echo App::linkTo("setLang", "en") ?>"><img src="<?php echo App::img("en.png") ?>" /></a></a></li>
+        <li><a href="<?php echo App::linkTo("setLang", "de") ?>"><img src="<?php echo App::img("de.png") ?>" /></a></li>
+    </ul>
+    
+    
 </div>

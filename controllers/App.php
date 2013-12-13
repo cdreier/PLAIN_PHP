@@ -64,7 +64,15 @@ class App extends Controller {
 
 
 
-
+    public static function img($img, $defaultPath = "") {
+        return App::PATH() . "lib/img/" . $defaultPath . "/" . $img;
+    }
+    
+    public static function setLang($lang){
+        I18n::setLanguage($lang);
+        Manual::redirectTo();
+    }
+    
 
     
 }
