@@ -36,6 +36,11 @@ class I18n {
 		}
 	}
     
+    /**
+     * set the language manually
+     * 
+     * @param string $lang  the language code (ISO 639-2 language code) 
+     */
     public static function setLanguage($lang){
         self::$_LANGUAGE = $lang;
         $_SESSION[self::$_SESSION_NAME] = $lang;
@@ -81,7 +86,13 @@ class I18n {
 	}
 }
 
-
+/**
+ * searches the message for given key in the current active language, with fallback to default language
+ * 
+ * @param string $key   the key in your message files
+ * 
+ * @return string the message   if nothing is found, the key is returned 
+ */
 function __($key){
     $args = func_get_args();
 	return I18n::getMessage($key, array_slice($args, 1));

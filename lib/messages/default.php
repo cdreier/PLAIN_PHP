@@ -101,6 +101,7 @@ $_MESSAGES = array(
     "views_renderPartial" => "renderPartial",
     "views_renderPartial1" => "The renderPartial function is used basically in the same way as the render function, with the difference that the view is included in the exact point where the function was called. For example, again the side menu:",
     "views_renderPartial2" => "Again, data can be transferred via an associative array.",
+    "views_renderPartial3" => "If you want to load a partial view via AJAX, the second argument (\$ajax) should be set to true, to output the plain html and cancel the script execution. (-> <a href='$1'>ajax - PHP</a>)",
     
     "i18nTitle" => "Internationalization",
     "i18n_p1" => "All languages ​​are managed in lib/messages/ , with the filename from the first part of the current language-codes (the \"ISO 639-2 language code\": e.g. de.php, instead of de_DE), except for the default language, which is always used as fallback.",

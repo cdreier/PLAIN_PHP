@@ -148,7 +148,6 @@ if(Manual::isActive("controllers")) echo "style='color: blue;'";
 <br/>
 <h3 id="keepGet"><?php echo __("controller_keepGet") ?></h3>
 <p><?php echo __("controller_keepGet1") ?></p>
-<p><?php echo __("controller_keepGet2") ?></p>
 <pre class="prettyprint">
 public static function auth(){
     //authorization failed, store error in temp cookie

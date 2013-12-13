@@ -55,31 +55,76 @@ class Controller {
     public static $shouldRender = false;
     public static $alwaysInvoked = false;
     
-    
+    /**
+     * add a javascript file to your current render call
+     * 
+     * @link http://plain-php.drailing.net/index.php/Manual/controllers#addScript
+     * @param string $filename  
+     * @param string $path      default path is lib/js/ , overwrite to load from diffrent location
+     * 
+     */
     public static function addScript($filename, $path = "lib/js/"){
         self::$scripts[] = self::PATH() . $path . $filename;
     }
     
+    /**
+     * add a script from external url
+     * 
+     * @param String $url
+     */
     public static function addExternalScript($url){
         self::$scripts[] = $url;
     }
 	
+    /**
+     * add key - value based content to you render call, see setTitle for conrete usage
+     * 
+     * @link http://plain-php.drailing.net/index.php/Manual/controllers#renderContent
+     * @param string $key   
+     * @param string $value
+     */
 	public static function addRenderContent($key, $value){
         self::$renderContent[$key] = $value;
     }
     
+    /**
+     * get the render content for given $key, after set with addRenderContent($key, $value)
+     * 
+     * @link http://plain-php.drailing.net/index.php/Manual/controllers#renderContent
+     * @param string $key
+     */
     public static function getRenderContent($key){
         return ( isset(self::$renderContent[$key]) ) ? self::$renderContent[$key] : "";
     }
     
+    /**
+     * set the title in your <title> - tag in the index file
+     * this is a shortcut for addRenderContent('title', $title)
+     * 
+     * @link http://plain-php.drailing.net/index.php/Manual/controllers#setTitleTitle
+     * @param string $title 
+     */
     public static function setTitle($title){
         self::$renderContent["title"] = $title;
     }
     
+    /**
+     * get the title, previously set with setTitle
+     * 
+     * @link http://plain-php.drailing.net/index.php/Manual/controllers#setTitleTitle
+     */
     public static function getTitle(){
         return self::getRenderContent("title");
     }
     
+    /**
+     * add a css file to your current render call
+     * 
+     * @link http://plain-php.drailing.net/index.php/Manual/controllers#addStylesheet
+     * @param string $filename  
+     * @param string $path      default path is lib/css/ , overwrite to load from diffrent location
+     * 
+     */
     public static function addStylesheet($filename, $path = "lib/css/"){
         self::$stylesheets[] = self::PATH() . $path . $filename;
     }
@@ -110,7 +155,15 @@ class Controller {
 		}
     }
 	
-    
+    /**
+     * checks if your calling controller is aktive in the current render call
+     * 
+     * @link http://plain-php.drailing.net/index.php/Manual/controllers#isActive
+     * @param string $view          optional, if set, checks also if specific view is called
+     * @param array $routeParams    optional, if set, checks if specific view with custom route is called
+     * 
+     * @return boolean true if your conditions are all fulfilled
+     */
     public static function isActive($view = false, $routeParams = false){
     	
         $callee = $checkAgainst = get_called_class();
@@ -138,15 +191,31 @@ class Controller {
         return false;
     }
     
+    /**
+     * only used once in the root index.php file
+     */
     public static function yield(){
         extract(self::$renderArgs["args"]);
         include(self::$renderArgs["view"]);
     }
     
+    /**
+     * to implement from subclasses, if possible called before the execute() function, but at the latest before every render() call
+     * 
+     * @link http://plain-php.drailing.net/index.php/Manual/controllers#always
+     * 
+     */
     protected static function always(){
         //to implement from subclasses, called on every render() call
     }
 	
+    /**
+     * renders the corresponding view to your controller function
+     * e.g. MyController::showMe renders /views/MyController/showMe.php
+     * 
+     * @link http://plain-php.drailing.net/index.php/Manual/controllers#render
+     * @param array $args   associative array with data for your view, the keys are the name of the variable in your view
+     */
     public static function render($args = array()){
         $trace = debug_backtrace();
         $trace = $trace[1];
@@ -167,16 +236,40 @@ class Controller {
         }
     }
 	
+    /**
+     * prints the text with the correct Content-Type header (text / plain) 
+     * scipt processing is canceled after renderText
+     * 
+     * @link http://plain-php.drailing.net/index.php/Manual/controllers#controller_renderText
+     * @param string $txt
+     */
 	public static function renderText($txt){
 		header("Content-Type: text/plain");
 		exit($txt);
 	}
 	
+    /**
+     * prints the json_encoded data with the correct Content-Type header (application / json) 
+     * scipt processing is canceled after renderJSON
+     * 
+     * @link http://plain-php.drailing.net/index.php/Manual/controllers#controller_renderJson
+     * @param array $data
+     */
 	public static function renderJSON($data){
 		header("Content-Type: application/json");
 		exit(json_encode($data));
 	}
     
+    /**
+     * includes the view at the place the function is called
+     * the view is found by the known naming convention
+     * e.g. MyController::showMe includes /views/MyController/showMe.php
+     * 
+     * @link http://plain-php.drailing.net/index.php/Manual/views#renderPartial
+     * @param array $args   optional, associative array with data for your view, the keys are the name of the variable in your view
+     * @param boolean $ajax optional, default = false, set to true if you want to ouput the view via AJAX, if so, script processing is canceled 
+     * 
+     */
     public static function renderPartial($args = array(), $ajax = false){
         $trace = debug_backtrace();
         $trace = $trace[1];
@@ -190,6 +283,9 @@ class Controller {
         }
     }
     
+    /**
+     * only called once, at the top of the root index.php file, to start the framework and route processing
+     */
     public static function execute( $pathInfo ){
         $controllerInfo = Routing::parsePathInfo($pathInfo);
     	
@@ -216,6 +312,10 @@ class Controller {
     /**
      * starts a json store in the session
      * this value is kept as long as you get it with Controller::get 
+     * 
+     * @link http://plain-php.drailing.net/index.php/Manual/controllers#keepGet
+     * @param string $key
+     * @param string $value
      */
     public static function keep($key, $value){
         if(!isset($_SESSION["keep"])){
@@ -229,6 +329,9 @@ class Controller {
     
     /**
      * return the value for given key, stored with Controller::keep 
+     * 
+     * @link http://plain-php.drailing.net/index.php/Manual/controllers#keepGet
+     * @param string $key
      */
     public static function get($key){
         if(!isset($_SESSION["keep"])){
@@ -264,6 +367,15 @@ class Controller {
 		return $route;
 	}
 	
+    /**
+     * generates absolute framework link to controller function
+     * 
+     * @link http://plain-php.drailing.net/index.php/Manual/controllers#linkTo
+     * @param string $functionName  default = "index"
+     * @param mixed $param          optional, if there is a custom route, this can be an array or a list of parameters (see documentation)
+     * 
+     * @return string $link         the generated, absolute link to the requested route
+     */
     public static function linkTo($functionName = "index", $param = false){
     	if($param !== false){
 			if(!is_array($param)){
@@ -275,6 +387,14 @@ class Controller {
         return self::PATH()."index.php".$route;
     }
 	
+    /**
+     * starts a header redirect to the requested controller function and cancels the script processing  
+     *  
+     * @link http://plain-php.drailing.net/index.php/Manual/controllers#redirTo
+     * @param string $functionName  default = "index"
+     * @param mixed $param          optional, if there is a custom route, this can be an array or a list of parameters (see documentation)
+    
+     */
     public static function redirectTo($functionName = "index", $param = false){
     	if($param !== false){
 			if(!is_array($param)){

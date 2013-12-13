@@ -33,6 +33,9 @@ class App extends Controller {
     
 
 	public static function login(){
+	    
+        self::addScript($filename);
+        
 		self::render(array(
 			"error" => self::get("error")
 		));
