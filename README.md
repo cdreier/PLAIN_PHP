@@ -1,6 +1,4 @@
 PLAIN_PHP
 =========
 
-please, not another php framework...
-
-documentation: http://plain-php.drailing.net/
+please find the full documentation at: http://plain-php.drailing.net/

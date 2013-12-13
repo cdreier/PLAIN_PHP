@@ -5,7 +5,6 @@ $_MESSAGES = array(
 	"title" => "PLAIN_PHP",
 	
     "manualTitle" => "Home",
-    "manual_start" => "\"please, not another php framework nobody needs... \" ",
     "manual_start2" => "here is the <a href='$1'>github link</a>",
     "manual_p1" => "I am fully aware that there are already enough PHP web frameworks out there, which are also quite good to use and I am far to question their authorization be there or to compare directly or jugde about anything.
     At the start of new projects I was from time to time in search of small, transparent and flexible framework, but I have not found what I'm looking for.",

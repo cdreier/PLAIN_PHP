@@ -1,7 +1,6 @@
 <h1><?php echo __("manualTitle") ?></h1>
 
 <h3 id="hai">Oh, Hai...</h3>
-<p><?php echo __("manual_start") ?></p> 
 <p><?php echo __("manual_start2", "https://github.com/cdreier/PLAIN_PHP") ?></p> 
 
 <h3 id="motication">Motivation</h3>
