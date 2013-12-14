@@ -2,6 +2,7 @@
 
 <h3 id="hai">Oh, Hai...</h3>
 <p><?php echo __("manual_start2", "https://github.com/cdreier/PLAIN_PHP") ?></p> 
+<br/>
 
 <h3 id="motication">Motivation</h3>
 <p><?php echo __("manual_p1") ?></p> 

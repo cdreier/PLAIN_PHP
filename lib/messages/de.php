@@ -3,7 +3,7 @@
 $_MESSAGES = array(
 
     "manualTitle" => "Home",
-    "manual_start2" => "Hier der <a href='$1'>Github Link</a>",
+    "manual_start2" => "Wenn du nur auf der Suche nach dem Code oder dem Download bist, hier der <a href='$1'>Github Link</a>",
     "manual_p1" => "Mir ist vollkommen bewusst, dass es in der großen weiten Welt schon genug PHP Web-Frameworks gibt, die auch durchaus gut benutzbar sind und es liegt mir fern irgendeine Daseinsberechtigung in Frage zu stellen oder in den direkten Vergleich zu treten und zu Urteilen.
      Beim Start von neuen Projekten war ich immer mal wieder auf der Suche nach kleinen, transparenten und flexiblen Frameworks, allerdings habe ich bisher nicht das gefunden was ich suche.",
     "manual_p2" => "Ziel war es also etwas zu bauen, was ohne viel Konfiguration (\"convention over configuration\") und zusätzlichen Bibliotheken auskommt, dabei aber alle Grundfunktionen bereitstellt, alles in transparentem PLAIN PHP.",
