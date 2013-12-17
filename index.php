@@ -43,13 +43,13 @@ if(isset($_SERVER['PATH_INFO'])){
 	<body >
 		
 		<div class="container">
-			<div class="col-md-3 col-sm-3" >
+			<nav class="col-md-3 col-sm-3" >
 		    <?php 
 		    if(Manual::isActive()){
 	            Manual::sideMenu();
 	        }
 		     ?>
-			</div>
+			</nav>
 		    
 		    
 		    

@@ -7,9 +7,8 @@ $_MESSAGES = array(
 	
     "manualTitle" => "Home",
     "manual_start2" => "if you are just looking for the code or the download, here is the <a href='$1'>github link</a>",
-    "manual_p1" => "I am fully aware that there are already enough PHP web frameworks out there, which are also quite good to use and I am far to question their authorization be there or to compare directly or jugde about anything.
-    At the start of new projects I was from time to time in search of small, transparent and flexible framework, but I have not found what I'm looking for.",
-    "manual_p2" => "So my goal was to build something (\"convention over configuration \") that does not require additional libraries and much configuration, but it provides all the basic functionality, in ransparent PLAIN PHP",
+    "manual_p1" => "Of course, there is one or the other PHP framework, however, im missing <strong>a lightweight, fast, flexible, beginner-friendly and transparent MVC framework</strong>.",
+    "manual_p2" => "Here PLAIN_PHP comes into play, without much configuration (\"convention over configuration \") but with all the basic functions you need in life. And everything in transparent PLAIN PHP.",
     
     "manual_features" => "PLAIN_PHP is constructed in a Model-View-Controller architecture and could be a mixture of the wonderful PlayFramework (Java) and rails, just for PHP and with only 500 lines of code.",
     
