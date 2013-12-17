@@ -2,15 +2,29 @@
 
 $_MESSAGES = array(
 
+    "other_example" => "Ein anderes Beispiel:",
+
     "manualTitle" => "Home",
     "manual_start2" => "Wenn du nur auf der Suche nach dem Code oder dem Download bist, hier der <a href='$1'>Github Link</a>",
-    "manual_p1" => "Mir ist vollkommen bewusst, dass es in der großen weiten Welt schon genug PHP Web-Frameworks gibt, die auch durchaus gut benutzbar sind und es liegt mir fern irgendeine Daseinsberechtigung in Frage zu stellen oder in den direkten Vergleich zu treten und zu Urteilen.
-     Beim Start von neuen Projekten war ich immer mal wieder auf der Suche nach kleinen, transparenten und flexiblen Frameworks, allerdings habe ich bisher nicht das gefunden was ich suche.",
-    "manual_p2" => "Ziel war es also etwas zu bauen, was ohne viel Konfiguration (\"convention over configuration\") und zusätzlichen Bibliotheken auskommt, dabei aber alle Grundfunktionen bereitstellt, alles in transparentem PLAIN PHP.",
+    "manual_p1" => "Natürlich gibts es schon das ein oder andere PHP Framework, vermisst habe ich bisher allerdings <strong>ein leichtes, schnelles, flexibles, einsteigerfreundliches und transparentes MVC Framework</strong>.",
+    "manual_p2" => "Hier kommt PLAIN_PHP ins Spiel, ohne viel Konfiguration (\"convention over configuration\") mit allen Grundfunktionen ausgestattet die man im Leben braucht, und alles in transparentem PLAIN PHP.",
     
     "manual_features" => "PLAIN_PHP ist in einer Model-View-Controller Architektur aufgebaut und könnte eine Mischung aus dem wunderbaren Playframework (Java) und Rails, nur für PHP und mit 500 Zeilen Code sein.",
     
     "manual_p3" => "Um sofort loszulegen muss nur in der conf.php der PATH und LOCAL_PATH angepasst werden und es kann losgehen, wobei PATH die URL zum Server darstellt und LOCAL_PATH den Pfad zum localhost. Über das AUTOLOAD_FOLDER Array, können zusätzliche Ordner dem Autoloader zugefügt werden (Klassenname = Dateiname)",
+
+
+
+    "coreConcepts_static_title" => "Alles static",
+    "coreConcepts_static" => "Alle Controller-Funktionen sind statisch, d.h. es ist keinerlei Instanziierung notwendig und es kann zu jeder Zeit, controllerübergreifend zugegriffen werden.",
+    
+    "coreConcepts_conventions_title" => "Namenskonventionen",
+    "coreConcepts_conventions" => "Für jeden der schoneinmal mit einem MVC Framework gearbeitet hat, sollte das nichts Neues sein: die Verknüpfung zwischen Controller und View geschieht über die entsprechend gleiche Benennung der Ordner und Dateien zu Controller und Funktion die aufgerufen wurde.",
+    
+    "coreConcepts_plain_title" => "Plain PHP",
+    "coreConcepts_plain" => "Das Framework besteht aus ca. 500 Zeilen reinem PHP Code, zudem werden keine PHP Annotationen o.ä. verwendet, sondern nur Sprachkonstrukte die aus dem nativen PHP bekannt sind.",
+    
+    
     
     "ajaxTitle" => "AJAX",
     "ajax_jsTitle" => "Javascript",

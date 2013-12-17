@@ -12,6 +12,10 @@ class Manual extends Controller {
     public static function index(){
         self::render();
     }
+    
+    public static function coreconcepts(){
+        self::render();
+    }
 	
     public static function folders(){
         self::render();

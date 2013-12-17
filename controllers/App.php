@@ -70,7 +70,8 @@ class App extends Controller {
     
     public static function setLang($lang){
         I18n::setLanguage($lang);
-        Manual::redirectTo();
+        header( "Location: " . $_SERVER["HTTP_REFERER"] ) ;
+        exit();
     }
     
 

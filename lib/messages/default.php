@@ -3,16 +3,29 @@
 $_MESSAGES = array(
 	
 	"title" => "PLAIN_PHP",
+	"other_example" => "other example:",
 	
     "manualTitle" => "Home",
     "manual_start2" => "if you are just looking for the code or the download, here is the <a href='$1'>github link</a>",
-    "manual_p1" => "I am fully aware that there are already enough PHP web frameworks out there, which are also quite good to use and I am far to question their authorization be there or to compare directly or jugde about anything.
-    At the start of new projects I was from time to time in search of small, transparent and flexible framework, but I have not found what I'm looking for.",
-    "manual_p2" => "So my goal was to build something (\"convention over configuration \") that does not require additional libraries and much configuration, but it provides all the basic functionality, in ransparent PLAIN PHP",
+    "manual_p1" => "Of course, there is one or the other PHP framework, however, im missing <strong>a lightweight, fast, flexible, beginner-friendly and transparent MVC framework</strong>.",
+    "manual_p2" => "Here PLAIN_PHP comes into play, without much configuration (\"convention over configuration \") but with all the basic functions you need in life. And everything in transparent PLAIN PHP.",
     
     "manual_features" => "PLAIN_PHP is constructed in a Model-View-Controller architecture and could be a mixture of the wonderful PlayFramework (Java) and rails, just for PHP and with only 500 lines of code.",
     
     "manual_p3" => "To get started, just go to the conf.php and edit the PATH and LOCAL_PATH, with PATH is the URL to the webserver and LOCAL_PATH your path to the localhost. With the AUTOLOAD_FOLDER array, you can add additional folders to the autoloader (classname = filename)",
+    
+    "coreConcepts_title" => "Core Concepts",
+    
+    "coreConcepts_static_title" => "All static",
+    "coreConcepts_static" => "All controller functions are static, you do not need any instantiation at any time. Also you can access your controllers across each other.",
+    
+    "coreConcepts_conventions_title" => "Naming conventions",
+    "coreConcepts_conventions" => "For any who has ever worked with an MVC framework that should be nothing new: the link between controller and view is done by correctly naming the folders and files to the controller and the calling function.",
+    
+    "coreConcepts_plain_title" => "Plain PHP",
+    "coreConcepts_plain" => "The framework consists of approximately 500 lines of pure PHP code, nothing like the popular PHP annotations or something else is used, but only the native PHP language constructs.",
+    
+    
     
     "ajaxTitle" => "AJAX",
     "ajax_jsTitle" => "Javascript",
