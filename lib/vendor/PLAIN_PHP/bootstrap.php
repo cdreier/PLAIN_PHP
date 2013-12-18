@@ -23,56 +23,34 @@
  *  THE SOFTWARE.
  * 
  */ 
-class App extends Controller {
-	
-	const SESSION_NAME = "PLAIN_PHP";
 
-    public static function index() {
-        self::render();
-    }
+//loading configs
+require_once 'lib/config/routes.php';
+require_once 'lib/config/db.php';
+require_once 'lib/config/conf.php';
+
+//loading orm
+if($_DB["db_active"]){
+    require_once 'lib/vendor/redbeanphp/rb.php';
     
-
-	public static function login(){
-	    
-		self::render(array(
-			"error" => self::get("error")
-		));
-	}
-	
-	public static function logout(){
-		unset($_SESSION[self::SESSION_NAME]);
-		session_destroy();
-		self::redirectTo("login");
-	}
-
-	public static function auth(){
-		if($_POST["username"] == "test" && $_POST["password"] == "test"){
-			$_SESSION[self::SESSION_NAME] = "test";
-			ProtectedController::redirectTo("index");
-		}else{
-			self::keep("error", "Login failed");
-			self::redirectTo("login");
-		}
-	}
-	
-	public static function checkLogin(){
-		global $_CONFIG;
-		return isset($_SESSION[self::SESSION_NAME]);
-	}
-
-
-
-    public static function img($img, $defaultPath = "") {
-        return App::PATH() . "lib/img/" . $defaultPath . "/" . $img;
-    }
-    
-    public static function setLang($lang){
-        I18n::setLanguage($lang);
-        header( "Location: " . $_SERVER["HTTP_REFERER"] ) ;
-        exit();
-    }
-    
-
-    
+    R::setup( 'mysql:host='.$_DB["db_host"].';'.
+            'dbname='.$_DB["db_name"], $_DB["db_user"], $_DB["db_password"] );
+            
+    R::freeze( $_DB["db_freeze"] );
 }
-?>
+
+//autoload other controllers and framework files
+spl_autoload_register("PLAIN_PHP_autoload");
+function PLAIN_PHP_autoload($className){
+    global $_CONFIG;
+    foreach ($_CONFIG["AUTOLOAD_FOLDERS"] as $folder) {
+        $file = $folder . $className . ".php";
+        if(file_exists($file)){
+            require_once $file;
+            return;
+        }
+    }
+}
+
+//init localisation
+I18n::init();
