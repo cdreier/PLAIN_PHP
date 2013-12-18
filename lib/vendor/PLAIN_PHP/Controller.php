@@ -24,26 +24,6 @@
  * 
  */ 
 
-//loading configs
-require_once 'lib/config/routes.php';
-require_once 'lib/config/db.php';
-require_once 'lib/config/conf.php';
-
-//loading orm
-require_once 'lib/vendor/redbeanphp/rb.php';
-if($_DB["db_active"]){
-	R::setup( 'mysql:host='.$_DB["db_host"].';'.
-	        'dbname='.$_DB["db_name"], $_DB["db_user"], $_DB["db_password"] );
-			
-	R::freeze( $_DB["db_freeze"] );
-}
-
-//autoload other controllers and framework files
-spl_autoload_register(array('Controller', 'autoload'));
-
-//init localisation
-I18n::init();
- 
 class Controller {
     
     private static $scripts = array();
@@ -144,17 +124,6 @@ class Controller {
         }
     }
     
-    public static function autoload($className){
-    	global $_CONFIG;
-		foreach ($_CONFIG["AUTOLOAD_FOLDERS"] as $folder) {
-			$file = $folder . $className . ".php";
-			if(file_exists($file)){
-	            require_once $file;
-				return;
-	        }
-		}
-    }
-	
     /**
      * checks if your calling controller is aktive in the current render call
      * 

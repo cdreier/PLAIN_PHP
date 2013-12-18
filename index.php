@@ -1,8 +1,8 @@
 <?php 
 session_start();
 
-//loading base controller
-require_once "lib/vendor/PLAIN_PHP/Controller.php";
+//loading PLAIN_PHP
+require_once "lib/vendor/PLAIN_PHP/bootstrap.php";
 
 //check if path is set and execute controller method
 if(isset($_SERVER['PATH_INFO'])){
