@@ -31,7 +31,7 @@ require_once 'lib/config/conf.php';
 
 //loading orm
 if($_DB["db_active"]){
-    require_once 'lib/vendor/redbeanphp/rb.php';
+    require_once 'lib/vendor/redbeanphp/rb.phar';
     
     R::setup( 'mysql:host='.$_DB["db_host"].';'.
             'dbname='.$_DB["db_name"], $_DB["db_user"], $_DB["db_password"] );

@@ -58,7 +58,7 @@ if(isset($_SERVER['PATH_INFO'])){
 	        <?php
 	        //check if render method is called and insert view
 	        if(Controller::$shouldRender){
-	            Controller::yield();
+	            Controller::_yield();
 	        }
 	         ?>
 	         </div>
