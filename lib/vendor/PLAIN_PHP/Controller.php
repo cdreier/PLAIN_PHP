@@ -163,7 +163,7 @@ class Controller {
     /**
      * only used once in the root index.php file
      */
-    public static function yield(){
+    public static function _yield(){
         extract(self::$renderArgs["args"]);
         include(self::$renderArgs["view"]);
     }
