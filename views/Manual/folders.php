@@ -20,8 +20,12 @@
                 	<li>
                 		config
                 		<ul>
+                		    <li>db
+                		        <ul>
+                		            <li>localhost</li>
+                		        </ul>
+                		    </li>
                 			<li>conf.php</li>
-                			<li>db.php</li>
                 			<li>routes.php</li>
                 		</ul>
                 	</li>

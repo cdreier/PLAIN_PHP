@@ -12,7 +12,7 @@ $_MESSAGES = array(
     
     "manual_features" => "PLAIN_PHP is constructed in a Model-View-Controller architecture and could be a mixture of the wonderful PlayFramework (Java) and rails, just for PHP and with only 500 lines of code.",
     
-    "manual_p3" => "To get started, just go to the conf.php and edit the PATH and LOCAL_PATH, with PATH is the URL to the webserver and LOCAL_PATH your path to the localhost. With the AUTOLOAD_FOLDER array, you can add additional folders to the autoloader (classname = filename)",
+    "manual_p3" => "To get started no additional config is needed, just unzip on your webserver and start.",
     
     "coreConcepts_title" => "Core Concepts",
     
@@ -121,10 +121,11 @@ $_MESSAGES = array(
     "i18n_p3" => "In order to output a string, the __() function was introduced, which can be parameterized as often as required:",
     "i18n_p4" => "The placeholders \$1 consisted of the dollar sign and the index, the parameters are thus used in exactly the order they are passed.",
     
-    "rbTitle" => "RedBeanPHP",
+    "rbTitle" => "DB / RedBeanPHP",
     "rb_p1" => "Link to the official website and documentation: <a href='http://redbeanphp.com/'>Link</a>",
     "rb_p2" => "RedBeanPHP is an ORM that generates the tables and columns at runtime. Thus, a very simple, fast and completely object-oriented development is possible.",
-    "rb_p3" => "After the development, the database schema gets 'gefreezed' to ensure a performant database access to the production environment. All necessary data is configured on the db.php"
+    "rb_p3" => "After the development, the database schema gets 'gefreezed' to ensure a performant database access to the production environment. All necessary data is configured on the db.php",
+    "rb_p4" => "To connect with a database, you just need to create a config file in the folder lib/config/db/ with the same name as your target-server (without http or www). If a db-config file is found, we try to connect. In this way we can have several database-configs for diffrent server (local, dev, live)"
 
 
 );

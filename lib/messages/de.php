@@ -11,7 +11,7 @@ $_MESSAGES = array(
     
     "manual_features" => "PLAIN_PHP ist in einer Model-View-Controller Architektur aufgebaut und könnte eine Mischung aus dem wunderbaren Playframework (Java) und Rails, nur für PHP und mit 500 Zeilen Code sein.",
     
-    "manual_p3" => "Um sofort loszulegen muss nur in der conf.php der PATH und LOCAL_PATH angepasst werden und es kann losgehen, wobei PATH die URL zum Server darstellt und LOCAL_PATH den Pfad zum localhost. Über das AUTOLOAD_FOLDER Array, können zusätzliche Ordner dem Autoloader zugefügt werden (Klassenname = Dateiname)",
+    "manual_p3" => "Um sofort loszulegen ist absolut keine zusätzliche konfiguration notwendig. Einfach irgendwo auf dem Webserver entpacken und los gehts.",
 
 
 
@@ -118,10 +118,10 @@ $_MESSAGES = array(
     "i18n_p3" => "Um einen String auszugeben wurde die __() Funktion eingeführt, die auch beliebig oft Parameterisiert werden kann:",
     "i18n_p4" => "Die Platzhalter $1 setzten sich aus dem Dollarzeichen und dem Index zusammen, die Parameter werden also in genau der Reihenfolge in die Platzhalter eingesetzt, in der sie übergeben werden.",
     
-    "rbTitle" => "RedBeanPHP",
     "rb_p1" => "Link zur Homepage und Dokumentation: <a href='http://redbeanphp.com/'>Link</a>",
     "rb_p2" => "RedBeanPHP ist ein ORM der zur Laufzeit die Tabellen und Spalten generiert. Somit ist eine sehr einfache, schnelle und komplett objektorientierte Entwicklung möglich.",
-    "rb_p3" => "Nach der Entwicklung wird das Datenbankschema 'gefreezed' um in der Produktionsumgebung einen performanteren Datenbankzugriff zu gewährleisten. Alle benötigten Daten werden über die db.php konfiguriert"
+    "rb_p3" => "Nach der Entwicklung wird das Datenbankschema 'gefreezed' um in der Produktionsumgebung einen performanteren Datenbankzugriff zu gewährleisten. Alle benötigten Daten werden über die db.php konfiguriert",
+    "rb_p4" => "Um sich mit einer Datenbank zu verbinden, muss nur im Ordner lib/config/db/ eine Konfigurationsdatei angelegt werden, die den Namen des Zielservers hat (ohne http und www). Wird eine entsprechende Datei gefunden, wird auch versucht eine Verbindung herzustellen. So kann man für jeden Server eine eigene Datenbank ansprechen (local, dev, live)."
     
 
 )
