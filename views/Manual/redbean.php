@@ -2,10 +2,10 @@
 <p><?php echo __("rb_p1") ?></p>
 <p><?php echo __("rb_p2") ?></p>
 <p><?php echo __("rb_p3") ?></p>
+<p><?php echo __("rb_p4") ?></p>
 <pre class="prettyprint lang-php">
-//conf/db.php
+//conf/db/plain-php.drailing.net.php
 $_DB = array(
-	"db_active" => true, // if no db is used, please set to false
 	"db_name" => "debug",
 	"db_user" => "debug",
 	"db_password" => "debug",

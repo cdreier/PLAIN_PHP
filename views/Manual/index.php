@@ -25,18 +25,6 @@
 
 <h3 id="quick-start">Quick-Start</h3>
 <p><?php echo __("manual_p3") ?></p> 
-
-<pre class="prettyprint lang-php">
-// lib/config/conf.php
-$_CONFIG = array(
-    "PATH" => "http://plain-php.drailing.net/",
-    "LOCAL_PATH" => "http://localhost/PLAIN_PHP/",
-    "AUTOLOAD_FOLDERS" => array(
-		"lib/vendor/PLAIN_PHP/",
-		"controllers/"
-	)
-);
-</pre>
 <pre class="prettyprint lang-php">
 // controllers/App.php
 class App extends Controller {

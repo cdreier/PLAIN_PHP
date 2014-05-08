@@ -26,12 +26,13 @@
 
 //loading configs
 require_once 'lib/config/routes.php';
-require_once 'lib/config/db.php';
 require_once 'lib/config/conf.php';
 
 //loading orm
-if($_DB["db_active"]){
+$dbConfigFile = "lib/config/db/".str_replace("www.", "", $_SERVER["SERVER_NAME"]).".php";
+if(is_file($dbConfigFile)){
     require_once 'lib/vendor/redbeanphp/rb.phar';
+    require_once $dbConfigFile;
     
     R::setup( 'mysql:host='.$_DB["db_host"].';'.
             'dbname='.$_DB["db_name"], $_DB["db_user"], $_DB["db_password"] );

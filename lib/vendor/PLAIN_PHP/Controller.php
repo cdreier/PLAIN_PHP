@@ -378,27 +378,8 @@ class Controller {
     
     
     public static function PATH() {
-        global $_CONFIG;
-        $local = array('localhost', '127.0.0.1');
-        if (!in_array($_SERVER['HTTP_HOST'], $local)) {
-            
-            //check for allowed url modifications, in general www in server url or not
-            $serverName = $_SERVER["SERVER_NAME"];
-            $urlData = parse_url($_CONFIG["PATH"]);
-            //if both are same, just return path
-            if($serverName == $urlData["host"]){
-                return $_CONFIG["PATH"];
-            }else{
-                //if not, server request is priority, set new host
-                $urlData["host"] = $serverName;
-                //expand protokol
-                $urlData["scheme"] = $urlData["scheme"]."://";
-                $urlData = implode("", $urlData);
-                return $urlData;
-            }
-        } else {
-            return $_CONFIG["LOCAL_PATH"];
-        }
+        global $_PLAIN_PHP_ROOT;
+        return $_PLAIN_PHP_ROOT;
     }
     
     public static function _JSPATH(){
