@@ -43,7 +43,7 @@ class Controller {
      * @param string $path      default path is lib/js/ , overwrite to load from diffrent location
      * 
      */
-    public static function addScript($filename, $path = "lib/js/"){
+    public static function addScript($filename, $path = "public/js/"){
         self::$scripts[] = self::PATH() . $path . $filename;
     }
     
@@ -105,7 +105,7 @@ class Controller {
      * @param string $path      default path is lib/css/ , overwrite to load from diffrent location
      * 
      */
-    public static function addStylesheet($filename, $path = "lib/css/"){
+    public static function addStylesheet($filename, $path = "public/css/"){
         self::$stylesheets[] = self::PATH() . $path . $filename;
     }
     

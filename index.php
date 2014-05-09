@@ -31,15 +31,15 @@ if(isset($_SERVER['PATH_INFO'])){
         
         <title><?php echo Controller::getTitle(); ?></title>
 
-		<link type="text/css" rel="stylesheet" href="<?php echo Controller::PATH() ?>/lib/css/bootstrap.min.css" />
-		<link type="text/css" rel="stylesheet" href="<?php echo Controller::PATH() ?>/lib/css/style.css" />
+		<link type="text/css" rel="stylesheet" href="<?php echo Controller::PATH() ?>/public/css/bootstrap.min.css" />
+		<link type="text/css" rel="stylesheet" href="<?php echo Controller::PATH() ?>/public/css/style.css" />
 		<?php Controller::injectStylesheets() ?>
 		
         <?php Controller::_JSPATH(); ?>
-        <script src="<?php echo Controller::PATH() ?>/lib/js/jquery-2.0.3.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="<?php echo Controller::PATH() ?>/lib/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="<?php echo Controller::PATH() ?>/lib/js/ajaxCall.js" type="text/javascript" charset="utf-8"></script>
-        <script src="<?php echo Controller::PATH() ?>/lib/js/main.js" type="text/javascript" charset="utf-8"></script>
+        <script src="<?php echo Controller::PATH() ?>/public/js/jquery-2.0.3.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="<?php echo Controller::PATH() ?>/public/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="<?php echo Controller::PATH() ?>/public/js/ajaxCall.js" type="text/javascript" charset="utf-8"></script>
+        <script src="<?php echo Controller::PATH() ?>/public/js/main.js" type="text/javascript" charset="utf-8"></script>
         <?php Controller::injectScripts() ?>
         
 	</head>
