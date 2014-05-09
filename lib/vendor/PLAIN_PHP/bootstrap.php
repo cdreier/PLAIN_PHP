@@ -45,10 +45,40 @@ spl_autoload_register("PLAIN_PHP_autoload");
 function PLAIN_PHP_autoload($className){
     global $_CONFIG;
     foreach ($_CONFIG["AUTOLOAD_FOLDERS"] as $folder) {
+        
+        //wildcard at the end, search subfolders too
+        if(substr($folder, -1) == "*" ){
+            $folder = str_replace("*", "", $folder);
+            //scan subfolders and add to autoload folders
+            appendSubfolders($folder, $_CONFIG["AUTOLOAD_FOLDERS"]);
+        }
+        
+        
         $file = $folder . $className . ".php";
         if(file_exists($file)){
             require_once $file;
             return;
+        }
+    }
+}
+
+
+function appendSubfolders($dir, &$target){
+    //add following /
+    if(substr($dir, -1) != "/"){
+        $dir .= "/";
+    }
+    
+    $folders = scandir($dir);
+    foreach($folders as $folder){
+        //exclude . and ..
+        if(substr($folder, 0, 1) != "."){
+            if(is_dir($dir.$folder)){
+                if(!in_array($dir.$folder, $target)){
+                    array_push($target, $dir.$folder. "/");
+                }
+                appendSubfolders($dir.$folder, $target);
+            }
         }
     }
 }
