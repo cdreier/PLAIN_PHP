@@ -30,15 +30,6 @@
                 		</ul>
                 	</li>
                     <li>
-                        css
-                    </li>
-                    <li>
-                        img
-                    </li>
-                    <li>
-                        js
-                    </li>
-                    <li>
                         vendor
                         <ul>
                         	<li>redbeanphp</li>
@@ -66,6 +57,20 @@
                         </ul>
                     </li>
                 </ul>
+            </li>
+            <li>
+            	public
+            	<ul>
+            		<li>
+                        css
+                    </li>
+                    <li>
+                        img
+                    </li>
+                    <li>
+                        js
+                    </li>
+            	</ul>
             </li>
             <li>
                 ajax.php

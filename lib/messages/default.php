@@ -100,8 +100,8 @@ $_MESSAGES = array(
     
     "foldersTitle" => "Folder-structure",
     "folders_p1" => "Following you'll see a blank application.",
-    "folders_p2" => "For all the folders that were specified in the lib/config/conf.php file in AUTOLOAD_FOLDERS, the naming convention is prerequisite: class name = filename.",
-    "folders_p3" => "The lib folder contains all the JavaScript and CSS files, and any images and also the framework data.",
+    "folders_p2" => "For all the folders that were specified in the lib/config/conf.php file in AUTOLOAD_FOLDERS, the naming convention is prerequisite: class name = filename. You can also use the * wildcard to add all subfolders",
+    "folders_p3" => "The public folder contains all the JavaScript, CSS or image-files, in short: all data that should be accassable from outside. All other folders are protected with a .htaccess file.",
     
     "viewsTitle" => "Views rendern",
     "views_p1" => "To finally show something in the browser, the view must be rendered.",

@@ -97,8 +97,8 @@ $_MESSAGES = array(
 	
     "foldersTitle" => "Ordnerstruktur",
     "folders_p1" => "Eine leere Applikation sieht folgendermaßen aus.",
-    "folders_p2" => "Für alle Ordner die in der lib/config/conf.php Datei in AUTOLOAD_FOLDERS angegeben wurden, ist die Namenskonvention vorrausetzung: Klassenname = Dateiname.",
-    "folders_p3" => "Der lib Ordner beherbergt alle Javascript und CSS Dateien, sowie eventuelle Bilder und auch die Frameworkdaten.",
+    "folders_p2" => "Für alle Ordner die in der lib/config/conf.php Datei in AUTOLOAD_FOLDERS angegeben wurden, ist die Namenskonvention vorrausetzung: Klassenname = Dateiname. Es kann kann auch eine Wildcard (*) eingetragen werden um alle Unterordner dem Autoloader zuzufügen.",
+    "folders_p3" => "Der public Ordner beherbergt alle Javascript, CSS und Bild-Dateien, kurz: alle Daten die von außen erreichbar sein sollen. Alle anderen Ordner sind per .htaccess geschützt.",
     
     "viewsTitle" => "Views rendern",
     "views_p1" => "Um nun auch endlich etwas in Browser anzuzeigen, müssen Views gerendert werden.",
