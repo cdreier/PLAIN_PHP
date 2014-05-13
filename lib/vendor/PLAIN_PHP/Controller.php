@@ -26,14 +26,15 @@
 
 class Controller {
     
-    private static $scripts = array();
-    private static $stylesheets = array();
-    private static $renderArgs = array();
+    protected static $scripts = array();
+    protected static $stylesheets = array();
+    protected static $renderArgs = array();
 	
-	private static $renderContent = array();
+	protected static $renderContent = array();
     
     public static $shouldRender = false;
     public static $alwaysInvoked = false;
+    
     
     /**
      * add a javascript file to your current render call
@@ -378,8 +379,7 @@ class Controller {
     
     
     public static function PATH() {
-        global $_PLAIN_PHP_ROOT;
-        return $_PLAIN_PHP_ROOT;
+        return PLAIN_PHP_ROOT;
     }
     
     public static function _JSPATH(){

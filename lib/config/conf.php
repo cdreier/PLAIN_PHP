@@ -2,7 +2,8 @@
 $_CONFIG = array(
     "AUTOLOAD_FOLDERS" => array(
 		"lib/vendor/PLAIN_PHP/",
-		"controllers/*"
+		"controllers/*",
+		"modules/*"
 	)
 );
  ?>

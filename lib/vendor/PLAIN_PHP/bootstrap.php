@@ -40,22 +40,27 @@ if(is_file($dbConfigFile)){
     R::freeze( $_DB["db_freeze"] );
 }
 
+//parse autoload folders
+for($i = 0; $i < count($_CONFIG["AUTOLOAD_FOLDERS"]); $i++) {
+    $folder = $_CONFIG["AUTOLOAD_FOLDERS"][$i];
+    //wildcard at the end, search subfolders too
+    if(substr($folder, -1) == "*" ){
+        $folder = str_replace("*", "", $folder);
+        $_CONFIG["AUTOLOAD_FOLDERS"][$i] = $folder;
+        //scan subfolders and add to autoload folders
+        appendSubfolders($folder, $_CONFIG["AUTOLOAD_FOLDERS"]);
+    }
+}
+
+
 //autoload other controllers and framework files
 spl_autoload_register("PLAIN_PHP_autoload");
 function PLAIN_PHP_autoload($className){
     global $_CONFIG;
     foreach ($_CONFIG["AUTOLOAD_FOLDERS"] as $folder) {
         
-        //wildcard at the end, search subfolders too
-        if(substr($folder, -1) == "*" ){
-            $folder = str_replace("*", "", $folder);
-            //scan subfolders and add to autoload folders
-            appendSubfolders($folder, $_CONFIG["AUTOLOAD_FOLDERS"]);
-        }
-        
-        
         $file = $folder . $className . ".php";
-        if(file_exists($file)){
+        if(file_exists($file) && !is_dir($file)){
             require_once $file;
             return;
         }
