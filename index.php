@@ -6,7 +6,6 @@ $protocol = str_replace("/", "", strtolower(substr($_SERVER["SERVER_PROTOCOL"], 
 $plainPHPRoot = $protocol . "://" . str_replace("index.php", "", $_SERVER["SERVER_NAME"] . $_SERVER["SCRIPT_NAME"]);
 define('PLAIN_PHP_ROOT', $plainPHPRoot);
 
-
 //loading PLAIN_PHP
 require_once "lib/vendor/PLAIN_PHP/bootstrap.php";
 
