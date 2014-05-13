@@ -378,8 +378,7 @@ class Controller {
     
     
     public static function PATH() {
-        global $_PLAIN_PHP_ROOT;
-        return $_PLAIN_PHP_ROOT;
+        return PLAIN_PHP_ROOT;
     }
     
     public static function _JSPATH(){
