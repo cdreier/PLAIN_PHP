@@ -3,5 +3,11 @@
 <a href="<?php echo Manual::linkTo("index"); ?>">Manual</a>
 
 <br>
+<br>
+<br>
 
-<a href="<?php echo Users::linkTo("debug"); ?>">test</a>
+<?php 
+
+Users::loginForm();
+
+ ?>

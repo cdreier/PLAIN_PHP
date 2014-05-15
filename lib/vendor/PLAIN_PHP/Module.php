@@ -5,6 +5,16 @@
  */
 class Module extends Controller{
     
+    public static function init(){
+        $className = get_called_class();
+        if(is_file("modules/" . $className . "/config/routes.php")){
+            require_once "modules/" . $className . "/config/routes.php";
+            global $_ROUTES;
+            $moduleRoutesName = "_".strtoupper($className)."_ROUTES";
+            $_ROUTES = array_merge($_ROUTES, $$moduleRoutesName);
+        }
+    }
+    
     
     public static function render($args = array()){
         $trace = debug_backtrace();

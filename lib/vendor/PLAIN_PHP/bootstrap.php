@@ -52,7 +52,6 @@ for($i = 0; $i < count($_CONFIG["AUTOLOAD_FOLDERS"]); $i++) {
     }
 }
 
-
 //autoload other controllers and framework files
 spl_autoload_register("PLAIN_PHP_autoload");
 function PLAIN_PHP_autoload($className){
@@ -61,9 +60,18 @@ function PLAIN_PHP_autoload($className){
         
         $file = $folder . $className . ".php";
         if(file_exists($file) && !is_dir($file)){
+            //require class    
             require_once $file;
             return;
         }
+    }
+}
+
+//preload modules to parse config
+foreach (scandir("modules/") as $module) {
+    if(substr($module, 0, 1) != "."){
+        //loading modules
+        $module::init();
     }
 }
 
