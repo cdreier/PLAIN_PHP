@@ -60,6 +60,24 @@ function PLAIN_PHP_autoload($className){
         
         $file = $folder . $className . ".php";
         if(file_exists($file) && !is_dir($file)){
+            
+            //required class is module
+            if( substr($file, 0, 7) == "modules" ){
+                
+                //check for config file and if module is active
+                if(is_file("modules/" . $className . "/config/conf.php")){
+                    require "modules/" . $className . "/config/conf.php";
+                    $moduleConfigName = "_".strtoupper($className)."_CONFIG";
+                    $moduleConfig = $$moduleConfigName;
+                    if(!$moduleConfig["active"]){
+                        return;
+                    }
+                    
+                }else{
+                    throw new Exception("No conf.php file found for $className Module.", 1);
+                }
+            }
+            
             //require class    
             require_once $file;
             return;
@@ -71,7 +89,9 @@ function PLAIN_PHP_autoload($className){
 foreach (scandir("modules/") as $module) {
     if(substr($module, 0, 1) != "."){
         //loading modules
-        $module::init();
+        if(class_exists($module)) {
+            $module::init();
+        }
     }
 }
 

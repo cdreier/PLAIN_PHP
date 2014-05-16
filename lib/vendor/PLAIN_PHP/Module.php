@@ -7,6 +7,7 @@ class Module extends Controller{
     
     public static function init(){
         $className = get_called_class();
+        //marging routes
         if(is_file("modules/" . $className . "/config/routes.php")){
             require_once "modules/" . $className . "/config/routes.php";
             global $_ROUTES;
