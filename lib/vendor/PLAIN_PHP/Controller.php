@@ -31,9 +31,12 @@ class Controller {
     protected static $renderArgs = array();
 	
 	protected static $renderContent = array();
+	
+	protected static $isModule = false;
     
     public static $shouldRender = false;
     public static $alwaysInvoked = false;
+	
     
     
     /**
@@ -151,10 +154,15 @@ class Controller {
 			if (Routing::isActive($_SERVER["PATH_INFO"], $callee, $routeParams))
                 return true;
         }
-        
+		
         //check render view only if no route params are set
         if(isset(self::$renderArgs["view"]) && !$routeParams){
-            return strstr(self::$renderArgs["view"], $checkAgainst);
+        	$renderArgView = self::$renderArgs["view"];
+			if(self::$isModule){
+				$renderArgView = str_replace("modules/", "", $renderArgView);
+				$renderArgView = str_replace("/views/", "/", $renderArgView);
+			}
+            return strstr($renderArgView, $checkAgainst);
         }
 		
         //perhaps i forgot something, but should return false now

@@ -1,6 +1,6 @@
 <?php 
 
-class Manual extends Controller {
+class Manual extends Module {
     
     public static function always(){
         self::addScript("prettify.js");

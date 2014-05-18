@@ -6,8 +6,11 @@
 class Module extends Controller{
     
     public static function init(){
+    	
+		self::$isModule = true;
+		
         $className = get_called_class();
-        //marging routes
+        //merging routes
         if(is_file("modules/" . $className . "/config/routes.php")){
             require_once "modules/" . $className . "/config/routes.php";
             global $_ROUTES;
