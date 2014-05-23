@@ -13,14 +13,26 @@ class Users extends Module {
             throw new Exception("The Users-Module need a configured database!", 1);
         }
     }
+	
+	private static function pwHash(){
+		return sha1();
+	}
     
-    
+	public static function create(){
+		if($_POST["username"] == "" || $_POST["password1"] == "" || $_POST["password2"] == ""){
+        	self::keep("error", "Please fill in all fields");
+            self::redirectFromString(self::$config["register"]);
+        }
+		
+		
+		
+	}
     
     public static function auth(){
         
         if($_POST["username"] == "" || $_POST["password"] == ""){
+        	self::keep("error", "Please fill in all fields");
             self::redirectFromString(self::$config["redirectAfter_failure"]);
-            return;
         }
         
         //TODO hash and salt table
@@ -28,14 +40,16 @@ class Users extends Module {
         if($user == null){
             if(self::$config["registerAfterLoginFail"]){
                 self::keep("username", $_POST["username"]);
-                self::redirectTo("register");
+				self::redirectFromString(self::$config["register"]);
             }else{
                 //error
-                echo self::$config["redirectAfter_failure"];
+                self::keep("error", "Login failed");
+                self::redirectFromString(self::$config["redirectAfter_failure"]);
             }
             
         }else{
             //login redirect
+            self::redirectFromString(self::$config["redirectAfter_success"]);
         }
     }
     
@@ -47,6 +61,7 @@ class Users extends Module {
     
     public static function register(){
         self::render(array(
+        	"action" => Users::linkTo("create"),
             "username" => self::get("username")
         ));
     }

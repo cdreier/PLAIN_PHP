@@ -1,2 +1,2 @@
 <h1>Register</h1>
-<?php Users::registerForm($username); ?>
+<?php Users::registerForm($action, $username); ?>
