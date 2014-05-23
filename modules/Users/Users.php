@@ -16,15 +16,22 @@ class Users extends Module {
     
     
     
-    
-    public static function auth($withRegistration){
+    public static function auth(){
+        
+        if($_POST["username"] == "" || $_POST["password"] == ""){
+            self::redirectFromString(self::$config["redirectAfter_failure"]);
+            return;
+        }
+        
+        //TODO hash and salt table
         $user = R::findOne("User", "username = ? AND password = ?", array($_POST["username"], $_POST["password"]));
         if($user == null){
-            if($withRegistration){
+            if(self::$config["registerAfterLoginFail"]){
                 self::keep("username", $_POST["username"]);
                 self::redirectTo("register");
             }else{
                 //error
+                echo self::$config["redirectAfter_failure"];
             }
             
         }else{
@@ -44,9 +51,9 @@ class Users extends Module {
         ));
     }
     
-    public static function loginForm($withRegistration = true){
+    public static function loginForm(){
         self::renderPartial(array(
-            "action" => Users::linkTo("auth", $withRegistration)
+            "action" => Users::linkTo("auth")
         ));
     }
     
