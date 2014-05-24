@@ -1,3 +1,9 @@
+<?php if($error):  ?>
+    <p class="error">
+        <?php echo $error; ?>
+    </p>
+<?php endif; ?>
+
 <form method="POST" action="<?php echo $action; ?>" >
     <p>
         <input type="text" name="username" placeholder="Username" value="<?php echo $username ?>" />
