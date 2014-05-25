@@ -5,16 +5,15 @@
  */
 class ProtectedController extends Controller {
 	
+    private static $user;
+    
 	public static function always(){
-		if(!App::checkLogin()){
-			App::redirectTo("login");
-		}
-		
-		self::setTitle("DEMO CONTROLLER");
+		self::$user = Users::checkSession();
 	}
 	
 	public static function index(){
-		self::renderText("logged in!");
+	    $text = self::$user->username . " logged in!";
+		self::renderText($text);
 	}
 	
 }

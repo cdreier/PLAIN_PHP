@@ -6,10 +6,12 @@ $_USERS_CONFIG = array(
     //db tables
     "userTable" => "user",
     "saltTable" => "usersalts",
+    "sessionTable" => "usersession",
     
     //routes
     "register" => "Users::register",
     "redirectAfter_failure" => "Users::login",
-    "redirectAfter_success" => "Users::login"
+    "redirectAfter_success" => "ProtectedController::index",
+    "redirectAfter_logout" => "Users::login"
 );
  ?>

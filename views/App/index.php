@@ -6,8 +6,7 @@
 <br>
 <br>
 
-<?php 
-
+<?php
 Users::loginForm();
 
  ?>

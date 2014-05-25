@@ -13,10 +13,21 @@ class Users extends Module {
             throw new Exception("The Users-Module need a configured database!", 1);
         }
     }
-	
-	private static function pwHash($plain){
-		return sha1();
-	}
+    
+    public static function checkSession(){
+        $session = R::findOne(self::$config["sessionTable"], "val = ?", array(session_id()));
+        if($session != null){
+            return $session->user;
+        }
+        self::redirectFromString(self::$config["redirectAfter_failure"]);
+    }
+    
+    private static function createSession($user){
+        $session = R::dispense(self::$config["sessionTable"]);
+        $session->user = $user;
+        $session->val = session_id();
+        R::store($session);
+    }
     
 	public static function create(){
 	    //check input
@@ -38,21 +49,14 @@ class Users extends Module {
         }
         
         //everything checked, lets create
-        $salt = R::dispense(self::$config["saltTable"]);
-        $bytes = openssl_random_pseudo_bytes(8);
-        $salt->val = bin2hex($bytes);
-        
         $user = R::dispense(self::$config["userTable"]);
         $user->username = $_POST["username"];
-        $user->password = sha1($_POST["password1"] . $salt->val);
+        $user->setPassword($_POST["password1"]);
+        
         R::store($user);
         
-        $salt->user = $user;
-        R::store($salt);
         
-        //TODO: store something in session
-        
-        
+        self::createSession($user);
         self::redirectFromString(self::$config["redirectAfter_success"]);
 	}
     
@@ -63,25 +67,33 @@ class Users extends Module {
             self::redirectFromString(self::$config["redirectAfter_failure"]);
         }
         
-        //TODO hash and salt table
-        $user = R::findOne(self::$config["userTable"], "username = ? AND password = ?", array($_POST["username"], $_POST["password"]));
+        $user = R::findOne(self::$config["userTable"], "username = ?", array($_POST["username"]));
         if($user == null){
             if(self::$config["registerAfterLoginFail"]){
                 self::keep("username", $_POST["username"]);
 				self::redirectFromString(self::$config["register"]);
-            }else{
-                //error
-                self::keep("error", "Login failed");
-                self::redirectFromString(self::$config["redirectAfter_failure"]);
             }
             
-        }else{
+        }else if($user->checkPassword($_POST["password"])){
             //login redirect
+            self::createSession($user);
             self::redirectFromString(self::$config["redirectAfter_success"]);
         }
+        
+        //error
+        self::keep("error", "Login failed");
+        self::redirectFromString(self::$config["redirectAfter_failure"]);
     }
     
-    
+    public static function logout(){
+        $session = R::findOne(self::$config["sessionTable"], "val = ?", array(session_id()));
+        if($session != null){
+            R::trash($session);
+        }
+        
+        session_destroy();
+        self::redirectFromString(self::$config["redirectAfter_logout"]);
+    }
     
     public static function login(){
         self::render();

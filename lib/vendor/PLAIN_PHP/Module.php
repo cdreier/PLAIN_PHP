@@ -5,7 +5,7 @@
  */
 class Module extends Controller{
     
-    protected static $config;
+    public static $config;
     
     public static function init(){
     	
