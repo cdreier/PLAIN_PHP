@@ -17,13 +17,11 @@ class Model_User extends RedBean_SimpleModel {
         }
         
         //generate new salt
-        $secure = true;
-        $bytes = openssl_random_pseudo_bytes(8, $secure);
-        $salt->val = bin2hex($bytes);
+        $salt->val = uniqid();
         $salt->user = $this->bean;
         R::store($salt);
-        
-        $this->password = sha1($plain . $salt->val);
+		
+        $this->password = crypt($plain, $salt->val);
         R::store($this->bean);
     }
     
@@ -31,7 +29,7 @@ class Model_User extends RedBean_SimpleModel {
     public function checkPassword($plain){
         if(count($this->ownUsersalts) > 0){
             $salt = end( $this->bean->ownUsersalts );
-            $hashedPW = sha1($plain . $salt->val);
+            $hashedPW = crypt($plain, $salt->val);
             if($this->bean->password == $hashedPW){
                 return true;
             }

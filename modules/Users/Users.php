@@ -116,6 +116,8 @@ class Users extends Module {
             "username" => self::get("username")
         ));
     }
+	
+	
 }
 
 
