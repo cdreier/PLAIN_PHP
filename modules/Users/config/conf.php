@@ -5,7 +5,6 @@ $_USERS_CONFIG = array(
     
     //db tables
     "userTable" => "user",
-    "saltTable" => "usersalts",
     "sessionTable" => "usersession",
     
     //routes

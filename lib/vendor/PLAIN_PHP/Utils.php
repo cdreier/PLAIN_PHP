@@ -23,25 +23,19 @@
  *  THE SOFTWARE.
  * 
  */ 
-class App extends Controller {
+class Utils  {
+        
 	
-	const SESSION_NAME = "PLAIN_PHP";
-
-    public static function index() {
-        self::render();
+    public static function randomString($length){
+        $characters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $randomString = "";
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        return $randomString;
     }
-
-    public static function img($img, $defaultPath = "") {
-        return App::PATH() . "public/img/" . $defaultPath . "/" . $img;
-    }
-    
-    public static function setLang($lang){
-        I18n::setLanguage($lang);
-        header( "Location: " . $_SERVER["HTTP_REFERER"] ) ;
-        exit();
-    }
-    
-
     
 }
-?>
+
+
+ ?>
