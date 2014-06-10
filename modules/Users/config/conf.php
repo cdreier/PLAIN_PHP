@@ -1,6 +1,6 @@
 <?php 
 $_USERS_CONFIG = array(
-    "active" => true,
+    "active" => false,
     "registerAfterLoginFail" => true,
     
     //db tables

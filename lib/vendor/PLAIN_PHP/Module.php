@@ -28,7 +28,7 @@ class Module extends Controller{
     public static $config;
     
     public static function init(){
-    	
+        
 		self::$isModule = true;
         $className = get_called_class();
         

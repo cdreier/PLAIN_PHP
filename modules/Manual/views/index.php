@@ -17,7 +17,6 @@
     <li>I18n</li>
     <li>AJAX-Wrapper</li>
     <li>Database Abstraction with RedbeanPHP</li>
-    <li>~ 500 Lines of Code (without RedbeanPHP)</li>
     <li>PLAIN PHP</li>
 </ul>
 <br/>

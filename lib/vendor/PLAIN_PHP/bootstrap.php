@@ -60,12 +60,10 @@ function PLAIN_PHP_autoload($className){
         
         $file = $folder . $className . ".php";
         if(file_exists($file) && !is_dir($file)){
-        	
-            //require class    
-            require_once $file;
+            
 			
 			//required class is a module
-			if( is_subclass_of($file, "Module") ){
+			if( substr($file, 0, 8 + strlen($className)) == "modules/".$className ){
 				//check if config file exists
 				if(is_file("modules/" . $className . "/config/conf.php")){
 		            require "modules/" . $className . "/config/conf.php";
@@ -78,6 +76,10 @@ function PLAIN_PHP_autoload($className){
 		            throw new Exception("No conf.php file found for $className Module.", 1);
 		        }
 			}
+            
+            
+            //require class    
+            require_once $file;
             
             //class found, required and initialized, we can stop
             return;
