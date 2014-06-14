@@ -20,7 +20,4 @@ if(isset($_SERVER['PATH_INFO'])){
     App::index();
 }
 
-
-
  ?>
-

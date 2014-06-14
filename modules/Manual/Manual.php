@@ -5,6 +5,8 @@ class Manual extends Module {
     public static function always(){
         self::addScript("prettify.js");
         self::addStylesheet("sunburst-theme.css");
+		
+		self::extendFromTemplate("index");
         
         self::setTitle("PLAIN_PHP - Manual");
     }

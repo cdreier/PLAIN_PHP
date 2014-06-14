@@ -34,7 +34,6 @@ class Controller {
 	
 	protected static $isModule = false;
     
-    public static $shouldRender = false;
     public static $alwaysInvoked = false;
 	
     private static $template = false;
@@ -197,10 +196,16 @@ class Controller {
 			self::$alwaysInvoked = true;
         }
         
-        if(is_file( $view )){
+        self::_render($view, $args);
+    }
+	
+	/**
+	 * to reduce redudancy
+	 */
+	protected static function _render($view, $args){
+		if(is_file( $view )){
             self::$renderArgs["args"] = $args;
             self::$renderArgs["view"] = $view;
-            self::$shouldRender = true;
 			
 			//check if template is set
 			if(self::$template !== false){
@@ -217,10 +222,11 @@ class Controller {
         }else{
             throw new Exception("VIEW NOT FOUND - " . $view);
         }
-    }
+	}
 	
 	/**
 	 * to call in the always function, tells the framework to extend every view from given template
+	 * only affects render(), partials needs to extend explicitly
 	 * 
 	 * @param string $templateName	the template name to extend from
 	 */

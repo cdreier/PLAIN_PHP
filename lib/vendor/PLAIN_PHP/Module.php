@@ -66,13 +66,7 @@ class Module extends Controller{
             self::$alwaysInvoked = true;
         }
         
-        if(is_file( $view )){
-            self::$renderArgs["args"] = $args;
-            self::$renderArgs["view"] = $view;
-            self::$shouldRender = true;
-        }else{
-            throw new Exception("VIEW NOT FOUND - " . $view);
-        }
+        self::_render($view, $args);
     }
     
     public static function renderPartial($args = array(), $ajax = false){
