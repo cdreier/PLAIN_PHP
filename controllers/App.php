@@ -26,6 +26,10 @@
 class App extends Controller {
 	
 	const SESSION_NAME = "PLAIN_PHP";
+	
+	public static function always(){
+		self::extendFromTemplate("index");
+	}
 
     public static function index() {
         self::render();

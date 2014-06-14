@@ -37,7 +37,7 @@ class Controller {
     public static $shouldRender = false;
     public static $alwaysInvoked = false;
 	
-    
+    private static $template = false;
     
     /**
      * add a javascript file to your current render call
@@ -169,13 +169,6 @@ class Controller {
         return false;
     }
     
-    /**
-     * only used once in the root index.php file
-     */
-    public static function _yield(){
-        extract(self::$renderArgs["args"]);
-        include(self::$renderArgs["view"]);
-    }
     
     /**
      * to implement from subclasses, if possible called before the execute() function, but at the latest before every render() call
@@ -184,7 +177,6 @@ class Controller {
      * 
      */
     protected static function always(){
-        //to implement from subclasses, called on every render() call
     }
 	
     /**
@@ -209,10 +201,32 @@ class Controller {
             self::$renderArgs["args"] = $args;
             self::$renderArgs["view"] = $view;
             self::$shouldRender = true;
+			
+			//check if template is set
+			if(self::$template !== false){
+				Template::extend(self::$template);
+			}
+			
+			extract(self::$renderArgs["args"]);
+        	include(self::$renderArgs["view"]);
+			
+			//end template
+			if(self::$template !== false){
+				Template::done();
+			}
         }else{
             throw new Exception("VIEW NOT FOUND - " . $view);
         }
     }
+	
+	/**
+	 * to call in the always function, tells the framework to extend every view from given template
+	 * 
+	 * @param string $templateName	the template name to extend from
+	 */
+	public static function extendFromTemplate($templateName){
+		self::$template = $templateName;
+	}
 	
     /**
      * prints the text with the correct Content-Type header (text / plain) 
