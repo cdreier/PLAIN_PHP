@@ -23,7 +23,7 @@ $_MESSAGES = array(
     "coreConcepts_conventions" => "For any who has ever worked with an MVC framework that should be nothing new: the link between controller and view is done by correctly naming the folders and files to the controller and the calling function.",
     
     "coreConcepts_plain_title" => "Plain PHP",
-    "coreConcepts_plain" => "The framework consists of approximately 500 lines of pure PHP code, nothing like the popular PHP annotations or something else is used, but only the native PHP language constructs.",
+    "coreConcepts_plain" => "The framework consists of pure PHP code, nothing like the popular PHP annotations or something else is used, but only the native PHP language constructs.",
     
     
     

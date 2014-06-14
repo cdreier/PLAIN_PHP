@@ -22,7 +22,7 @@ $_MESSAGES = array(
     "coreConcepts_conventions" => "Für jeden der schoneinmal mit einem MVC Framework gearbeitet hat, sollte das nichts Neues sein: die Verknüpfung zwischen Controller und View geschieht über die entsprechend gleiche Benennung der Ordner und Dateien zu Controller und Funktion die aufgerufen wurde.",
     
     "coreConcepts_plain_title" => "Plain PHP",
-    "coreConcepts_plain" => "Das Framework besteht aus ca. 500 Zeilen reinem PHP Code, zudem werden keine PHP Annotationen o.ä. verwendet, sondern nur Sprachkonstrukte die aus dem nativen PHP bekannt sind.",
+    "coreConcepts_plain" => "Das Framework besteht reinem PHP Code, zudem werden keine PHP Annotationen o.ä. verwendet, sondern nur Sprachkonstrukte die aus dem nativen PHP bekannt sind.",
     
     
     

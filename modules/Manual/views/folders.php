@@ -46,17 +46,7 @@
                 </ul>
             </li>
             <li>
-                views
-                <ul>
-                    <li>
-                        App
-                        <ul>
-                            <li>
-                                index.php
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+            	modules
             </li>
             <li>
             	public
@@ -72,6 +62,28 @@
                     </li>
             	</ul>
             </li>
+            <li>
+            	templates
+            	<ul>
+            		<li>
+            			index.php
+            		</li>
+            	</ul>
+            </li>
+            <li>
+                views
+                <ul>
+                    <li>
+                        App
+                        <ul>
+                            <li>
+                                index.php
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            
             <li>
                 ajax.php
             </li>
