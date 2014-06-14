@@ -200,7 +200,7 @@ class Controller {
     }
 	
 	/**
-	 * to reduce redudancy
+	 * extracted to reduce redudancy
 	 */
 	protected static function _render($view, $args){
 		if(is_file( $view )){
@@ -214,11 +214,8 @@ class Controller {
 			
 			extract(self::$renderArgs["args"]);
         	include(self::$renderArgs["view"]);
+			Template::_finish();
 			
-			//end template
-			if(self::$template !== false){
-				Template::done();
-			}
         }else{
             throw new Exception("VIEW NOT FOUND - " . $view);
         }
@@ -275,6 +272,8 @@ class Controller {
         if(is_file( $view )){
             extract($args);
             include($view);
+			Template::_finish();
+			
 			if($ajax)exit();
         }else{
             throw new Exception("VIEW NOT FOUND - " . $view);

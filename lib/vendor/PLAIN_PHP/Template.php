@@ -30,9 +30,11 @@ class Template {
 		array_push(self::$currentActive, self::$templates[$name]);
 	}
 	
-	public static function done(){
-		$template = array_pop(self::$currentActive);
-		$template->process();
+	public static function _finish(){
+		if(count(self::$currentActive) > 0){
+			$template = array_pop(self::$currentActive);
+			$template->process();
+		}
 	}
 	
 }
