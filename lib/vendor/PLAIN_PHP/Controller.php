@@ -34,7 +34,7 @@ class Controller {
 	
 	protected static $isModule = false;
     
-    public static $alwaysInvoked = false;
+    public static $alwaysInvoked = array();
 	
     private static $template = false;
     
@@ -191,9 +191,9 @@ class Controller {
         $view = "views/" . $trace["class"] ."/" . $trace["function"] . ".php";
         
         //not invoked in execute, do it now
-        if(!self::$alwaysInvoked){
+        if(!in_array($trace["class"], self::$alwaysInvoked)){
             call_user_func($trace["class"]."::"."always");
-			self::$alwaysInvoked = true;
+			self::$alwaysInvoked[] = $trace["class"];
         }
         
         self::_render($view, $args);
@@ -293,11 +293,12 @@ class Controller {
         	}
             
             //just to be sure
-            if(!self::$alwaysInvoked){
-                list($class, $unused) = explode("::", $controllerInfo[0]);
+            list($class, $unused) = explode("::", $controllerInfo[0]);
+            if(!in_array($class, self::$alwaysInvoked)){
                 call_user_func($class."::"."always");
-                self::$alwaysInvoked = true;
+                self::$alwaysInvoked[] = $class;
             }
+            
             
             call_user_func_array($controllerInfo[0], $controllerInfo[1]);
         }else{
