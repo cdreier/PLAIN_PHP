@@ -351,7 +351,14 @@ class Controller {
 		
         $route = Routing::checkFunction(get_called_class()."::". $functionName);
 		if(!$route){
+		    //no rout specified
 	        $route = "/".get_called_class()."/$functionName";
+            //if there are params without specific route, just append 
+            if(is_array($param)){
+                foreach ($param as $p) {
+                    $route .= "/".$p;
+                }
+            }
 		}else{
 			try{
 				//params only use with custom route

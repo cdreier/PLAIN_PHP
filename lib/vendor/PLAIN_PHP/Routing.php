@@ -53,7 +53,7 @@ class Routing {
         }
         
         if(count($parts) > 2){
-            return array(ucfirst($parts[0])."::".$parts[1], $parts[2]);
+            return array(ucfirst($parts[0])."::".$parts[1], array_slice($parts, 2));
         }
         return array(ucfirst($parts[0])."::".$parts[1], array());
 	}

@@ -30,7 +30,7 @@ class App extends Controller {
 	public static function always(){
 		self::extendFromTemplate("index");
 	}
-
+    
     public static function index() {
         self::render();
     }
