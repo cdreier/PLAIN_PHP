@@ -15,6 +15,10 @@ class Manual extends Module {
         self::render();
     }
     
+    public static function modules(){
+        self::render();
+    }
+    
     public static function coreconcepts(){
         self::render();
     }
