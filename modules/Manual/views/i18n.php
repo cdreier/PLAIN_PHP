@@ -1,7 +1,7 @@
-<h1><?php echo __("i18nTitle") ?></h1>
-<p><?php echo __("i18n_p1") ?></p>
-<p><?php echo __("i18n_p2") ?></p>
-<p><?php echo __("i18n_p3") ?></p>
+<h1>Internationalization</h1>
+<p>All languages ​​are managed in lib/messages/ , with the filename from the first part of the current language-codes (the "ISO 639-2 language code": e.g. de.php, instead of de_DE), except for the default language, which is always used as fallback.</p>
+<p>In the best case the language is recognized using the HTTP_ACCEPT_LANGUAGE parameter in the request and used the corresponding message files.</p>
+<p>In order to output a string, the __() function was introduced, which can be parameterized as often as required:</p>
 <pre class="prettyprint lang-php">
 //lib/messages/default.php
 "title" => "PLAIN PHP",
@@ -14,7 +14,7 @@
 echo __("title");
 echo __("welcome", "Ralf");
 </pre>
-<p><?php echo __("i18n_p4") ?></p>
+<p>The placeholders $1 consisted of the dollar sign and the index, the parameters are thus used in exactly the order they are passed.</p>
 <pre class="prettyprint lang-php">
 "yay" => "i think $1 is the most important word in $2"
 

@@ -1,35 +1,35 @@
-<h1><?php echo __("routesTitle") ?></h1>
+<h1>Routing</h1>
 
 <h3 id="routes">Routes</h3>
-<p><?php echo __("routes_urls1") ?></p>
+<p>The routing makes use of the PHP PATH_INFO, which can be seen behind the index.php of the appropriate controller and the function.</p>
 <pre class="prettyprint ">
 // http://localhost/PLAIN_PHP/index.php/Manual/routes
 </pre>
-<p><?php echo __("routes_urls2") ?></p>
-<p><?php echo __("routes_urls3") ?></p>
+<p>The current page should be in the <i>Manual</i> controller and calls the <i>routes</i> function.</p>
+<p>To create a link to this page, a help function is provided. Below is an excerpt from the page menu:</p>
 <pre class="prettyprint ">
 <?php echo htmlentities('<li><a href="<?php echo Manual::linkTo("routes"); ?>">Ordnerstruktur und Routing</a></li>') ?>
 </pre>
-<p><?php echo __("routes_urls4", Manual::linkTo("controllers")) ?></p>
+<p>For details, please see the <a href='<?php echo Manual::linkTo("controllers") ?>'>controllers</a>.</p>
 
 
-<h3 id="custom"><?php echo __("routes_custom") ?></h3>
-<p><?php echo __("routes_custom1") ?></p>
+<h3 id="custom">Custom Routing</h3>
+<p>It is not difficult to appreciate that the URL of the current page does not match the expected route:</p>
 <pre class="prettyprint ">
 // http://localhost/PLAIN_PHP/index.php/CUSTOMROUTING
 </pre>
-<p><?php echo __("routes_custom2") ?></p>
+<p>It is possible to specify your own route for each controller function in lib/config/routes.php.</p>
 <pre class="prettyprint ">
 $_ROUTES = array(
 	"/CUSTOMROUTING" => "Manual::routes"
 );
 </pre>
 
-<p><?php echo __("routes_custom3") ?></p>
+<p>You can specify more complex routes with dynamic values. These values ​​are given in brackets, the name has no meaning and it will only help you read the routes (\"syntactic sugar\").</p>
 <pre class="prettyprint ">
 $_ROUTES = array(
 	"/yay/{val}" => "App::yay",
 	"/debug/{value}/test/{yay}" => "App::debug"
 );
 </pre>
-<p><?php echo __("routes_custom4") ?></p>
+<p>You can now pass a second parameter to a linkTo function, this is set to the appropriate location in the route. (See Controller)</p>

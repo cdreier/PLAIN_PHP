@@ -6,7 +6,7 @@
 
 <h3 id="motication">Motivation</h3>
 <p>Of course, there is one or the other PHP framework, however, im missing <strong>a lightweight, fast, flexible, beginner-friendly and transparent MVC framework</strong>.</p> 
-<p>Here PLAIN_PHP comes into play, without much configuration (\"convention over configuration \") but with all the basic functions you need in life. And everything in transparent PLAIN PHP.</p> 
+<p>Here PLAIN_PHP comes into play, without much configuration ("convention over configuration") but with all the basic functions you need in life. And everything in transparent PLAIN PHP.</p> 
 <br/>
 
 <h3 id="features">Features</h3>

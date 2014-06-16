@@ -1,7 +1,7 @@
-<h1><?php echo __("ajaxTitle"); ?></h1>
+<h1>AJAX</h1>
 
-<h3 id="ajax_js"><?php echo __("ajax_jsTitle"); ?></h3>
-<p><?php echo __("ajax_js1"); ?></p>
+<h3 id="ajax_js">Javascript</h3>
+<p>The jQuery ajax API gets a small wrapper, where you can call controller-functions without detour.</p>
 <pre class="prettyprint">
 new AjaxCall({
     class : "Manual", //can set to a default class in ajaxCall.js
@@ -12,12 +12,12 @@ new AjaxCall({
     //response is parsed to a JSON object, or if not possible a string
 });
 </pre>
-<p><?php echo __("ajax_js2"); ?></p>
-<p><?php echo __("ajax_js3"); ?></p>
+<p>Callbacks in the execute and load functions are always optional.</p>
+<p>The callback always tries to parse the response to a JSON object, if the parser fails, the response is a normal string.</p>
 
 <br/>
 
-<p><p><?php echo __("ajax_js4"); ?></p></p>
+<p>The load callback needs the minimum of one parameter, a jQuery object which receives the response</p>
 
 <pre class="prettyprint">
 new AjaxCall({
@@ -30,7 +30,7 @@ new AjaxCall({
 </pre>
 <br />
 
-<p><?php echo __("ajax_js5"); ?></p>
+<p>TIP: in AjaxCall.js you can define default values.</p>
 <pre class="prettyprint">
 //ajaxCall.js line 4-8
 this.params = {
@@ -40,11 +40,11 @@ this.params = {
 };
 </pre>
 <br/>
-<p><?php echo __("ajax_js6", Manual::linkTo("controllers")."#controller_renderText", Manual::linkTo("controllers")."#controller_renderJson" ); ?></p>
+<p>TIP: create easy responses in your controller with <a href='<?php echo Manual::linkTo("controllers")."#controller_renderText" ?>'>renderText</a> and <a href='<?php echo Manual::linkTo("controllers")."#controller_renderJson" ?>'>renderJSON</a></p>
 
 
-<h3 id="ajax_php"><?php echo __("ajax_phpTitle"); ?></h3>
-<p><?php echo __("ajax_php1") ?></p>
+<h3 id="ajax_php">PHP</h3>
+<p>Unlike calling a controller function via a custom route with parameters, the parameters in a AJAX request are transfereed in the \$_POST array.</p>
 <pre class="prettyprint">
 public static function ajaxTargetFunction(){
 	//find something 
@@ -56,7 +56,7 @@ public static function ajaxTargetFunction(){
 }
 </pre>
 <br />
-<p><?php echo __("ajax_php2") ?></p>
+<p>There is also the possibility to load a view via AJAX, by setting the second parameter of the renderPartial method to true.</p>
 <pre class="prettyprint">
 public static function loadView(){
 	self::renderJSON(array(), true);

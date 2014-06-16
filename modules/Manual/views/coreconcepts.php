@@ -1,7 +1,7 @@
-<h1><?php echo __("coreConcepts_title"); ?></h1>
+<h1>Core Concepts</h1>
 
-<h3 id="static"><?php echo __("coreConcepts_static_title"); ?></h3>
-<p><?php echo __("coreConcepts_static"); ?></p>
+<h3 id="static">All static</h3>
+<p>All controller functions are static, you do not need any instantiation at any time. Also you can access your controllers across each other.</p>
 <pre class="prettyprint">
 // in view App/index.php
 &lt;html&gt; ...
@@ -10,7 +10,7 @@
     &lt;/div&gt;
 &lt;/html&gt;
 </pre>
-<p><?php echo __("other_example") ?></p>
+<p>other example:</p>
 <pre class="prettyprint">
 // in App controller
 public static function index(){
@@ -20,8 +20,8 @@ public static function index(){
 <br>
 
 
-<h3 id="conventions"><?php echo __("coreConcepts_conventions_title"); ?></h3>
-<p><?php echo __("coreConcepts_conventions"); ?></p>
+<h3 id="conventions">Naming conventions</h3>
+<p>For any who has ever worked with an MVC framework that should be nothing new: the link between controller and view is done by correctly naming the folders and files to the controller and the calling function.</p>
 <pre class="prettyprint">
 // Manual controller
 public static function coreconcepts(){
@@ -34,5 +34,5 @@ public static function coreconcepts(){
 
 
 
-<h3 id="plain"><?php echo __("coreConcepts_plain_title"); ?></h3>
-<p><?php echo __("coreConcepts_plain"); ?></p>
+<h3 id="plain">Plain PHP</h3>
+<p>The framework consists of pure PHP code, nothing like the popular PHP annotations or something else is used, but only the native PHP language constructs.</p>

@@ -40,12 +40,6 @@ class App extends Controller {
         return App::PATH() . "public/img/" . $defaultPath . "/" . $img;
     }
     
-    public static function setLang($lang){
-        I18n::setLanguage($lang);
-        header( "Location: " . $_SERVER["HTTP_REFERER"] ) ;
-        exit();
-    }
-    
 
     
 }

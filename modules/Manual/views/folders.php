@@ -1,6 +1,6 @@
-<h1><?php echo __("foldersTitle") ?></h1>
+<h1>Skelletton</h1>
 
-<p><?php echo __("folders_p1") ?></p>
+<p>Following you'll see a blank application.</p>
 
 <ul>
     <li>
@@ -85,17 +85,14 @@
             </li>
             
             <li>
-                ajax.php
-            </li>
-            <li>
                 index.php
             </li>
         </ul>
     </li>
 </ul>
 
-<p><?php echo __("folders_p2") ?></p>
-<p><?php echo __("folders_p3", Manual::linkTo("doctrine")) ?></p>
+<p>For all the folders that were specified in the lib/config/conf.php file in AUTOLOAD_FOLDERS, the naming convention is prerequisite: class name = filename. You can also use the * wildcard to add all subfolders</p>
+<p>The public folder contains all the JavaScript, CSS or image-files, in short: all data that should be accassable from outside. All other folders are protected with a .htaccess file.</p>
 
 
 
