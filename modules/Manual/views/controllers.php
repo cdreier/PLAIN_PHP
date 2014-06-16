@@ -72,6 +72,13 @@ public static function login(){
 <p>The renderPartial method searches the associated view and renders it to the point where the call took place.</p>
 <p>Please find details in <a href='<?php echo Manual::linkTo("views") ?>'>render views</a></p>
 
+
+<br/>
+<h3 id="controller_renderPartial">extendFromTemplate</h3>
+<p>With extendFromTemplate we can tell our render call to extend the corresponding view in the given template.</p>
+<p>Please find details in the <a href='<?php echo Manual::linkTo("views") ?>#templates'>templates</a> section</p>
+
+
 <br/>
 <h3 id="controller_renderText">renderText</h3>
 <p>renderText does not render in the _yield() function, but prints the text with the correct Content-Type header (text / plain) set, and ends the script processing.</p>
