@@ -269,6 +269,13 @@ class Controller {
         $trace = debug_backtrace();
         $trace = $trace[1];
         $view = "views/" . $trace["class"] ."/" . $trace["function"] . ".php";
+        
+        //check if always function is called
+        if(!in_array($trace["class"], self::$alwaysInvoked)){
+            call_user_func($trace["class"]."::"."always");
+            self::$alwaysInvoked[] = $trace["class"];
+        }
+        
         if(is_file( $view )){
             extract($args);
             include($view);
