@@ -6,13 +6,15 @@ $_MESSAGES = array(
 	"other_example" => "other example:",
 	
     "manualTitle" => "Home",
-    "manual_start2" => "if you are just looking for the code or the download, here is the <a href='$1'>github link</a>",
-    "manual_p1" => "Of course, there is one or the other PHP framework, however, im missing <strong>a lightweight, fast, flexible, beginner-friendly and transparent MVC framework</strong>.",
-    "manual_p2" => "Here PLAIN_PHP comes into play, without much configuration (\"convention over configuration \") but with all the basic functions you need in life. And everything in transparent PLAIN PHP.",
+    "manual_start2" => "",
+    "manual_p1" => "",
+    "manual_p2" => "",
+	
+    "manual_features" => "",
+    "manual_p3" => "",
     
-    "manual_features" => "PLAIN_PHP is constructed in a Model-View-Controller architecture and could be a mixture of the wonderful PlayFramework (Java) and rails, just for PHP and with only 500 lines of code.",
-    
-    "manual_p3" => "To get started no additional config is needed, just unzip on your webserver and start.",
+	
+	
     
     "coreConcepts_title" => "Core Concepts",
     
