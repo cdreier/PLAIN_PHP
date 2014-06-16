@@ -25,7 +25,7 @@ $_ROUTES = array(
 );
 </pre>
 
-<p>You can specify more complex routes with dynamic values. These values ​​are given in brackets, the name has no meaning and it will only help you read the routes (\"syntactic sugar\").</p>
+<p>You can specify more complex custom routes with dynamic values. These values ​​are given in brackets, the name has no meaning and it will only help you read the routes (\"syntactic sugar\").</p>
 <pre class="prettyprint ">
 $_ROUTES = array(
 	"/yay/{val}" => "App::yay",

@@ -15,7 +15,8 @@ class MyAwesomeController extends Controller {
 MyAwsomeController::linkTo("moreAwesomerFunction");
 // returns http://localhost/PHP_PLAIN/index.php/MyAwsomeController/moreAwsomerFunction
 </pre>
-<p>Since it is always necessary when displaying data, e.g. an ID, it is possible to pass parameters. These are used in the custom routes and are in the same order the parameters in your controller function. You can pass an array or lined up values.</p> 
+<p>Since it is always necessary when displaying data, e.g. an ID, it is possible to pass parameters. You can pass an array or lined up values to your controller function. These values are passed as parameter in the same order as given to to linkTo function.</p>
+<p>It is also possible to create a whole new route</p>
 <pre class="prettyprint">
 //config/routes.php
 $_ROUTES = array(
