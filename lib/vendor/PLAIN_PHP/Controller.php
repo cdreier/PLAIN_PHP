@@ -219,7 +219,7 @@ class Controller {
 			Template::_finish();
 			
         }else{
-            throw new Exception("VIEW NOT FOUND - " . $view);
+        	Exceptions::VIEW_NOT_FOUND($view);
         }
 	}
 	
@@ -285,7 +285,7 @@ class Controller {
 			
 			if($ajax)exit();
         }else{
-            throw new Exception("VIEW NOT FOUND - " . $view);
+            Exceptions::VIEW_NOT_FOUND($view);
         }
     }
     
@@ -311,7 +311,7 @@ class Controller {
             
             call_user_func_array($controllerInfo[0], $controllerInfo[1]);
         }else{
-            throw new Exception("METHOD NOT FOUND - " . $pathInfo);
+            throw new \Exception("METHOD NOT FOUND - " . $pathInfo);
         }
     }
     
@@ -372,7 +372,7 @@ class Controller {
 			try{
 				//params only use with custom route
 				$route = Routing::fillParams($route, $param);
-			}catch(Exception $e){
+			}catch(\Exception $e){
 				//error in routing, missmatch from expected and total params 
 				echo $e;
 			}

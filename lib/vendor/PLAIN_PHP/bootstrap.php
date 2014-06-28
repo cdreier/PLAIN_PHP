@@ -53,6 +53,7 @@ for($i = 0; $i < count($_CONFIG["AUTOLOAD_FOLDERS"]); $i++) {
 }
 
 //autoload other controllers and framework files
+use PLAIN_PHP\Exceptions;
 spl_autoload_register("__PLAIN_PHP_autoload");
 function __PLAIN_PHP_autoload($className){
     global $_CONFIG;
@@ -73,7 +74,7 @@ function __PLAIN_PHP_autoload($className){
 		            	return;
 		            }
 		        }else{
-		            throw new Exception("No conf.php file found for $className Module.", 1);
+		            Exceptions::CONFIG_NOT_FOUND($className);
 		        }
 			}
             
