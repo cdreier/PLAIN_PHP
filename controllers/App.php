@@ -23,6 +23,9 @@
  *  THE SOFTWARE.
  * 
  */ 
+
+use PLAIN_PHP\Controller;
+ 
 class App extends Controller {
 	
 	const SESSION_NAME = "PLAIN_PHP";

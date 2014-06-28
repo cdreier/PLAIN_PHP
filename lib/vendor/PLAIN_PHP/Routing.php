@@ -23,6 +23,9 @@
  *  THE SOFTWARE.
  * 
  */ 
+ 
+namespace PLAIN_PHP;
+
 class Routing {
 	
 	public static function checkFunction($fun){

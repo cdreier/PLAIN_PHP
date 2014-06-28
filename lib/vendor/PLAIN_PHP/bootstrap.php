@@ -53,8 +53,8 @@ for($i = 0; $i < count($_CONFIG["AUTOLOAD_FOLDERS"]); $i++) {
 }
 
 //autoload other controllers and framework files
-spl_autoload_register("PLAIN_PHP_autoload");
-function PLAIN_PHP_autoload($className){
+spl_autoload_register("__PLAIN_PHP_autoload");
+function __PLAIN_PHP_autoload($className){
     global $_CONFIG;
     foreach ($_CONFIG["AUTOLOAD_FOLDERS"] as $folder) {
         
@@ -119,4 +119,4 @@ function appendSubfolders($dir, &$target){
 }
 
 //init localisation
-I18n::init();
+PLAIN_PHP\I18n::init();

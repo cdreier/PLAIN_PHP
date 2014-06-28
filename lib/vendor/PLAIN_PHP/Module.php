@@ -23,6 +23,9 @@
  *  THE SOFTWARE.
  * 
  */
+ 
+namespace PLAIN_PHP;
+
 class Module extends Controller{
     
     public static $config;

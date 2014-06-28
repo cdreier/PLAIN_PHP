@@ -24,6 +24,8 @@
  * 
  */ 
 
+namespace PLAIN_PHP;
+ 
 class Controller {
     
     protected static $scripts = array();

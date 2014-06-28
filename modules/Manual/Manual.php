@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+use PLAIN_PHP\Module; 
 
 class Manual extends Module {
     

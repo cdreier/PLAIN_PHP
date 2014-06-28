@@ -9,6 +9,8 @@ define('PLAIN_PHP_ROOT', $plainPHPRoot);
 //loading PLAIN_PHP
 require_once "lib/vendor/PLAIN_PHP/bootstrap.php";
 
+use PLAIN_PHP\Controller;
+
 //check if path is set and execute controller method
 if(isset($_SERVER['PATH_INFO'])){
     Controller::execute($_SERVER['PATH_INFO']);
