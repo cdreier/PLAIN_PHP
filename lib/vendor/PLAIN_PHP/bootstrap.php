@@ -28,6 +28,10 @@
 require_once 'lib/config/routes.php';
 require_once 'lib/config/conf.php';
 
+//set dev mode
+define("PLAIN_PHP_DEV", $_CONFIG["DEVELOPEMENT"]);
+
+
 //loading orm
 $dbConfigFile = "lib/config/db/".str_replace("www.", "", $_SERVER["SERVER_NAME"]).".php";
 if(is_file($dbConfigFile)){
