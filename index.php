@@ -22,6 +22,6 @@ if(isset($_SERVER['PATH_INFO'])){
     App::index();
 }
 
-PLAIN_PHP\DevelopementUtils::devMenu() ;
+DevelopementUtils::devMenu() ;
 
  ?>

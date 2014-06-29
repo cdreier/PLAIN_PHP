@@ -311,6 +311,7 @@ class Controller {
             
             call_user_func_array($controllerInfo[0], $controllerInfo[1]);
         }else{
+        	//TODO new exception handler
             throw new \Exception("METHOD NOT FOUND - " . $pathInfo);
         }
     }
