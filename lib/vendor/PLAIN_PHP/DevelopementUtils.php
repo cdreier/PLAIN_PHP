@@ -1,11 +1,22 @@
 <?php 
+use PLAIN_PHP\Controller;
 
-class DevelopementUtils {
-	
-	public static function always(){}
+class DevelopementUtils extends Controller{
 	
 	public static function createController(){
-		echo $_POST["name"];
+		$newController = "controllers/" . $_POST["name"] . ".php";
+        if(!is_file($newController)){
+            //create controller file
+            $c = file_get_contents("lib/vendor/PLAIN_PHP/misc/ControllerTemplate.php");
+            $c = str_replace("ClassName", $_POST["name"], $c );
+            file_put_contents($newController, "<?php\n".$c."\n?>");
+            
+            //create view
+            mkdir("views/" . $_POST["name"] );
+            file_put_contents("views/" . $_POST["name"] . "/index.php", "<?php PLAIN_PHP\Template::extend(\"index\") ?> \n\n <h1>Index from " . $_POST["name"] . "</h1>");
+        }
+        
+        $_POST["name"]::redirectTo("index");
 	}
 	
 	public static function devMenu(){
@@ -38,7 +49,7 @@ class DevelopementUtils {
 			</style>
 			<div id="plainDev">
 				<h5>new Controller</h5>
-				<form action="<?php echo PLAIN_PHP_ROOT ?>index.php/DevelopementUtils/createController" method="post">
+				<form action="<?php echo self::linkTo("createController") ?>" method="post">
 					<input type="text" name="name" placeholder="Controller-name" />
 					<br>
 					<input type="submit" value="save" />
