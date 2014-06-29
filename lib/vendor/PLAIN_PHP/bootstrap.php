@@ -74,7 +74,7 @@ function __PLAIN_PHP_autoload($className){
 		            	return;
 		            }
 		        }else{
-		            Exceptions::CONFIG_NOT_FOUND($className);
+		        	throw new Exceptions\ConfigNotFoundException($className);
 		        }
 			}
             

@@ -219,7 +219,7 @@ class Controller {
 			Template::_finish();
 			
         }else{
-        	Exceptions::VIEW_NOT_FOUND($view);
+        	throw new Exceptions\ViewNotFoundException($view);
         }
 	}
 	
@@ -285,7 +285,7 @@ class Controller {
 			
 			if($ajax)exit();
         }else{
-            Exceptions::VIEW_NOT_FOUND($view);
+            throw new Exceptions\ViewNotFoundException($view);
         }
     }
     

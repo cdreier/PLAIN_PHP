@@ -81,7 +81,7 @@ class Module extends Controller{
             include($view);
             if($ajax)exit();
         }else{
-            Exceptions::VIEW_NOT_FOUND($view);
+            throw new Exceptions\ViewNotFoundException($view);
         }
     }
     
