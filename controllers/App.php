@@ -38,6 +38,10 @@ class App extends Controller {
         self::render();
     }
     
+    public static function debug(){
+        self::render();
+    }
+    
     public static function img($img, $defaultPath = "") {
         return App::PATH() . "public/img/" . $defaultPath . "/" . $img;
     }

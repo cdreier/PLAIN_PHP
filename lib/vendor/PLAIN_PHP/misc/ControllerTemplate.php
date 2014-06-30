@@ -1,6 +1,5 @@
-use PLAIN_PHP\Controller;
 
-class ClassName extends Controller {
+class ClassName extends PLAIN_PHP\Controller {
 	
     public static function index(){
         

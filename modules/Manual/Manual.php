@@ -8,7 +8,7 @@ class Manual extends Module {
         self::addScript("prettify.js");
         self::addStylesheet("sunburst-theme.css");
 		
-		self::extendFromTemplate("index");
+		self::extendFromTemplate("manual");
         
         self::setTitle("PLAIN_PHP - Manual");
     }
@@ -25,7 +25,7 @@ class Manual extends Module {
         self::render();
     }
 	
-    public static function folders(){
+    public static function tasks(){
         self::render();
     }
     

@@ -15,31 +15,41 @@ class MyAwesomeController extends Controller {
 MyAwsomeController::linkTo("moreAwesomerFunction");
 // returns http://localhost/PHP_PLAIN/index.php/MyAwsomeController/moreAwsomerFunction
 </pre>
-<p>Since it is always necessary when displaying data, e.g. an ID, it is possible to pass parameters. You can pass an array or lined up values to your controller function. These values are passed as parameter in the same order as given to to linkTo function.</p>
-<p>It is also possible to create a whole new route</p>
+<p>From time to time, you need to pass some dynamic values to your controllers, e.g. an ID to display specific content. Therefore you can pass an array or lined up values to your controller function. These values occur as parameter in the same order as given to to linkTo function.</p>
+<pre class="prettyprint">
+Users::linkTo("show", 3 );
+// returns http://localhost/PHP_PLAIN/index.php/Users/show/3
+
+//Users controller
+public static function show($userId){
+    // $userId = 3
+}
+</pre>
+<p>Note: It is possible to line up as many parameters as you like.</p>
+
+<p>If you want to hide your controller names or rearrange the values to match other APIs, you can create a whole new route</p>
 <pre class="prettyprint">
 //config/routes.php
 $_ROUTES = array(
-	"/awsome/{value}" => "MyAwsomeController::awesomeFunction",
-	"/debug/{value}/test/{yay}" => "MyAwsomeController::moreAwesomerFunction"
+	"/debug/{value}/test/{yay}" => "MyAwsomeController::awesomerFunction",
+	"/goodbye/{userId}" => "Users::delete",
 );	
 	
-MyAwsomeController::linkTo("awesomeFunction", 33);
-// returns http://localhost/PHP_PLAIN/index.php/awsome/33
+Users::linkTo("delete", 8);
+// returns http://localhost/PHP_PLAIN/index.php/goodbye/8
 
-MyAwsomeController::linkTo("moreAwesomerFunction", "33", "AWESOME"); // or
-MyAwsomeController::linkTo("moreAwesomerFunction", array("33", "AWESOME"));
+MyAwsomeController::linkTo("awesomerFunction", "33", "AWESOME"); // or
+MyAwsomeController::linkTo("awesomerFunction", array("33", "AWESOME"));
 // returns http://localhost/PHP_PLAIN/index.php/debug/33/test/AWESOME
 
-//in the controller
-public static awesomeFunction($id){
-    //$id = 33
-    $post = Doctrine_Core::getTable("Post")->find($id);
+//in the Users controller
+public static delete($id){
+    //$id = 8
 }
 
-public static moreAwesomerFunction($id, $test){
+//in the MyAwsomeController controller
+public static awesomerFunction($id, $test){
     //$id = 33, $test = "AWESOME"
-    $post = Doctrine_Core::getTable("Post")->find($id);
 }
 </pre>
 

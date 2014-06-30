@@ -18,21 +18,25 @@ class DevelopementUtils extends Controller{
     }
 
     private static function mkController($name){
-        $newController = "controllers/" . $name . ".php";
-        if(!is_file($newController)){
-            //create controller file
-            $c = file_get_contents("lib/vendor/PLAIN_PHP/misc/ControllerTemplate.php");
-            $c = str_replace("ClassName", $name, $c );
-            file_put_contents($newController, "<?php\n" . $c . "\n?>");
-            
+        if(PLAIN_PHP_DEV){
+            $newController = "controllers/" . $name . ".php";
+            if(!is_file($newController)){
+                //create controller file
+                $c = file_get_contents("lib/vendor/PLAIN_PHP/misc/ControllerTemplate.php");
+                $c = str_replace("ClassName", $name, $c );
+                file_put_contents($newController, "<?php\n" . $c . "\n?>");
+                
+            }
         }
     }
     
     private static function mkView($controller, $view){
-        $path = "views/" . $controller;
-        mkdir( $path );
-        if(!is_file($path . "/" . $view . ".php")){
-            file_put_contents($path . "/" . $view . ".php", "<?php PLAIN_PHP\Template::extend(\"index\") ?> \n\n<h1>$view View from $controller</h1>");
+        if(PLAIN_PHP_DEV){
+            $path = "views/" . $controller;
+            mkdir( $path );
+            if(!is_file($path . "/" . $view . ".php")){
+                file_put_contents($path . "/" . $view . ".php", "<?php PLAIN_PHP\Template::extend(\"index\") ?> \n\n<h1>$view View from $controller</h1>");
+            }
         }
     }    
     
