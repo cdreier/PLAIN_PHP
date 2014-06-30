@@ -27,31 +27,7 @@ public static function show($userId){
 </pre>
 <p>Note: It is possible to line up as many parameters as you like.</p>
 
-<p>If you want to hide your controller names or rearrange the values to match other APIs, you can create a whole new route</p>
-<pre class="prettyprint">
-//config/routes.php
-$_ROUTES = array(
-	"/debug/{value}/test/{yay}" => "MyAwsomeController::awesomerFunction",
-	"/goodbye/{userId}" => "Users::delete",
-);	
-	
-Users::linkTo("delete", 8);
-// returns http://localhost/PHP_PLAIN/index.php/goodbye/8
-
-MyAwsomeController::linkTo("awesomerFunction", "33", "AWESOME"); // or
-MyAwsomeController::linkTo("awesomerFunction", array("33", "AWESOME"));
-// returns http://localhost/PHP_PLAIN/index.php/debug/33/test/AWESOME
-
-//in the Users controller
-public static delete($id){
-    //$id = 8
-}
-
-//in the MyAwsomeController controller
-public static awesomerFunction($id, $test){
-    //$id = 33, $test = "AWESOME"
-}
-</pre>
+<p>For more informations, please visit the <a href="<?php echo Manual::linkTo("routes"); ?>">routing section</a></p>
 
 <br/>
 <h3 id="redirTo">redirectTo</h3>

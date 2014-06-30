@@ -10,28 +10,62 @@
 <pre class="prettyprint ">
 <?php echo htmlentities('<li><a href="<?php echo Manual::linkTo("routes"); ?>">Ordnerstruktur und Routing</a></li>') ?>
 </pre>
-<p></p>
+<br>
 
 
-<p>For details, please see the <a href='<?php echo Manual::linkTo("controllers") ?>'>controllers</a>.</p>
+<h3 id="params">Passing parameters</h3>
+<p>To pass parameters to your controller, you can add any amount of parameters to your route. A common case is a database id to fetch some content.</p>
+<p>These additional parameters are added straight to the end of your default route</p>
+<pre class="prettyprint">
+Users::linkTo("showTODOList", 3, 9);
+// will build to http://host/index.php/Users/showTODOList/3/9
+</pre>
+<p>Your controller can receive these values by just grab them in the order they are in the route</p>
+<pre class="prettyprint">
+// User controller
+public static function showTODOList($userId, $listId){ ... }
+</pre>
+<p>Cool PHP feature: you can use the default values with your controller parameters of course!</p>
+<pre class="prettyprint">
+// User controller
+public static function showTODOList($userId, $listId = false){
+    if(!$listId){
+        //fetch first one
+    }
+}
+</pre>
+<br>
 
 <h3 id="custom">Custom Routing</h3>
 <p>It is not difficult to note that the URL of the current page does not match the expected route:</p>
-<pre class="prettyprint ">
+<pre class="prettyprint">
 // http://localhost/PLAIN_PHP/index.php/CUSTOMROUTING
 </pre>
+<p>If you want to hide your controller names or rearrange the values to match other APIs, you can create a whole new route</p>
 <p>It is possible to specify your own route for each controller function in <strong>lib/config/routes.php</strong>. </p>
-<pre class="prettyprint ">
+<pre class="prettyprint">
+//config/routes.php
 $_ROUTES = array(
-	"/CUSTOMROUTING" => "Manual::routes"
-);
+    "/CUSTOMROUTING" => "Manual::routes",
+    "/debug/{value}/test/{yay}" => "MyAwsomeController::awesomerFunction",
+    "/goodbye/{userId}" => "Users::delete",
+);  
+    
+Users::linkTo("delete", 8);
+// returns http://localhost/PHP_PLAIN/index.php/goodbye/8
+
+MyAwsomeController::linkTo("awesomerFunction", "33", "AWESOME"); // or
+MyAwsomeController::linkTo("awesomerFunction", array("33", "AWESOME"));
+// returns http://localhost/PHP_PLAIN/index.php/debug/33/test/AWESOME
+
+//in the Users controller
+public static delete($id){
+    //$id = 8
+}
+
+//in the MyAwsomeController controller
+public static awesomerFunction($id, $test){
+    //$id = 33, $test = "AWESOME"
+}
 </pre>
 
-<p>You can specify more complex custom routes with dynamic values. These values ​​are given in brackets, the name has no meaning and it will only help you read the routes (\"syntactic sugar\").</p>
-<pre class="prettyprint ">
-$_ROUTES = array(
-	"/yay/{val}" => "App::yay",
-	"/debug/{value}/test/{yay}" => "App::debug"
-);
-</pre>
-<p>You can now pass a second parameter to a linkTo function, this is set to the appropriate location in the route. (See Controller)</p>
