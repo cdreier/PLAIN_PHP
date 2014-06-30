@@ -5,7 +5,7 @@ namespace PLAIN_PHP\Exceptions;
 class PlainException extends \Exception {
 	
 	private $msg;
-	private $help;
+	protected $helpText;
 	
 	function __construct($argument) {
 		$this->msg = $argument;
@@ -13,12 +13,17 @@ class PlainException extends \Exception {
 	
 	public function __toString(){
 		$this->head();
+        if($this->helpText != null && $this->helpText != ""){
+            $this->help();
+        }
 		$this->trace();
 		exit();
 	}
 	
 	private function trace(){
 		echo '<div style="color: white; width: 100%; background-color: #FFBB33; padding: 20px;">';
+        echo "<h2>Stacktrace:</h2>";
+        
 		foreach ($this->getTrace() as $t) {
 			
 			if(!isset($t["file"])) $t["file"] = "";
@@ -33,7 +38,7 @@ class PlainException extends \Exception {
 	
 	protected function help(){
 		echo '<div style="color: white; width: 100%; background-color: #33B5E5; padding: 20px;">';
-		echo $this->help;
+		echo $this->helpText;
 		echo '</div>';
 	} 
 	
@@ -50,6 +55,7 @@ class PlainException extends \Exception {
 			<h1 >
 				<?php echo $this->msg; ?>
 			</h1>
+			<h3>in <?php echo $this->getFile() ?> ( <?php echo $this->getLine() ?> )</h3>
 		</div>
 		<?php 
 	}

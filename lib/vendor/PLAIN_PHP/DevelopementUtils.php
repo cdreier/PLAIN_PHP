@@ -4,20 +4,38 @@ use PLAIN_PHP\Controller;
 class DevelopementUtils extends Controller{
 	
 	public static function createController(){
-		$newController = "controllers/" . $_POST["name"] . ".php";
-        if(!is_file($newController)){
-            //create controller file
-            $c = file_get_contents("lib/vendor/PLAIN_PHP/misc/ControllerTemplate.php");
-            $c = str_replace("ClassName", $_POST["name"], $c );
-            file_put_contents($newController, "<?php\n".$c."\n?>");
-            
-            //create view
-            mkdir("views/" . $_POST["name"] );
-            file_put_contents("views/" . $_POST["name"] . "/index.php", "<?php PLAIN_PHP\Template::extend(\"index\") ?> \n\n <h1>Index from " . $_POST["name"] . "</h1>");
-        }
+		//create controller
+        self::mkController($_POST["name"]);
+        //create view
+        self::mkView($_POST["name"], "index");
         
         $_POST["name"]::redirectTo("index");
 	}
+    
+    public static function createView($controller, $view){
+        self::mkView($controller, $view);
+        $controller::redirectTo($view);
+    }
+
+    private static function mkController($name){
+        $newController = "controllers/" . $name . ".php";
+        if(!is_file($newController)){
+            //create controller file
+            $c = file_get_contents("lib/vendor/PLAIN_PHP/misc/ControllerTemplate.php");
+            $c = str_replace("ClassName", $name, $c );
+            file_put_contents($newController, "<?php\n" . $c . "\n?>");
+            
+        }
+    }
+    
+    private static function mkView($controller, $view){
+        $path = "views/" . $controller;
+        mkdir( $path );
+        if(!is_file($path . "/" . $view . ".php")){
+            file_put_contents($path . "/" . $view . ".php", "<?php PLAIN_PHP\Template::extend(\"index\") ?> \n\n<h1>$view View from $controller</h1>");
+        }
+    }    
+    
 	
 	public static function devMenu(){
 		if(PLAIN_PHP_DEV){

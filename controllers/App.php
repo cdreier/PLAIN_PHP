@@ -37,8 +37,7 @@ class App extends Controller {
     public static function index() {
         self::render();
     }
-	
-
+    
     public static function img($img, $defaultPath = "") {
         return App::PATH() . "public/img/" . $defaultPath . "/" . $img;
     }
