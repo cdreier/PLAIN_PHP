@@ -281,7 +281,6 @@ class Controller {
         if(is_file( $view )){
             extract($args);
             include($view);
-			Template::_finish();
 			
 			if($ajax)exit();
         }else{
