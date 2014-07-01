@@ -3,7 +3,7 @@
 /**
  * 
  */
-class ProtectedController extends Controller {
+class ProtectedController extends PLAIN_PHP\Controller {
 	
     private static $user;
     

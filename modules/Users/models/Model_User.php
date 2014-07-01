@@ -10,7 +10,7 @@ class Model_User extends RedBean_SimpleModel {
      */
     public function setPassword($plain){
 		
-        $salt = "$2a$12$" . uniqid() . Utils::randomString(9);
+        $salt = "$2a$12$" . uniqid() . PLAIN_PHP\Utils::randomString(9);
         
         //force blowfish algorithm through salt
         $this->password = crypt($plain, $salt);
