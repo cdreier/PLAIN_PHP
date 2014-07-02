@@ -371,7 +371,7 @@ class Controller {
 			try{
 				//params only use with custom route
 				$route = Routing::fillParams($route, $param);
-			}catch(\Exception $e){
+			}catch(PLAIN_PHP\Exceptions\Exception $e){
 				//error in routing, missmatch from expected and total params 
 				echo $e;
 			}

@@ -3,7 +3,7 @@
 namespace PLAIN_PHP\Exceptions;
 
 
-class ViewNotFoundException extends PlainException {
+class ViewNotFoundException extends Exception {
 	
 	function __construct($view) {
 		parent::__construct("VIEW NOT FOUND: " . $view);

@@ -68,7 +68,7 @@ class Routing {
 			
 			//check if params are matching dynamix route parts
 			if(substr_count($route, "{") != count($param)){
-				throw new \Exception("ROUTE PARAMETER COUNT NOT MATCHING ARGUMENTS");
+				throw new PLAIN_PHP\Exceptions\Exception("ROUTE PARAMETER COUNT NOT MATCHING ARGUMENTS");
 			}
 			
 			for ($i = 0; $i < count($routeParts); $i++) {

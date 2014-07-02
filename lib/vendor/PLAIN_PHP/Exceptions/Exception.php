@@ -2,7 +2,7 @@
 
 namespace PLAIN_PHP\Exceptions;
  
-class PlainException extends \Exception {
+class Exception extends \Exception {
 	
 	private $msg;
 	protected $helpText;

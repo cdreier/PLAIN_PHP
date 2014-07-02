@@ -33,7 +33,7 @@ class Users extends Module {
         parent::init();
         
         if(!class_exists("R")){
-            throw new \Exception("The Users-Module need a configured database!", 1);
+            throw new PLAIN_PHP\Exceptions\Exception("The Users-Module needs a configured database!", 1);
         }
     }
     
