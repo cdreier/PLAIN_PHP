@@ -16,6 +16,12 @@ class DevelopementUtils extends Controller{
         self::mkView($controller, $view);
         $controller::redirectTo($view);
     }
+    
+    public static function createTemplate($template){
+        self::mkTemplate($template);
+        header( "Location: " . self::PATH()) ;
+        exit();
+    }
 
     private static function mkController($name){
         if(PLAIN_PHP_DEV){
@@ -36,6 +42,14 @@ class DevelopementUtils extends Controller{
             mkdir( $path );
             if(!is_file($path . "/" . $view . ".php")){
                 file_put_contents($path . "/" . $view . ".php", "<?php PLAIN_PHP\Template::extend(\"index\") ?> \n\n<h1>$view View from $controller</h1>");
+            }
+        }
+    }
+        
+    private static function mkTemplate($template){
+        if(PLAIN_PHP_DEV){
+            if(!is_file("templates/" . $template . ".php")){
+                file_put_contents("templates/" . $template . ".php", "<h1>Template: $template</h1>\n\n<div>\n<?php \$template->_yield(); ?>\n</div>");
             }
         }
     }    

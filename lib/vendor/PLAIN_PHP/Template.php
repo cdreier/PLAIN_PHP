@@ -37,6 +37,9 @@ class Template {
 	
 	function __construct($argument) {
 		$this->name = $argument;
+        if(!is_file(self::$templatePath . $this->name . ".php")){
+            throw new Exceptions\TemplateNotFoundException($this->name);
+        }
 		ob_start();
 	}
 	

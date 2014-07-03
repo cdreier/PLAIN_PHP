@@ -420,7 +420,6 @@ class Controller {
         exit();
     }
     
-    
     public static function PATH() {
         return PLAIN_PHP_ROOT;
     }

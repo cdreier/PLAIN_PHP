@@ -29,7 +29,7 @@ class Manual extends Controller{
 <pre class="prettyprint lang-php">
 //views/myController/myView.php
 //must be on top of the file
-&lt;?php Template::extend("index") ?&gt;
+&lt;?php PLAIN_PHP\Template::extend("index") ?&gt;
 </pre>
 
 <p>Sidenote: The template name is the same as the filename.</p>
@@ -41,8 +41,17 @@ public static function always(){
     self::extendFromTemplate("index");
 }
 </pre>
-<p>Of course, you can use the extendFromTemplate function in every controller function before the render call, but this would be the same like Template::extend in every single view.</p>
-<p>Templates can also be used with renderPartial of course, but note that extendFromTemplate only affects the render call.</p>
+<p>Of course, you can use the extendFromTemplate function in every controller function before the render call, but this would basicaly be the same like Template::extend in every single view.</p>
+
+<p>Templates can extend other templates, we need to finish an extending template explicitly</p>
+<pre class="prettyprint lang-php">
+    //file: templates/subtemplate.php
+    &lt;?php PLAIN_PHP\Template::extend("index"); ?&gt;
+    &lt;div style="background: red;"&gt;
+        &lt;?php $template->_yield(); ?&gt;
+    &lt;/div&gt;
+    &lt;?php PLAIN_PHP\Template::_finish(); ?&gt;
+</pre>
 
 
 
