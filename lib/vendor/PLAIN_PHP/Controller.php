@@ -307,8 +307,12 @@ class Controller {
                 self::$alwaysInvoked[] = $class;
             }
             
+            if( isset($_POST["PLAIN_PHP_AJAX"]) ){
+                $controllerInfo[1] = array($_POST["args"]);
+            }
             
             call_user_func_array($controllerInfo[0], $controllerInfo[1]);
+            
         }else{
         	throw new Exceptions\ActionNotFoundException($pathInfo);
         }

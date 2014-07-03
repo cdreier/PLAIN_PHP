@@ -16,7 +16,4 @@ $(function(){
 	});
 	$("#nav > li.active").append(subnav);
 	
-	
-	
-	
 });

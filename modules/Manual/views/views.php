@@ -43,7 +43,7 @@ public static function always(){
 </pre>
 <p>Of course, you can use the extendFromTemplate function in every controller function before the render call, but this would basicaly be the same like Template::extend in every single view.</p>
 
-<p>Templates can extend other templates, we need to finish an extending template explicitly</p>
+<p>Templates can extend other templates, but we need to finish an extending template explicitly</p>
 <pre class="prettyprint lang-php">
     //file: templates/subtemplate.php
     &lt;?php PLAIN_PHP\Template::extend("index"); ?&gt;

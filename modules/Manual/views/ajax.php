@@ -44,11 +44,13 @@ this.params = {
 
 
 <h3 id="ajax_php">PHP</h3>
-<p>Unlike calling a controller function via a custom route with parameters, the parameters in a AJAX request are transfereed in the \$_POST array.</p>
+<p>Unlike calling a controller function via a custom route with parameters, the parameters in a AJAX request are transfereed in the <i>args</i> parameter in the AjaxCall. 
+The args parameter is not limited to a type. You can pass a simple string, a boolean or komplex objects and arrays.</p>
+<p>The value of your args parameter are passed in your controller function as parameter</p>
 <pre class="prettyprint">
-public static function ajaxTargetFunction(){
+public static function ajaxTargetFunction($args){
 	//find something 
-	$bean = R::load('bean', $_POST["param"]);
+	$bean = R::load('bean', $args["id"]);
 	self::renderJSON(array(
 		"data" => $bean
 	));
@@ -56,10 +58,11 @@ public static function ajaxTargetFunction(){
 }
 </pre>
 <br />
-<p>There is also the possibility to load a view via AJAX, by setting the second parameter of the renderPartial method to true.</p>
+<p>There is also the possibility to load a view via AJAX, by setting the second parameter of the renderPartial method to true. 
+    The response is then just the plain HTML from your view. This can be used very effective with the load function from the AjaxCall.</p>
 <pre class="prettyprint">
 public static function loadView(){
-	self::renderJSON(array(), true);
+	self::renderPartial(array(), true);
 	//unreachable code
 }
 </pre>
