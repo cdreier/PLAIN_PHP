@@ -90,15 +90,34 @@ class Routing {
 	 */
 	private static function getRawRoute($pathInfos){
 		global $_ROUTES;
-		$flipped = array_flip($_ROUTES);
-        var_dump($flipped);
-		foreach ($flipped as $key => $value) {
+		foreach ($_ROUTES as $key => $value) {
+		    
+            //route is limited to a specific request method
+            if(substr($key, 0, 1) == "("){
+                //extract methos
+                preg_match_all("/\(.*\)/", $key, $tMethod);
+                $method = $tMethod[0][0];
+                $method = str_replace("(", "", $method);
+                $method = str_replace(")", "", $method);
+                
+                // check if request method matches route method
+                if($_SERVER["REQUEST_METHOD"] != $method){
+                    //no match, check other routes
+                    continue;
+                }
+                
+                //request method mathed route method, clean up route
+                $key = preg_replace("/\(.*\)/", "", $key);
+            }
+            
+            
 			//prepare for preg with escaping /
-			$tValue = str_replace("/", "\\/", $value);
+			$tValue = str_replace("/", "\\/", $key);
 			//create pattern and repalce {valueNames} with .*
 			$pattern = "/".preg_replace("/{.*}/", ".*", $tValue)."/";
+			
 			if(preg_match($pattern, $pathInfos)){
-				return array($key, $value);
+				return array($value, $key);
 			}
 		}
 		return false;
@@ -106,7 +125,6 @@ class Routing {
 	
 	private static function checkRoutes($pathInfos){
 		$rawRoute = self::getRawRoute($pathInfos);
-		
 		if($rawRoute){
 			//split both routes ..
 			$pathInfoParts = explode("/", $pathInfos);
@@ -119,7 +137,6 @@ class Routing {
 	
 	public static function parsePathInfo($pathInfo){
 		$foundRoute = self::checkRoutes($pathInfo);
-		
 		if( $foundRoute ){
 			return $foundRoute;
 		}

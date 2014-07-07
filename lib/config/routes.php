@@ -2,6 +2,5 @@
 $_ROUTES = array(
 	"/setlang/{l}" => "App::setLang"
 	
-	
 );
  ?>

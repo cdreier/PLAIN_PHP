@@ -68,4 +68,17 @@ public static awesomerFunction($id, $test){
     //$id = 33, $test = "AWESOME"
 }
 </pre>
+<br>
+
+<h3 id="contentn">Content Negotiation</h3>
+<p>In all of the examples above, we completely ignore the REQUEST_METHOD. Every route reacts independent from the method to the matching URL.</p>
+<p>If we want to build a nice API, we can limit our routes to specific request methods. So we can specify one route with 3 diffrent targets, depending on the request method.</p>
+<pre class="prettyprint">
+//config/routes.php
+$_ROUTES = array(
+    "(GET)/profile/{id}" => "Profile::show",
+    "(POST)/profile/{id}" => "Profile::update",
+    "(DELETE)/profile/{id}" => "Profile::delete"
+)
+</pre>
 

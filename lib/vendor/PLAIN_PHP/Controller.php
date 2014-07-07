@@ -293,7 +293,6 @@ class Controller {
      */
     public static function execute( $pathInfo ){
         $controllerInfo = Routing::parsePathInfo($pathInfo);
-    	
         if(count($controllerInfo) == 2 && is_callable($controllerInfo[0])){
 
         	if(!is_array($controllerInfo[1])){
