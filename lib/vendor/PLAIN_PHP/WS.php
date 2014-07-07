@@ -58,14 +58,14 @@ class WS {
         $this->data[$key] = $value;
     }
     
-    public function get($route){
+    public function get($route = ""){
         $ch = $this->init($route);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
         
         return $this->execute($ch);
     }
     
-    public function post($route){
+    public function post($route = ""){
         $ch = $this->init($route);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
@@ -75,14 +75,17 @@ class WS {
         return $this->execute($ch);
     }
     
-    public function delete($route){
+    public function delete($route = ""){
         $ch = $this->init($route);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
         
         return $this->execute($ch);
     }
     
-    
+    public static function getData($url){
+        $ws = new WS($url);
+        return $ws->get();
+    }
     
 }
 
