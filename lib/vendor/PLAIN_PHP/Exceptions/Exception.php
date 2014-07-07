@@ -4,7 +4,7 @@ namespace PLAIN_PHP\Exceptions;
  
 class Exception extends \Exception {
 	
-	private $msg;
+	private $msg = "AN ERROR OCCURRED";
 	protected $helpText;
 	
 	function __construct($argument) {

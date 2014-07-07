@@ -6,6 +6,7 @@ class Manual extends Module {
     
     public static function always(){
         self::addScript("prettify.js");
+        self::addScript("manual.js");
         self::addStylesheet("sunburst-theme.css");
 		
 		self::extendFromTemplate("manual");

@@ -29,22 +29,23 @@ namespace PLAIN_PHP;
 class Module extends Controller{
     
     public static $config;
+	private static $moduleName;
     
     public static function init(){
         
 		self::$isModule = true;
-        $className = get_called_class();
+        self::$moduleName = get_called_class();
         
         //load config, checks if active etc are in bootstrap file
-        require "modules/" . $className . "/config/conf.php";
-        $moduleConfigName = "_".strtoupper($className)."_CONFIG";
+        require "modules/" . self::$moduleName . "/config/conf.php";
+        $moduleConfigName = "_".strtoupper(self::$moduleName)."_CONFIG";
         self::$config = $$moduleConfigName;
         
         //merging routes
-        if(is_file("modules/" . $className . "/config/routes.php")){
-            require_once "modules/" . $className . "/config/routes.php";
+        if(is_file("modules/" . self::$moduleName . "/config/routes.php")){
+            require_once "modules/" . self::$moduleName . "/config/routes.php";
             global $_ROUTES;
-            $moduleRoutesName = "_".strtoupper($className)."_ROUTES";
+            $moduleRoutesName = "_".strtoupper(self::$moduleName)."_ROUTES";
             $_ROUTES = array_merge($_ROUTES, $$moduleRoutesName);
         }
     }
@@ -84,7 +85,16 @@ class Module extends Controller{
             throw new Exceptions\ViewNotFoundException($view);
         }
     }
-    
+	
+	public static function addStylesheet($filename, $path = "public/css/"){
+		$path = "modules/" . self::$moduleName . "/" . $path;
+		parent::addStylesheet($filename, $path);
+    }
+	
+    public static function addScript($filename, $path = "public/js/"){
+		$path = "modules/" . self::$moduleName . "/" . $path;
+		parent::addScript($filename, $path);
+    }
     
 }
 

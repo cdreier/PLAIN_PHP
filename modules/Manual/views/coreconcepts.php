@@ -34,7 +34,9 @@ public static function coreconcepts(){
 
 
 <h3 id="plain">DEVELOPEMENT mode and Exceptions</h3>
-<p>TODO</p>
+<p>If you look in the config file (lib/config/conf.php) you will find a DEVELOPEMENT entry, set to true. This is our dev-mode.</p>
+<p>With active developement-mode you have a small blue and ugly box in the lower right corner. Hover over it and it appears a menu with small helpers. For now you can create a new Controller with all the view-folders and files. </p>
+<p>Also with active developement mode, the few Exceptions the framework will throw, are becomimg a bit more usefull. Perhaps if a render() call does not find the corresponding view, the Exception is asking if the view should be created.</p>
 <br>
 
 
@@ -55,4 +57,4 @@ class MyController extends Controller { ... }
 
 
 <h3 id="plain">Plain PHP</h3>
-<p>The framework consists of pure PHP code, nothing magical like the popular PHP annotations or something else is used, but only the native PHP language constructs.</p>
+<p>The framework consists of pure PHP code, nothing magical like the popular PHP annotations or something else is used, but only the native PHP language constructs. You extract the repository to your webserver and you are good to go!</p>
