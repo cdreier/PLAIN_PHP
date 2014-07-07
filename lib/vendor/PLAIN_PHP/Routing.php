@@ -91,6 +91,7 @@ class Routing {
 	private static function getRawRoute($pathInfos){
 		global $_ROUTES;
 		$flipped = array_flip($_ROUTES);
+        var_dump($flipped);
 		foreach ($flipped as $key => $value) {
 			//prepare for preg with escaping /
 			$tValue = str_replace("/", "\\/", $value);

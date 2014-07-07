@@ -25,6 +25,7 @@
  */ 
 
 use PLAIN_PHP\Controller;
+use PLAIN_PHP\WS;
  
 class App extends Controller {
 	
@@ -37,6 +38,27 @@ class App extends Controller {
     public static function index() {
         self::addScript("main.js");
         self::render();
+    }
+    
+    public static function testGet(){
+        self::renderText("get found");
+    }
+    
+    public static function testPost(){
+        self::renderText("post found");
+    }
+    
+    public static function testDelete(){
+        self::renderText("delete found");
+    }
+    
+    public static function debug(){
+        // $ws = new WS("http://localhost/PLAIN_PHP/index.php");
+        // $ws->addData("test", "yay");
+        // echo $ws->post("App/wsTest");
+        
+        
+        //self::render();
     }
     
     public static function img($img, $defaultPath = "") {

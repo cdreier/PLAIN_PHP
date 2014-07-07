@@ -35,7 +35,11 @@ class I18n {
 		if(isset($_SESSION[self::$_SESSION_NAME])){
 			self::$_LANGUAGE = $_SESSION[self::$_SESSION_NAME];
 		}else{
-			self::$_LANGUAGE = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+		    if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])){
+    			self::$_LANGUAGE = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+		    }else{
+		        self::$_LANGUAGE = false;
+		    }
 		}
 	}
     
