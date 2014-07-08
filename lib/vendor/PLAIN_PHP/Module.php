@@ -95,7 +95,11 @@ class Module extends Controller{
 		$path = "modules/" . self::$moduleName . "/" . $path;
 		parent::addScript($filename, $path);
     }
-    
+
+    public static function MODULE_PATH(){
+        return PLAIN_PHP_ROOT . "modules/" .self::$moduleName;
+    }
+
 }
 
 

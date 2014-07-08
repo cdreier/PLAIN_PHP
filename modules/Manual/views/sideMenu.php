@@ -1,4 +1,4 @@
-<div id="sideMenu" data-spy="affix" data-offset-top="0" >
+<div id="sideMenu" data-spy="affix" data-offset-top="80" >
     <ul id="nav" class="nav nav-stacked nav-pills">
         <li class="<?php echo (Manual::isActive("index"))?"active":""; ?>" ><a href="<?php echo Manual::linkTo("index"); ?>">Home</a></li>
         <li class="<?php echo (Manual::isActive("coreconcepts"))?"active":""; ?>" ><a href="<?php echo Manual::linkTo("coreconcepts"); ?>">Core Concepts</a></li>
@@ -9,7 +9,5 @@
         <li class="<?php echo (Manual::isActive("ajax"))?"active":""; ?>" ><a href="<?php echo Manual::linkTo("ajax"); ?>">AJAX</a></li>
         <li class="<?php echo (Manual::isActive("routes"))?"active":""; ?>" ><a href="<?php echo Manual::linkTo("routes"); ?>">Routing</a></li>
         <li class="<?php echo (Manual::isActive("i18n"))?"active":""; ?>" ><a href="<?php echo Manual::linkTo("i18n"); ?>">Internationalization</a></li>
-        
     </ul>
-    
 </div>

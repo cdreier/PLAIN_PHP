@@ -10,7 +10,7 @@
         <title><?php echo Controller::getTitle(); ?></title>
 
 		<link type="text/css" rel="stylesheet" href="<?php echo Controller::PATH() ?>/public/css/bootstrap.min.css" />
-		<link type="text/css" rel="stylesheet" href="<?php echo Controller::PATH() ?>/public/css/style.css" />
+		<link type="text/css" rel="stylesheet" href="<?php echo Manual::MODULE_PATH() ?>/public/css/style.css" />
 		<?php Controller::injectStylesheets() ?>
 		
         <?php Controller::_JSPATH(); ?>
@@ -25,6 +25,11 @@
 	<body >
 		
 		<div class="container">
+
+            <div class="page-header">
+                <h1><small>&lt;?php </small> PLAIN_PHP <small> ?&gt;</small></h1>
+            </div>
+
 			<nav class="col-md-3 col-sm-3" >
 		    <?php 
 		    if(Manual::isActive()){
