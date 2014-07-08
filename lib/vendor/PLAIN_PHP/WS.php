@@ -38,6 +38,7 @@ class WS {
         if(substr($route, 0, 1) != "/"){
             $route = "/".$route;
         }
+        echo $this->baseURI . $route;
         $ch = curl_init($this->baseURI . $route);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->timeout);
         curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -57,8 +58,24 @@ class WS {
         
         $this->data[$key] = $value;
     }
+
+    public function getDataString(){
+        $str = "";
+        if(count($this->data) > 0){
+            $str .= "?";
+            foreach ($this->data as $key => $value) {
+                $str .= $key."=".$value."&";
+            }
+            //remove last &
+            $str = substr($str, 0, strlen($str) - 1);
+        }
+        return $str;
+    }
     
     public function get($route = ""){
+        
+        $route .= $this->getDataString();
+        
         $ch = $this->init($route);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
         
