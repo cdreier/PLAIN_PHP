@@ -18,8 +18,8 @@ if(isset($_SERVER['PATH_INFO'])){
     //ajax request found
     Controller::execute("/" . $_POST["class"] . "/" . $_POST["method"]);
 }else{
-    //no path is set, call default 
-    App::index();
+    //no path is set, call default
+    call_user_func($_CONFIG["START"]);
 }
 
 DevelopementUtils::devMenu() ;
