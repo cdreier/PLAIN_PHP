@@ -36,10 +36,10 @@ class App extends Controller {
 	}
     
     public static function index() {
-        self::addScript("main.js");
         self::render();
     }
-    
+
+
     public static function img($img, $defaultPath = "") {
         return App::PATH() . "public/img/" . $defaultPath . "/" . $img;
     }

@@ -56,7 +56,10 @@ class Module extends Controller{
         $class::redirectTo($function);
     }
     
-    
+    protected static function getUriFromString($target){
+        list($class, $function) = explode("::", $target);
+        return $class::linkTo($function);
+    }
     
     public static function render($args = array()){
         $trace = debug_backtrace();
