@@ -10,9 +10,12 @@ class WS {
     private $baseURI; 
     private $timeout; 
     private $data;
-    
+    private $ssl;
+
 	function __construct($uri) {
 		$this->baseURI = $uri;
+
+        $this->ssl = (strstr($this->baseURI, "https://"));
         
         $this->timeout = 5;
         $this->data = array();
@@ -38,12 +41,17 @@ class WS {
         if(substr($route, 0, 1) != "/"){
             $route = "/".$route;
         }
-        echo $this->baseURI . $route;
+
         $ch = curl_init($this->baseURI . $route);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->timeout);
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        
+
+        if($this->ssl){
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        }
+
         return $ch;
     }
     
@@ -85,8 +93,7 @@ class WS {
     public function post($route = ""){
         $ch = $this->init($route);
         curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-        
+
         curl_setopt($ch, CURLOPT_POSTFIELDS, $this->data);
         
         return $this->execute($ch);
