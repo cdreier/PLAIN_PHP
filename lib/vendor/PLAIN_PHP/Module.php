@@ -29,23 +29,22 @@ namespace PLAIN_PHP;
 class Module extends Controller{
     
     public static $config;
-	private static $moduleName;
-    
+
     public static function init(){
         
 		self::$isModule = true;
-        self::$moduleName = get_called_class();
+        $moduleName = get_called_class();
         
         //load config, checks if active etc are in bootstrap file
-        require "modules/" . self::$moduleName . "/config/conf.php";
-        $moduleConfigName = "_".strtoupper(self::$moduleName)."_CONFIG";
+        require "modules/" . $moduleName . "/config/conf.php";
+        $moduleConfigName = "_".strtoupper($moduleName)."_CONFIG";
         self::$config = $$moduleConfigName;
         
         //merging routes
-        if(is_file("modules/" . self::$moduleName . "/config/routes.php")){
-            require_once "modules/" . self::$moduleName . "/config/routes.php";
+        if(is_file("modules/" . $moduleName . "/config/routes.php")){
+            require_once "modules/" . $moduleName . "/config/routes.php";
             global $_ROUTES;
-            $moduleRoutesName = "_".strtoupper(self::$moduleName)."_ROUTES";
+            $moduleRoutesName = "_".strtoupper($moduleName)."_ROUTES";
             $_ROUTES = array_merge($_ROUTES, $$moduleRoutesName);
         }
     }
@@ -90,17 +89,20 @@ class Module extends Controller{
     }
 	
 	public static function addStylesheet($filename, $path = "public/css/"){
-		$path = "modules/" . self::$moduleName . "/" . $path;
+        $moduleName = get_called_class();
+		$path = "modules/" . $moduleName . "/" . $path;
 		parent::addStylesheet($filename, $path);
     }
 	
     public static function addScript($filename, $path = "public/js/"){
-		$path = "modules/" . self::$moduleName . "/" . $path;
+        $moduleName = get_called_class();
+		$path = "modules/" . $moduleName . "/" . $path;
 		parent::addScript($filename, $path);
     }
 
     public static function MODULE_PATH(){
-        return PLAIN_PHP_ROOT . "modules/" .self::$moduleName;
+        $moduleName = get_called_class();
+        return PLAIN_PHP_ROOT . "modules/" .$moduleName;
     }
 
 }
