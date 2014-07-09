@@ -68,7 +68,7 @@ class Routing {
 			
 			//check if params are matching dynamix route parts
 			if(substr_count($route, "{") != count($param)){
-				throw new PLAIN_PHP\Exceptions\Exception("ROUTE PARAMETER COUNT NOT MATCHING ARGUMENTS");
+				throw new PLAIN_PHP\Exception\Exception("ROUTE PARAMETER COUNT NOT MATCHING ARGUMENTS");
 			}
 			
 			for ($i = 0; $i < count($routeParts); $i++) {
@@ -105,7 +105,7 @@ class Routing {
                     //no match, check other routes
                     continue;
                 }
-                
+
                 //request method mathed route method, clean up route
                 $key = preg_replace("/\(.*\)/", "", $key);
             }
@@ -113,13 +113,36 @@ class Routing {
             
 			//prepare for preg with escaping /
 			$tValue = str_replace("/", "\\/", $key);
-			//create pattern and repalce {valueNames} with .*
-			$pattern = "/".preg_replace("/{.*}/", ".*", $tValue)."/";
-			
-			if(preg_match($pattern, $pathInfos)){
-				return array($value, $key);
+            //create pattern and repalce {valueNames} with .*
+            $pattern = "/".preg_replace("/{.*}/", "\\w+", $tValue)."/";
+
+            if(preg_match($pattern, $pathInfos)){
+                //check slashes to filter
+                $routeParts = explode("/", $key);
+                $pathInfoParts = explode("/", $pathInfos);
+                if(count($routeParts) == count($pathInfoParts) ){
+                    $routeFound = true;
+                    //check route parts
+                    for($i = 0; $i < count($routeParts); $i++){
+                        //part is param
+                        if(substr($routeParts[$i],0,1) == "{"){
+                            continue;
+                        }
+                        //if part not param and does not match, leave loop
+                        if($routeParts[$i] != $pathInfoParts[$i]){
+                            $routeFound = false;
+                            $i = count($routeParts);
+                        }
+                    }
+
+                    //if route found and matching all parts, return
+                    if($routeFound){
+                        return array($value, $key);
+                    }
+                }
 			}
 		}
+
 		return false;
 	}
 	
