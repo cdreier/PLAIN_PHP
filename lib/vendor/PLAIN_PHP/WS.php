@@ -11,6 +11,7 @@ class WS {
     private $timeout; 
     private $data;
     private $ssl;
+    private $header;
 
 	function __construct($uri) {
 		$this->baseURI = $uri;
@@ -19,6 +20,7 @@ class WS {
         
         $this->timeout = 5;
         $this->data = array();
+        $this->header = array();
 	}
     
     public function setTimeout($sec){
@@ -26,6 +28,8 @@ class WS {
     }
     
     private function execute($curlChannel){
+
+        curl_setopt($curlChannel, CURLOPT_HTTPHEADER, $this->header);
         $response = curl_exec($curlChannel);
         curl_close($curlChannel);
         
@@ -54,7 +58,11 @@ class WS {
 
         return $ch;
     }
-    
+
+    public function addHeader($headerLine){
+        $this->header[] = $headerLine;
+    }
+
     public function setData($data){
         $this->data = $data;
     }
@@ -63,7 +71,6 @@ class WS {
         if(!is_array($this->data)){
             $this->data = array();
         }
-        
         $this->data[$key] = $value;
     }
 
@@ -83,7 +90,6 @@ class WS {
     public function get($route = ""){
         
         $route .= $this->getDataString();
-        
         $ch = $this->init($route);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
         
