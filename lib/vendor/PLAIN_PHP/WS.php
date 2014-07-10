@@ -12,6 +12,8 @@ class WS {
     private $data;
     private $ssl;
     private $header;
+    private $basicAuth;
+
 
 	function __construct($uri) {
 		$this->baseURI = $uri;
@@ -19,6 +21,7 @@ class WS {
         $this->ssl = (strstr($this->baseURI, "https://"));
         
         $this->timeout = 5;
+        $this->basicAuth = false;
         $this->data = array();
         $this->header = array();
 	}
@@ -42,9 +45,6 @@ class WS {
     }
     
     private function init($route){
-        if(substr($route, 0, 1) != "/"){
-            $route = "/".$route;
-        }
 
         $ch = curl_init($this->baseURI . $route);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->timeout);
@@ -56,7 +56,16 @@ class WS {
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         }
 
+        if($this->basicAuth !== false){
+            curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+            curl_setopt($ch, CURLOPT_USERPWD, $this->basicAuth);
+        }
+
         return $ch;
+    }
+
+    public function setBasicAuth($username, $password){
+        $this->basicAuth = $username.":".$password;
     }
 
     public function addHeader($headerLine){
