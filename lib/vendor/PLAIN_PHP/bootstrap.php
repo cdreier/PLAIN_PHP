@@ -64,6 +64,7 @@ function __PLAIN_PHP_autoload($className){
     foreach ($_CONFIG["AUTOLOAD_FOLDERS"] as $folder) {
         
         $file = $folder . $className . ".php";
+		$file = str_replace("\\", "/", $file);
         if(file_exists($file) && !is_dir($file)){
             
 			
