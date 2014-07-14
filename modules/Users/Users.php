@@ -28,6 +28,7 @@ use PLAIN_PHP\Module;
 
 class Users extends Module {
 	
+	private static $session;
     
     public static function init(){
         parent::init();
@@ -38,10 +39,16 @@ class Users extends Module {
     }
     
     public static function checkSession(){
-        $session = R::findOne(self::$config["sessionTable"], "val = ?", array(session_id()));
-        if($session != null){
-            return $session->user;
+        //if session is already found, return
+        if(self::$session != null){
+            return self::$session->user;
         }
+        //store session for one request
+        self::$session = R::findOne(self::$config["sessionTable"], "val = ?", array(session_id()));
+        if(self::$session != null && self::$session->user != null){
+            return self::$session->user;
+        }
+		self::$session = null;
         self::redirectFromString(self::$config["redirectAfter_failure"]);
     }
     
