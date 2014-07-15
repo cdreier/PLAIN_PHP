@@ -91,6 +91,33 @@ public static function someJSONResponse(){
 
 
 <br/>
+<h3 id="controller_renderBinary">renderBinary</h3>
+<p>renderBinary, perhaps the name gives a hint, will render a binary. This is pretty useful if you have images or files that should not be accessible with the full path.</p>
+<p>renderBinary will output an image or starts a download.</p>
+<p>For example: you created an uploads folder in the lib directory, and the lib directory is protected from the .htaccess file. So no one can access these files wihtout permission.</p>
+<pre class="prettyprint">
+//you generate an image tag
+<?php echo htmlentities("<img src='<?php echo App::linkTo('getImage', 123) ?>' />"); ?>
+
+//results to
+<?php echo htmlentities("<img src='http://plain-php.drailing.net/index.php/App/renderImage/123' />"); ?>
+
+
+//and calls the controller function the App controller
+public static function getImage($imageId){
+    //fetch image from db or imageId is a hash
+    self::renderBinary("lib/data/".$imageId);
+}
+</pre>
+<p>In most of all cases, the binary path should be enough. With the file_info extension renderBinary will find the mime-type and file extension by its own, even your file name is hashed.</p>
+<p>You can rename your output (perhaps a generated zip) and if you can't enable the file_info estension, you can set the mime-type by yourself</p>
+<pre class="prettyprint">
+public static function getImage($hashedFile){
+    self::renderBinary("lib/data/".$hashedFile, "your-personal-download", "application/zip");
+}
+</pre>
+
+<br/>
 <h3 id="always">always</h3>
 <p>The always function runs at the latest before each render call. So you can add stylesheets or scripts, extend all render calls from a template oe secure the whole controller with validations. </p>
 <pre class="prettyprint">

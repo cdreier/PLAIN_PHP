@@ -26,6 +26,8 @@
 
 namespace PLAIN_PHP;
  
+use PLAIN_PHP\Exceptions\Exception;
+
 class Controller {
     
     protected static $scripts = array();
@@ -256,6 +258,46 @@ class Controller {
 		header("Content-Type: application/json");
 		exit(json_encode($data));
 	}
+
+    /**
+     * renders a binary file and exits script execution
+     *
+     * @link http://plain-php.drailing.net/index.php/Manual/controllers#controller_renderBinary
+     * @param string $path  the full path to the file you want to render
+     * @param string $name  optional param, if not set renderBinary will try to create a filename
+     * @param string $mime  optional param, if not set renderBinary tries to find the mime-type with help of finfo
+     */
+    public static function renderBinary($path, $name = false, $mime = false){
+
+        if(!is_file($path)){
+            throw new Exceptions\Exception("No file found at: ".$path);
+        }
+
+        //no explizit mime type is set, try to find with finfo
+        if(!$mime){
+            $mimeInfo = finfo_open(FILEINFO_MIME_TYPE);
+            $mime = finfo_file($mimeInfo, $path);
+        }
+        header('Content-type: '.$mime);
+
+        if(!$name){
+            $info = new \SplFileInfo($path);
+            $name = $info->getBasename();
+
+            //no extension in path, try to set with mime type
+            if($info->getExtension() == ""){
+                list($garbage, $ext) = explode("/", $mime);
+                $name .= ".".$ext;
+            }
+        }
+
+        //name is found and not empty
+        if($name && $name != ""){
+            header("Content-Disposition: attachment; filename=$name");
+        }
+
+        exit(readfile($path));
+    }
     
     /**
      * includes the view at the place the function is called
