@@ -282,7 +282,6 @@ class Controller {
 
         if($name !== false){
             $info = new \SplFileInfo($path);
-            $name = $info->getBasename();
 
             //no extension in path, try to set with mime type
             if($info->getExtension() == ""){
