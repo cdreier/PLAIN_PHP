@@ -116,6 +116,7 @@ public static function getImage($hashedFile){
     self::renderBinary("lib/data/".$hashedFile, "your-personal-download", "application/zip");
 }
 </pre>
+<p>Please not: if you add a filename, renderBinary will add the <i>Content-Disposition: attachment</i> to your header, so e.g. a image will start a download and is not rendered!</p>
 
 <br/>
 <h3 id="always">always</h3>

@@ -264,7 +264,7 @@ class Controller {
      *
      * @link http://plain-php.drailing.net/index.php/Manual/controllers#controller_renderBinary
      * @param string $path  the full path to the file you want to render
-     * @param string $name  optional param, if not set renderBinary will try to create a filename
+     * @param string $name  optional param, if not set renderBinary will output the binary, if set, renderBinary adds attachment header and starts a download
      * @param string $mime  optional param, if not set renderBinary tries to find the mime-type with help of finfo
      */
     public static function renderBinary($path, $name = false, $mime = false){
@@ -280,7 +280,7 @@ class Controller {
         }
         header('Content-type: '.$mime);
 
-        if(!$name){
+        if($name !== false){
             $info = new \SplFileInfo($path);
             $name = $info->getBasename();
 
@@ -289,11 +289,11 @@ class Controller {
                 list($garbage, $ext) = explode("/", $mime);
                 $name .= ".".$ext;
             }
-        }
 
-        //name is found and not empty
-        if($name && $name != ""){
-            header("Content-Disposition: attachment; filename=$name");
+            //name is found and not empty
+            if($name && $name != ""){
+                header("Content-Disposition: attachment; filename=$name");
+            }
         }
 
         exit(readfile($path));
