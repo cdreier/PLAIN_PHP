@@ -256,6 +256,9 @@ class Controller {
      */
 	public static function renderJSON($data){
 		header("Content-Type: application/json");
+		if(PLAIN_PHP_DEV){
+            exit(json_encode($data, JSON_PRETTY_PRINT));
+        }   
 		exit(json_encode($data));
 	}
 
