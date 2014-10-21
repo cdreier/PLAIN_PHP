@@ -143,6 +143,16 @@ class Controller {
     public static function isActive($view = false, $routeParams = false){
     	
         $callee = $checkAgainst = get_called_class();
+        //build default route
+        $params = false;
+        if($routeParams){
+            if(!is_array($routeParams)){
+                $params = array_slice(func_get_args(), 1);
+            }else{
+                $params = array($routeParams);
+            }
+        }
+
         if($view){
             $checkAgainst .= "/".$view;
             $callee .= "::".$view;
@@ -150,9 +160,17 @@ class Controller {
         
         //first check if path info is set and matches 
         if(isset($_SERVER["PATH_INFO"])){
-        	if(strstr($_SERVER["PATH_INFO"], $checkAgainst))
+            //check default route
+            $defaultCheck = $checkAgainst;
+            if($params){
+                foreach($params as $p){
+                    $defaultCheck .= "/".$p;
+                }
+            }
+
+        	if(strstr($_SERVER["PATH_INFO"], $defaultCheck))
             	return true;
-			
+
             //check against custom routing
 			if (Routing::isActive($_SERVER["PATH_INFO"], $callee, $routeParams))
                 return true;
