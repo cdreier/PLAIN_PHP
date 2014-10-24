@@ -26,8 +26,6 @@
 
 namespace PLAIN_PHP;
  
-use PLAIN_PHP\Exceptions\Exception;
-
 class Controller {
     
     protected static $scripts = array();
@@ -172,7 +170,7 @@ class Controller {
             	return true;
 
             //check against custom routing
-			if (Routing::isActive($_SERVER["PATH_INFO"], $callee, $routeParams))
+			if (Routing::isActive($_SERVER["PATH_INFO"], $callee, $params))
                 return true;
         }
 		
@@ -274,50 +272,8 @@ class Controller {
      */
 	public static function renderJSON($data){
 		header("Content-Type: application/json");
-		if(PLAIN_PHP_DEV){
-            exit(json_encode($data, JSON_PRETTY_PRINT));
-        }   
 		exit(json_encode($data));
 	}
-
-    /**
-     * renders a binary file and exits script execution
-     *
-     * @link http://plain-php.drailing.net/index.php/Manual/controllers#controller_renderBinary
-     * @param string $path  the full path to the file you want to render
-     * @param string $name  optional param, if not set renderBinary will output the binary, if set, renderBinary adds attachment header and starts a download
-     * @param string $mime  optional param, if not set renderBinary tries to find the mime-type with help of finfo
-     */
-    public static function renderBinary($path, $name = false, $mime = false){
-
-        if(!is_file($path)){
-            throw new Exceptions\Exception("No file found at: ".$path);
-        }
-
-        //no explizit mime type is set, try to find with finfo
-        if(!$mime){
-            $mimeInfo = finfo_open(FILEINFO_MIME_TYPE);
-            $mime = finfo_file($mimeInfo, $path);
-        }
-        header('Content-type: '.$mime);
-
-        if($name !== false){
-            $info = new \SplFileInfo($path);
-
-            //no extension in path, try to set with mime type
-            if($info->getExtension() == ""){
-                list($garbage, $ext) = explode("/", $mime);
-                $name .= ".".$ext;
-            }
-
-            //name is found and not empty
-            if($name && $name != ""){
-                header("Content-Disposition: attachment; filename=$name");
-            }
-        }
-
-        exit(readfile($path));
-    }
     
     /**
      * includes the view at the place the function is called
@@ -368,7 +324,7 @@ class Controller {
                 self::$alwaysInvoked[] = $class;
             }
             
-            if( isset($_POST["PLAIN_PHP_AJAX"]) ){
+            if( isset($_POST["PLAIN_PHP_AJAX"]) && isset($_POST["args"]) ){
                 $controllerInfo[1] = array($_POST["args"]);
             }
             

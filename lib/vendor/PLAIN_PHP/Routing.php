@@ -26,6 +26,8 @@
  
 namespace PLAIN_PHP;
 
+use PLAIN_PHP\Exceptions\Exception;
+
 class Routing {
 	
 	public static function checkFunction($fun){
@@ -68,7 +70,7 @@ class Routing {
 			
 			//check if params are matching dynamix route parts
 			if(substr_count($route, "{") != count($param)){
-				throw new PLAIN_PHP\Exception\Exception("ROUTE PARAMETER COUNT NOT MATCHING ARGUMENTS");
+                throw new Exception("ROUTE PARAMETER COUNT NOT MATCHING ARGUMENTS");
 			}
 			
 			for ($i = 0; $i < count($routeParts); $i++) {
