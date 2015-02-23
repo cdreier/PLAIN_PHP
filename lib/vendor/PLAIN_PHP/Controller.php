@@ -350,8 +350,12 @@ class Controller {
                 self::$alwaysInvoked[] = $class;
             }
             
-            if( isset($_POST["PLAIN_PHP_AJAX"]) ){
-                $controllerInfo[1] = array($_POST["args"]);
+			if( isset($_POST["PLAIN_PHP_AJAX"]) && isset($_POST["args"]) ){
+                if(is_array($_POST["args"])){
+                    $controllerInfo[1][] = $_POST["args"];
+                }else{
+                    $controllerInfo[1][] = array($_POST["args"]);
+                }
             }
             
             call_user_func_array($controllerInfo[0], $controllerInfo[1]);

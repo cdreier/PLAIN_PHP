@@ -23,24 +23,41 @@
  * 
  */ 
 var AjaxCall = function(args){
+
+    args = args || {};
         
-    this.proxyFile = args.proxyFile || _getServerUrl() + "index.php";
+    this.target = _getServerUrl() + "index.php";
     this.params = {
         class : args.class || "App",
         method : args.method || "test",
         args : args.args || {},
         PLAIN_PHP_AJAX : true
     };
-    this.init();
+    return this.init();
 };
 AjaxCall.prototype = {
     
     init : function(){
-        
+        return this;
+    },
+
+    forClass : function(c){
+        this.params.class = c;
+        return this;
+    },
+
+    forMethod : function(m){
+        this.params.method = m;
+        return this;
+    },
+
+    withArguments : function(a){
+        this.params.args = a;
+        return this;
     },
     
     execute : function(callback){
-        $.post(this.proxyFile, this.params, function(response){
+        $.post(this.target, this.params, function(response){
             if(callback){
             	try{
             		response = JSON.parse(response);
@@ -51,7 +68,7 @@ AjaxCall.prototype = {
     },
     
     load : function(el, callback){
-    	el.load(this.proxyFile, this.params, function(response){
+    	el.load(this.target, this.params, function(response){
     		if(callback){
             	try{
             		response = JSON.parse(response);
