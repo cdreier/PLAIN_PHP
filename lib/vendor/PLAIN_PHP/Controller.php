@@ -49,8 +49,11 @@ class Controller {
      * 
      */
     public static function addScript($filename, $path = "public/js/"){
-        self::$scripts[] = self::PATH() . $path . $filename;
-    }
+		$fullpath = self::PATH() . $path . $filename;
+		if (! in_array($fullpath, self::$scripts)) {
+			self::$scripts[] = $fullpath;
+    	}
+	}
     
     /**
      * add a script from external url
@@ -58,8 +61,10 @@ class Controller {
      * @param String $url
      */
     public static function addExternalScript($url){
-        self::$scripts[] = $url;
-    }
+		if (! in_array($url, self::$scripts)) {
+        	self::$scripts[] = $url;
+    	}
+	}
 	
     /**
      * add key - value based content to you render call, see setTitle for conrete usage
@@ -111,7 +116,10 @@ class Controller {
      * 
      */
     public static function addStylesheet($filename, $path = "public/css/"){
-        self::$stylesheets[] = self::PATH() . $path . $filename;
+		$fullpath = self::PATH() . $path . $filename;
+		if (! in_array($fullpath, self::$stylesheets)) {
+			self::$stylesheets[] = $fullpath;
+		}
     }
     
     public static function injectScripts(){
